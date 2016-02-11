@@ -28,11 +28,8 @@ def execute(path, grammar_file_name, example_file_name, export_dot, export_png):
             
     model = metamodel.model_from_file(model_path)
     
-    if export_dot:
-        model_export(model, model_name + '.dot')
-    if export_png:
-        graph = pydot.graph_from_dot_file(model_name + '.dot')
-        graph.write_png(model_name + '.png')
     
+    
+    return model
     
     

@@ -10,6 +10,6 @@
 
 "Film" {
 	text "naziv"
-	foreignKey ("Knjiga") "autor" (null=false)
+	char(max=80) "autor" (null=false)
 	
 }
