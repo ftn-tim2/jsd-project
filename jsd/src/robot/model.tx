@@ -1,5 +1,5 @@
 Model: 
-	class*= Definition
+	classes*= Definition
 ;
 
 Definition:
