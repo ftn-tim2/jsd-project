@@ -56,14 +56,14 @@ if __name__ == '__main__':
     robot_mm.register_obj_processors(object_processors)
     
     robot_model = robot_mm.model_from_file('test.rbt')
-    model_export(robot_model, 'robot_model.dot')
-    graph = pydot.graph_from_dot_file('robot_model.dot')
-    graph.write_png('robot_model.png')
-    
     robot = Robot()
     robot.interpret(robot_model)
     print(robot)
    
+    
+''' model_export(robot_model, 'robot_model.dot')
+    graph = pydot.graph_from_dot_file('robot_model.dot')
+    graph.write_png('robot_model.png') '''
     
     
     
