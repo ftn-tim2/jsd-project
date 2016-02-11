@@ -47,7 +47,7 @@ def move_command_processor(move_cmd):
 
 if __name__ == '__main__':
 
-    robot_mm = metamodel_from_file('robot.tx', debug = False)
+    robot_mm = metamodel_from_file('model.tx', debug = False)
     metamodel_export(robot_mm, 'robot_meta.dot')
     graph = pydot.graph_from_dot_file('robot_meta.dot')
     graph.write_png('robot_meta.png')

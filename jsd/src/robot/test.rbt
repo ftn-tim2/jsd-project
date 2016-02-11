@@ -1,0 +1,15 @@
+"Knjiga" {
+	text "naslov"
+	int "autor"
+}
+
+"Slika" {
+	text "ime" (null=true,default="default ime")
+	boolean "falsifikat?"
+}
+
+"Film" {
+	text "naziv"
+	foreignKey ("Knjiga") "autor" (null=false)
+	
+}
