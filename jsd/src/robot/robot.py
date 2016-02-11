@@ -48,22 +48,11 @@ def move_command_processor(move_cmd):
 if __name__ == '__main__':
 
     robot_mm = metamodel_from_file('model.tx', debug = False)
-    metamodel_export(robot_mm, 'robot_meta.dot')
-    graph = pydot.graph_from_dot_file('robot_meta.dot')
-    graph.write_png('robot_meta.png')
-    
-    object_processors = {'MoveCommand' : move_command_processor}
-    robot_mm.register_obj_processors(object_processors)
     
     robot_model = robot_mm.model_from_file('test.rbt')
     robot = Robot()
     robot.interpret(robot_model)
     print(robot)
    
-    
-''' model_export(robot_model, 'robot_model.dot')
-    graph = pydot.graph_from_dot_file('robot_model.dot')
-    graph.write_png('robot_model.png') '''
-    
-    
+
     
