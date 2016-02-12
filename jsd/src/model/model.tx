@@ -16,7 +16,7 @@ FieldType: "bigInteger" | "binary" | "boolean" | "char" | "commaSeparatedInteger
 ;
 
 Arguments:
-	Null | Blank | Choices | DBColumn | DBIndex | Default | Description | Editable | ErrorMessages | HelpText | PrimaryKey | Unique | VerboseName | Validators | Match | Recursive | AllowFiles | AllowFolders | Max_lenght | Height | Width | OnDelete | LimitChoices | RelatedName | RelatedQueryName | DBTable | DBConstraint | Swappable | ParentLink | Key | DecimalPlaces | MaxDigits | Path
+	Null | Blank | Choices | DBColumn | DBIndex | Default | Description | Editable | ErrorMessages | HelpText | PrimaryKey | Unique | VerboseName | Validators | Match | Recursive | AllowFiles | AllowFolders | Max_lenght | Height | Width | OnDelete | LimitChoices | RelatedName | RelatedQueryName | DBTable | DBConstraint | Swappable | ParentLink | Key | DecimalPlaces | MaxDigits | Path | UploadTo | Storage | DBTableSpace | Messages 
 ;
 
 Null:
@@ -91,7 +91,7 @@ Max_lenght:
 	"max" "=" value=INT|STRING
 ;
 
-Upload_to:
+UploadTo:
 	"upload_to" "=" value=STRING
 ;
 
