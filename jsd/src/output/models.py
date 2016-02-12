@@ -7,4 +7,4 @@ class Slika(models.Model):
 	boolean falsifikat? 
 class Film(models.Model):
 	text naziv 
-	<textx.metamodel.TextXMetaModel.new_class.<locals>.Meta object at 0x04170250> autor 
+	char autor 

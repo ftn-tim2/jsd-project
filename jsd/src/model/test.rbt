@@ -10,6 +10,6 @@
 
 "Film" {
 	text "naziv"
-	char(max=80) "autor" (null=false)
+	char "autor" (null=false)
 	
 }
