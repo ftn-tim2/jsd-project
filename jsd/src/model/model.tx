@@ -88,7 +88,7 @@ Description:
 ;
 
 Max_lenght:
-	"max" "=" value=INT|STRING
+	"max_length" "=" value=INT|STRING
 ;
 
 UploadTo:
