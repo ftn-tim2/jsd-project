@@ -1,10 +1,10 @@
 from django.db import models
 class Knjiga(models.Model):
-	text naslov 
-	int autor 
+	naslov = models.text
+	autor = models.IntegerField
 class Slika(models.Model):
-	text ime 
-	boolean falsifikat? 
+	ime = models.text
+	falsifikat? = models.boolean
 class Film(models.Model):
-	text naziv 
-	char autor 
+	naziv = models.text
+	autor = models.CharField

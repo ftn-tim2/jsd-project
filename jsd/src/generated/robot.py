@@ -9,15 +9,18 @@ from jinja2.loaders import PackageLoader
 from execute.execute import execute
 from root import SRC_DIR 
 import os
-
-class Robot(object):
            
-    def interpret(self, model):
-        print(model)
+def typeDef(typeDef):
+    if typeDef == "char":
+        return "CharField"
+    elif typeDef == "int":
+        return "IntegerField"
+    else: return typeDef 
             
 def generate(template_name, output_name, render_vars):
     env = Environment(trim_blocks = True, lstrip_blocks = True, loader = PackageLoader("generated", "templates"))
-    
+    env.filters["typeDef"] = typeDef
+
     template = env.get_template(template_name)
     rendered = template.render(render_vars)
     #i pisemo u fajl
@@ -32,8 +35,6 @@ def generate(template_name, output_name, render_vars):
 def main(debug = False):
     
     model = execute(os.path.join(SRC_DIR, "model"), 'model.tx', 'test.rbt', debug, debug)
-    robot = Robot()
-    robot.interpret(model)
     generate("tmodels.tx", "models.py", {"model" : model})
    
    

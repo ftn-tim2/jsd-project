@@ -2,6 +2,6 @@ from django.db import models
 {% for definition in model.classes %}
 class {{definition.name}}(models.Model):
 	{% for attribute in definition.attributes %}
-	{{attribute.type}} {{attribute.name}} 
+	{{attribute.name}} = models.{{attribute.type|typeDef}}
 	{% endfor %}
 {% endfor %}
