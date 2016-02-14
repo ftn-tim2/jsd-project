@@ -1,100 +1,96 @@
-'''
+"""
 Created on 06.12.2015.
 
 @author: xx
-'''
+"""
 
 from jinja2.environment import Environment
 from jinja2.loaders import PackageLoader
 from execute.execute import execute
-from root import SRC_DIR 
+from root import SRC_DIR
 import os
-           
-def typeDef(typeDef):
-    if typeDef == "char":
+
+
+def typeDef(typedef):
+    if typedef == "char":
         return "CharField"
-    elif typeDef == "int":
+    elif typedef == "int":
         return "IntegerField"
-    elif typeDef == "bigInteger":
+    elif typedef == "bigInteger":
         return "BigIntegerField"
-    elif typeDef == "binary":
+    elif typedef == "binary":
         return "BinaryField"
-    elif typeDef == "boolean":
+    elif typedef == "boolean":
         return "BooleanField"
-    elif typeDef =="commaSeparatedInteger":
+    elif typedef == "commaSeparatedInteger":
         return "CommaSeparatedIntegerField"
-    elif typeDef =="date":
+    elif typedef == "date":
         return "DateField"
-    elif typeDef == "dateTime":
+    elif typedef == "dateTime":
         return "DateTimeField"
-    elif typeDef == "decimal":
+    elif typedef == "decimal":
         return "DecimalField"
-    elif typeDef == "duration":
+    elif typedef == "duration":
         return "DurationField"
-    elif typeDef == "email":
+    elif typedef == "email":
         return "EmailField"
-    elif typeDef == "file":
+    elif typedef == "file":
         return "FileField"
-    elif typeDef == "filePath":
+    elif typedef == "filePath":
         return "FilePathField"
-    elif typeDef == "float":
+    elif typedef == "float":
         return "FloatField"
-    elif typeDef == "image":
+    elif typedef == "image":
         return "ImageField"
-    elif typeDef =="nullBoolean":
+    elif typedef == "nullBoolean":
         return "NullBooleanField"
-    elif typeDef == "positiveInteger":
+    elif typedef == "positiveInteger":
         return "PositiveIntegerField"
-    elif typeDef == "slug":
+    elif typedef == "slug":
         return "SlugField"
-    elif typeDef == "smallInteger":
+    elif typedef == "smallInteger":
         return "SmallIntegerField"
-    elif typeDef == "text":
+    elif typedef == "text":
         return "TextField"
-    elif typeDef == "time":
+    elif typedef == "time":
         return "TimeField"
-    elif typeDef == "URL":
+    elif typedef == "URL":
         return "URLField"
-    elif typeDef == "UUID":
+    elif typedef == "UUID":
         return "UUIDField"
-    elif typeDef == "foreignKey":
+    elif typedef == "foreignKey":
         return "ForeignKey"
-    elif typeDef == "oneToOne":
+    elif typedef == "oneToOne":
         return "OneToOneField"
-    elif typeDef == "manyToMany":
+    elif typedef == "manyToMany":
         return "ManyToManyField"
-    
+
+
 def checkType(someitem):
-    if  ( someitem =='foreignKey' or someitem =='oneToOne' or someitem =='manyToMany'):
+    if someitem == 'foreignKey' or someitem == 'oneToOne' or someitem == 'manyToMany':
         return True
     else:
         return False
-            
+
+
 def generate(template_name, output_name, render_vars):
-    env = Environment(trim_blocks = True, lstrip_blocks = True, loader = PackageLoader("generated", "templates"))
+    env = Environment(trim_blocks=True, lstrip_blocks=True, loader=PackageLoader("generated", "templates"))
     env.filters["typeDef"] = typeDef
     env.tests["checkType"] = checkType
-    
+
     template = env.get_template(template_name)
     rendered = template.render(render_vars)
-    #i pisemo u fajl
+    # i pisemo u fajl
     file_name = os.path.join(SRC_DIR, "output", output_name)
     print(file_name)
     with open(file_name, "w+") as f:
         f.write(rendered)
 
 
-
-
-def main(debug = False):
-    
+def main(debug=False):
     model = execute(os.path.join(SRC_DIR, "model"), 'model.tx', 'test.rbt', debug, debug)
-    generate("tmodels.tx", "models.py", {"model" : model})
-   
-   
-    
-    
+    generate("tmodels.tx", "models.py", {"model": model})
+
+
 if __name__ == '__main__':
-    main(True)
-    
-    
+    main(False)

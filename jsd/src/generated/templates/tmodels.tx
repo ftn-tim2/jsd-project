@@ -1,13 +1,16 @@
 from django.db import models
+
+
 {% for definition in model.classes %}
 class {{definition.name}}(models.Model):
-	{% for attribute in definition.attributes %}
-	{{attribute.name}} = models.{{attribute.type|typeDef}}({% for argument in attribute.arguments%}{{argument.name}}{% if argument.value is string and attribute.type is not checkType %}="{{argument.value}}"{% elif attribute.type is checkType %}{{argument.value}}{% else %}={{argument.value}}{% endif %}{% if not loop.last %},{% endif %}{% endfor %})
-	{% if loop.last %}
-	
-	def __unicode__(self):
-		return self.{% for attribute in definition.attributes %}{% if loop.first %}{{attribute.name}}{% endif %}{% endfor %}{% endif %}
+    {% for attribute in definition.attributes %}
+    {{attribute.name}} = models.{{attribute.type|typeDef}}({% for argument in attribute.arguments%}{{argument.name}}{% if argument.value is string and attribute.type is not checkType %}="{{argument.value}}"{% elif attribute.type is checkType %}{{argument.value}}{% else %}={{argument.value}}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %})
+    {% if loop.last %}
+
+    def __unicode__(self):
+        return self.{% for attribute in definition.attributes %}{% if loop.first %}{{attribute.name}}{% endif %}{% endfor %}{% endif %}
     {% endfor %}
-    
+
+
 
 {% endfor %}
