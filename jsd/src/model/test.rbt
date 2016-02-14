@@ -1,16 +1,16 @@
-"Knjiga" {
-	text "naslov"
-	int "autor"
+"Book" {
+	text "title"
+	int "author"
 }
 
-"Slika" {
-	text "ime" (null=true,default="ime")
-	boolean "falsifikat"
+"Picture" {
+	text "name" (null=true,default="ime")
+	boolean "fake"
 }
 
 "Film" {
-	text "naziv"
-	char "autor" (null=false,max_length=80)
-	foreignKey "knjiga"("Knjiga")
+	text "title"
+	char "author" (null=false,max_length=80)
+	foreignKey "book"("Book")
 	
 }

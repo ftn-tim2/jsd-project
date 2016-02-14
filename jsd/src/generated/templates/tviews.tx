@@ -1,0 +1,31 @@
+from django.http import HttpResponse
+from django.views.generic import TemplateView, ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
+
+{% for definition in model.classes %}
+from {{model.OUTPUT_DIR}}.models import {{definition.name}}
+{% endfor %}
+{% for definition in model.classes %}
+
+
+class {{definition.name}}List(ListView):
+    model = {{definition.name}}
+
+
+class {{definition.name}}Create(CreateView):
+    model = {{definition.name}}
+    fields = [{% for attribute in definition.attributes %}'{{attribute.name}}'{% if not loop.last %}, {% endif %}{% endfor %}]
+    success_url = reverse_lazy('{{model.OUTPUT_DIR}}:{{definition.name.lower()}}_list')
+
+
+class {{definition.name}}Update(UpdateView):
+    model = {{definition.name}}
+    fields = [{% for attribute in definition.attributes %}'{{attribute.name}}'{% if not loop.last %}, {% endif %}{% endfor %}]
+    success_url = reverse_lazy('{{model.OUTPUT_DIR}}:{{definition.name.lower()}}_list')
+
+
+class {{definition.name}}Delete(DeleteView):
+    model = {{definition.name}}
+    success_url = reverse_lazy('{{model.OUTPUT_DIR}}:{{definition.name.lower()}}_list')
+{% endfor %}

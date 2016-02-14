@@ -1,0 +1,8 @@
+from django.contrib import admin
+{% for definition in model.classes %}
+from {{model.OUTPUT_DIR}}.models import {{definition.name}}
+{% endfor %}
+
+{% for definition in model.classes %}
+admin.site.register({{definition.name}})
+{% endfor %}

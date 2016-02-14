@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 
 {% for definition in model.classes %}
@@ -11,6 +12,9 @@ class {{definition.name}}(models.Model):
         return self.{% for attribute in definition.attributes %}{% if loop.first %}{{attribute.name}}{% endif %}{% endfor %}{% endif %}
     {% endfor %}
 
+
+    def get_absolute_url(self):
+        return reverse('{{model.OUTPUT_DIR}}:{{definition.name.lower()}}_edit', kwargs={'pk': self.pk})
 
 
 {% endfor %}
