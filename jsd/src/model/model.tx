@@ -20,15 +20,15 @@ Arguments:
 ;
 
 Null:
-	"null" "=" value=BOOL
+	name="null" "=" value=BOOL
 ;
 
 Blank:
-	"blank" "=" value=BOOL
+	name="blank" "=" value=BOOL
 ;
 
 Choices:
-	"choices" "=" "{" fields*=Field[","] "}"
+	name="choices" "=" value="{" fields*=Field[","] "}"
 ;
 
 Field:
@@ -36,103 +36,103 @@ Field:
 ;
 
 DBColumn:
-	"db_column" "=" name=STRING
+	name="db_column" "=" name=STRING
 ;
 
 DBIndex:
-	"db_index" "=" value=BOOL (DBTableSpace)?
+	name="db_index" "=" value=BOOL (DBTableSpace)?
 ;
 
 DBTableSpace:
-	"db_tablepace" "=" name=STRING
+	name="db_tablepace" "=" value=STRING
 ;
 
 Default:
-	"default" "=" value=STRING|INT
+	name="default" "=" value=STRING|INT
 ;
 
 Editable:
-	"editable" "=" value=BOOL
+	name="editable" "=" value=BOOL
 ;
 
 ErrorMessages:
-	"error_messages" "=" message=Messages
+	name="error_messages" "=" value=Messages
 ;
 
 Messages:
-	"null" | "blank" | "invalid" | "invalid_choice" | "unique"
+	name="null" | "blank" | "invalid" | "invalid_choice" | "unique"
 ;
 
 HelpText:
-	"help_text" "=" value=STRING
+	name="help_text" "=" value=STRING
 ;
 
 PrimaryKey:
-	"primary_key" "=" value=BOOL
+	name="primary_key" "=" value=BOOL
 ;
 
 Unique:
-	"unique" "=" value=BOOL
+	name="unique" "=" value=BOOL
 ;
 
 VerboseName:
-	"verbose_name" "=" value=STRING
+	name="verbose_name" "=" value=STRING
 ;
 
 Validators:
-	"validators" "=" value=STRING
+	name="validators" "=" value=STRING
 ;
 
 Description:
-	"description" "=" value=STRING
+	name="description" "=" value=STRING
 ;
 
 Max_lenght:
-	"max_length" "=" value=INT|STRING
+	name="max_length" "=" value=INT|STRING
 ;
 
 UploadTo:
-	"upload_to" "=" value=STRING
+	name="upload_to" "=" value=STRING
 ;
 
 Storage:
-	"storage" "=" value=STRING
+	name="storage" "=" value=STRING
 ;
 
 MaxDigits:
-	"max_digits" "=" value=INT 
+	name="max_digits" "=" value=INT 
 ;
 
 DecimalPlaces:
-	"decimal_places" "=" value=INT
+	name="decimal_places" "=" value=INT
 ;
 
 Path:
-	"path" "=" value="STRING"
+	name="path" "=" value="STRING"
 ;
 
 Match:
-	"match" "=" value=STRING
+	name="match" "=" value=STRING
 ;
 
 Recursive:
-	"recursive" "=" value=BOOL
+	name="recursive" "=" value=BOOL
 ;
 
 AllowFolders:
-	"allow_folders" "=" value=BOOL
+	name="allow_folders" "=" value=BOOL
 ;
 
 AllowFiles:
-	"allow_files" "=" value=BOOL
+	name="allow_files" "=" value=BOOL
 ;
 
 Height:
-	"height" "=" value=INT
+	name="height" "=" value=INT
 ;
 
 Width:
-	"width" "=" value=INT
+	name="width" "=" value=INT
 ;
 
 Key:
@@ -140,34 +140,34 @@ Key:
 ;
 
 OnDelete:
-	"on_delete" "=" value=STRING
+	name="on_delete" "=" value=STRING
 ;
 
 LimitChoices:
-	"limit_choises_to" "=" value=STRING
+	name="limit_choises_to" "=" value=STRING
 ;
 
 RelatedName:
-	"related_name" "=" value=STRING
+	name="related_name" "=" value=STRING
 ;
 
 RelatedQueryName:
-	"related_query_name" "=" value=STRING
+	name="related_query_name" "=" value=STRING
 ;
 
 DBConstraint:
-	"db_constraint" "=" value=BOOL
+	name="db_constraint" "=" value=BOOL
 ;
 
 Swappable:
-	"swappable" "=" value=BOOL
+	name="swappable" "=" value=BOOL
 ;
 
 DBTable:
-	"db_table" "=" value=STRING
+	name="db_table" "=" value=STRING
 ;
 
 ParentLink:
-	"parent_link" "=" value=BOOL
+	name="parent_link" "=" value=BOOL
 ;
 

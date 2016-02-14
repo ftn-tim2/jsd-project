@@ -4,12 +4,13 @@
 }
 
 "Slika" {
-	text "ime" (null=true,default="default ime")
-	boolean "falsifikat?"
+	text "ime" (null=true,default="ime")
+	boolean "falsifikat"
 }
 
 "Film" {
 	text "naziv"
-	char "autor" (null=false)
+	char "autor" (null=false,max_length=80)
+	foreignKey "knjiga"("Knjiga")
 	
 }
