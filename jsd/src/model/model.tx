@@ -17,7 +17,7 @@ FieldType: "bigInteger" | "binary" | "boolean" | "char" | "commaSeparatedInteger
 ;
 
 Arguments:
-	Null | Blank | Choices | DBColumn | DBIndex | Default | Description | Editable | ErrorMessages | HelpText | PrimaryKey | Unique | VerboseName | Validators | Match | Recursive | AllowFiles | AllowFolders | Max_lenght | Height | Width | OnDelete | LimitChoices | RelatedName | RelatedQueryName | DBTable | DBConstraint | Swappable | ParentLink | Key | DecimalPlaces | MaxDigits | Path | UploadTo | Storage | DBTableSpace | Messages 
+	Null | Blank | Choices | DBColumn | DBIndex | Default | Description | Editable | ErrorMessages | HelpText | PrimaryKey | Unique | VerboseName | Validators | Match | Recursive | AllowFiles | AllowFolders | Max_lenght | Height | Width | OnDelete | LimitChoices | RelatedName | RelatedQueryName | DBTable | DBConstraint | Swappable | ParentLink | Key | DecimalPlaces | MaxDigits | Path | UploadTo | Storage | DBTableSpace 
 ;
 
 Null:
@@ -65,7 +65,7 @@ ErrorMessages:
 ;
 
 Messages:
-	name="null" | "blank" | "invalid" | "invalid_choice" | "unique"
+	"null" | "blank" | "invalid" | "invalid_choice" | "unique"
 ;
 
 HelpText:

@@ -56,13 +56,13 @@ class FilmList(ListView):
 
 class FilmCreate(CreateView):
     model = Film
-    fields = ['title', 'author', 'book']
+    fields = ['title', 'author', 'book', 'duration']
     success_url = reverse_lazy('jsd_app_name:film_list')
 
 
 class FilmUpdate(UpdateView):
     model = Film
-    fields = ['title', 'author', 'book']
+    fields = ['title', 'author', 'book', 'duration']
     success_url = reverse_lazy('jsd_app_name:film_list')
 
 

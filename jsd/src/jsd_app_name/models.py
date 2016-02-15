@@ -25,9 +25,10 @@ class Picture(models.Model):
 
 
 class Film(models.Model):
-    title = models.TextField()
-    author = models.CharField(null=False, max_length="80")
+    title = models.TextField(error_messages="unique")
+    author = models.CharField(null=False, max_length=80)
     book = models.ForeignKey(Book)
+    duration = models.DecimalField(decimal_places=4, max_digits=15)
 
     def __unicode__(self):
         return self.title
