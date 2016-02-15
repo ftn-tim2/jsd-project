@@ -1,12 +1,12 @@
-"Naziv modela"
+"Naziv aplikacije"
 "Book" {
 	text "title"
-	int "author"
+	int "author" (default=90)
 }
 
 "Picture" {
 	text "name" (null=true,default="ime")
-	boolean "fake"
+	boolean "fake" (blank=true)
 }
 
 "Film" {
