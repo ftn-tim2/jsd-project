@@ -1,3 +1,4 @@
+"Naziv modela"
 "Book" {
 	text "title"
 	int "author"
