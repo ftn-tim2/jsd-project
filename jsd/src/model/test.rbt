@@ -1,4 +1,4 @@
-"Naziv aplikacije"
+"jsd_app_name"
 "Book" {
 	text "title"
 	int "author" (default=90)

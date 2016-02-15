@@ -1,31 +1,60 @@
-from django.http import HttpResponse
-from django.views.generic import TemplateView, ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.core.urlresolvers import reverse_lazy
-
 {% for definition in model.classes %}
-from {{model.OUTPUT_DIR}}.models import {{definition.name}}
+from {{model.name}}.models import {{definition.name}}
 {% endfor %}
+from django.contrib.auth.decorators import login_required
+from django.forms import ModelForm
+from django.shortcuts import render, redirect, get_object_or_404
 {% for definition in model.classes %}
 
 
-class {{definition.name}}List(ListView):
-    model = {{definition.name}}
+class {{definition.name}}Form(ModelForm):
+    class Meta:
+        model = {{definition.name}}
+        fields = [{% for attribute in definition.attributes %}'{{attribute.name}}'{% if not loop.last %}, {% endif %}{% endfor %}]
 
 
-class {{definition.name}}Create(CreateView):
-    model = {{definition.name}}
-    fields = [{% for attribute in definition.attributes %}'{{attribute.name}}'{% if not loop.last %}, {% endif %}{% endfor %}]
-    success_url = reverse_lazy('{{model.OUTPUT_DIR}}:{{definition.name.lower()}}_list')
+@login_required
+def {{definition.name.lower()}}_list(request, template_name='{{model.name}}/book_list.html'):
+    if request.user.is_superuser:
+        {{definition.name.lower()}} = {{definition.name}}.objects.all()
+    else:
+        {{definition.name.lower()}} = {{definition.name}}.objects.filter(user=request.user)
+    data = {'object_list': {{definition.name.lower()}}}
+    return render(request, template_name, data)
 
 
-class {{definition.name}}Update(UpdateView):
-    model = {{definition.name}}
-    fields = [{% for attribute in definition.attributes %}'{{attribute.name}}'{% if not loop.last %}, {% endif %}{% endfor %}]
-    success_url = reverse_lazy('{{model.OUTPUT_DIR}}:{{definition.name.lower()}}_list')
+@login_required
+def {{definition.name.lower()}}_create(request, template_name='{{model.name}}/{{definition.name.lower()}}_form.html'):
+    form = {{definition.name}}Form(request.POST or None)
+    if form.is_valid():
+        {{definition.name.lower()}} = form.save(commit=False)
+        {{definition.name.lower()}}.user = request.user
+        {{definition.name.lower()}}.save()
+        return redirect('{{model.name}}:{{definition.name.lower()}}_list')
+    return render(request, template_name, {'form': form})
 
 
-class {{definition.name}}Delete(DeleteView):
-    model = {{definition.name}}
-    success_url = reverse_lazy('{{model.OUTPUT_DIR}}:{{definition.name.lower()}}_list')
+@login_required
+def {{definition.name.lower()}}_update(request, pk, template_name='{{model.name}}/{{definition.name.lower()}}_form.html'):
+    if request.user.is_superuser:
+        {{definition.name.lower()}} = get_object_or_404({{definition.name}}, pk=pk)
+    else:
+        {{definition.name.lower()}} = get_object_or_404({{definition.name}}, pk=pk, user=request.user)
+    form = {{definition.name}}Form(request.POST or None, instance={{definition.name.lower()}})
+    if form.is_valid():
+        form.save()
+        return redirect('{{model.name}}:{{definition.name.lower()}}_list')
+    return render(request, template_name, {'form': form})
+
+
+@login_required
+def {{definition.name.lower()}}_delete(request, pk, template_name='{{model.name}}/{{definition.name.lower()}}_confirm_delete.html'):
+    if request.user.is_superuser:
+        {{definition.name.lower()}} = get_object_or_404({{definition.name}}, pk=pk)
+    else:
+        {{definition.name.lower()}} = get_object_or_404({{definition.name}}, pk=pk, user=request.user)
+    if request.method == 'POST':
+        {{definition.name.lower()}}.delete()
+        return redirect('{{model.name}}:{{definition.name.lower()}}_list')
+    return render(request, template_name, {'object': {{definition.name.lower()}}})
 {% endfor %}

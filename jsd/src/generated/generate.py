@@ -4,12 +4,14 @@ Created on 06.12.2015.
 @author: xx
 """
 
+import os
+
 from jinja2.environment import Environment
 from jinja2.loaders import PackageLoader
+
 from execute.execute import execute
+from root import BASE_PATH
 from root import SRC_DIR
-from root import OUTPUT_DIR
-import os
 
 
 def typeDef(typedef):
@@ -74,7 +76,7 @@ def checkType(someitem):
         return False
 
 
-def generate(template_name, output_name, render_vars):
+def generate(template_name, output_name, render_vars, output_dir):
     env = Environment(trim_blocks=True, lstrip_blocks=True, loader=PackageLoader("generated", "templates"))
     env.filters["typeDef"] = typeDef
     env.tests["checkType"] = checkType
@@ -82,34 +84,43 @@ def generate(template_name, output_name, render_vars):
     template = env.get_template(template_name)
     rendered = template.render(render_vars)
 
-    file_name = os.path.join(SRC_DIR, OUTPUT_DIR, output_name)
+    file_name = os.path.join(output_dir, output_name)
     print(file_name)
     with open(file_name, "w+") as f:
         f.write(rendered)
 
 
-def init_folder_structure():
-    if not os.path.exists(os.path.join(SRC_DIR, OUTPUT_DIR)):
-        os.makedirs(os.path.join(SRC_DIR, OUTPUT_DIR))
+def init_folder_structure(base_path, templates_path, final_templates_path):
+    if not os.path.exists(base_path):
+        os.makedirs(base_path)
 
-    if not os.path.exists(os.path.join(SRC_DIR, OUTPUT_DIR, 'templates')):
-        os.makedirs(os.path.join(SRC_DIR, OUTPUT_DIR, 'templates'))
+    if not os.path.exists(templates_path):
+        os.makedirs(templates_path)
 
-    if not os.path.exists(os.path.join(SRC_DIR, OUTPUT_DIR, 'templates', OUTPUT_DIR)):
-        os.makedirs(os.path.join(SRC_DIR, OUTPUT_DIR, 'templates', OUTPUT_DIR))
+    if not os.path.exists(final_templates_path):
+        os.makedirs(final_templates_path)
 
 
 def main(debug=False):
     model = execute(os.path.join(SRC_DIR, "model"), 'model.tx', 'test.rbt', debug, debug)
 
-    # TODO push this settings into the grammar, then remove this line
-    model.OUTPUT_DIR = OUTPUT_DIR
+    base_path = os.path.join(BASE_PATH, model.name)
+    templates_path = os.path.join(base_path, 'templates')
+    final_templates_path = os.path.join(templates_path, model.name)
 
-    init_folder_structure()
+    init_folder_structure(base_path, templates_path, final_templates_path)
 
     file_gen_list = {'__init__', 'models', 'views', 'urls', 'admin', 'tests'}
+    template_file_gen_list = {'class_confirm_delete', 'class_form', 'class_list'}
+
     for e in file_gen_list:
-        generate("t{e}.tx".format(e=e), "{e}.py".format(e=e), {"model": model})
+        generate('t{e}.tx'.format(e=e), '{e}.py'.format(e=e), {'model': model}, base_path)
+
+    for definition in model.classes:
+        for e in template_file_gen_list:
+            output_file_name = e.replace('class', definition.name.lower())
+            generate('htmltemplates/t{e}.tx'.format(e=e), '{e}.html'.format(e=output_file_name), {'model': model},
+                     final_templates_path)
 
 
 if __name__ == '__main__':

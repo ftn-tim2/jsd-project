@@ -1,13 +1,13 @@
 from django.conf.urls import patterns, url
 
-from {{model.OUTPUT_DIR}} import views
+from {{model.name}} import views
 
 urlpatterns = patterns('',
 {% for definition in model.classes %}
-                       url(r'^$', views.{{definition.name}}List.as_view(), name='{{definition.name.lower()}}_list'),
-                       url(r'^new$', views.{{definition.name}}Create.as_view(), name='{{definition.name.lower()}}_new'),
-                       url(r'^edit/(?P<pk>\d+)$', views.{{definition.name}}Update.as_view(), name='{{definition.name.lower()}}_edit'),
-                       url(r'^delete/(?P<pk>\d+)$', views.{{definition.name}}Delete.as_view(), name='{{definition.name.lower()}}_delete'),
+                       url(r'^$', views.{{definition.name.lower()}}_list, name='{{definition.name.lower()}}_list'),
+                       url(r'^new$', views.{{definition.name.lower()}}_create, name='{{definition.name.lower()}}_new'),
+                       url(r'^edit/(?P<pk>\d+)$', views.{{definition.name.lower()}}_update, name='{{definition.name.lower()}}_edit'),
+                       url(r'^delete/(?P<pk>\d+)$', views.{{definition.name.lower()}}_delete, name='{{definition.name.lower()}}_delete'),
 
 {% endfor %}
 )
