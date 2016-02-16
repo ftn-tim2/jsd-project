@@ -119,8 +119,8 @@ def main(debug=False):
     for definition in model.classes:
         for e in template_file_gen_list:
             output_file_name = e.replace('class', definition.name.lower())
-            generate('htmltemplates/t{e}.tx'.format(e=e), '{e}.html'.format(e=output_file_name), {'model': model},
-                     final_templates_path)
+            generate('htmltemplates/t{e}.tx'.format(e=e), '{e}.html'.format(e=output_file_name),
+                     {'model': model, 'definition': definition}, final_templates_path)
 
 
 if __name__ == '__main__':
