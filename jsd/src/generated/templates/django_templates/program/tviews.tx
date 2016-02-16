@@ -14,7 +14,7 @@ class {{definition.name}}Form(ModelForm):
 
 
 @login_required
-def {{definition.name.lower()}}_list(request, template_name='{{model.name}}/book_list.html'):
+def {{definition.name.lower()}}_list(request, template_name='{{model.name}}/{{definition.name.lower()}}_list.html'):
     if request.user.is_superuser:
         {{definition.name.lower()}} = {{definition.name}}.objects.all()
     else:

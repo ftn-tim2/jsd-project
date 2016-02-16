@@ -1,6 +1,9 @@
 {% raw %}
+{% extends "base.html" %}
+{% block content %}
 <form method="post">{% csrf_token %}
     {{ form.as_table }}
     <input type="submit" value="Submit"/>
 </form>
+{% endblock %}
 {% endraw %}

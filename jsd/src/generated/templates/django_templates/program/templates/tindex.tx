@@ -1,0 +1,14 @@
+{% raw %}
+
+{% extends "base.html" %}
+{% block content %}
+
+{% endraw %}
+{% for definition in model.classes %}
+<a href="/{{model.name}}/{{definition.name.lower()}}_list">{{definition.name}}</a><br>
+{% endfor %}
+
+{% raw %}
+{% endblock %}
+
+{% endraw %}

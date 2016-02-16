@@ -1,11 +1,6 @@
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 
 
-def home(request):
-    html = """
-    <h1>Django CRUD Example</h1>
-    {% for definition in model.classes %}
-    <a href="/{{model.name}}/{{definition.name.lower()}}_list">{{definition.name}}</a><br>
-    {% endfor %}
-    """
-    return HttpResponse(html)
+def home(request, template_name='index.html'):
+
+    return render(request, template_name, {})

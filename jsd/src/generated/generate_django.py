@@ -25,18 +25,23 @@ class DjangoGenerator(BaseGenerator):
         program_path = os.path.join(base_path, self.model.name)
         templates_path = os.path.join(base_path, self.model.name, 'templates')
         final_templates_path = os.path.join(templates_path, self.model.name)
+        registration_path = os.path.join(templates_path, 'registration')
+        root_html_path = templates_path
 
         folder_gen_list = [base_path,
                            app_path,
                            program_path,
                            templates_path,
-                           final_templates_path]
+                           final_templates_path,
+                           registration_path]
 
         # create the folders
         self.init_folder_structure(folder_gen_list)
         self.generate_program_files(base_source_path, program_path)
         self.generate_templates(base_source_path, final_templates_path)
+        self.generate_registration_files(base_source_path, registration_path)
         self.generate_app_files(base_source_path, app_path)
+        self.generate_root_html(base_source_path, root_html_path)
 
     def generate_program_files(self, base_source_path, program_path):
         # program files
@@ -55,9 +60,18 @@ class DjangoGenerator(BaseGenerator):
         for definition in self.model.classes:
             for e in template_file_gen_list:
                 output_file_name = e.replace('class', definition.name.lower())
-                self.generate(base_source_path + '/program' + '/templates' + '/t{e}.tx'.format(e=e),
+                self.generate(base_source_path + '/program' + '/templates' + '/class_html' + '/t{e}.tx'.format(e=e),
                               '{e}.html'.format(e=output_file_name), {'model': self.model, 'definition': definition},
                               final_templates_path)
+
+    def generate_registration_files(self, base_source_path, registration_path):
+        # registration files
+        file_gen_list = {'logged_out', 'login'}
+
+        # generate the basic files
+        for e in file_gen_list:
+            self.generate(base_source_path + '/program' + '/templates' + '/registration' + '/t{e}.tx'.format(e=e),
+                          '{e}.html'.format(e=e), {'model': self.model}, registration_path)
 
     def generate_app_files(self, base_source_path, app_path):
         # program files
@@ -67,3 +81,12 @@ class DjangoGenerator(BaseGenerator):
         for e in file_gen_list:
             self.generate(base_source_path + '/apps' + '/t{e}.tx'.format(e=e), '{e}.py'.format(e=e),
                           {'model': self.model}, app_path)
+
+    def generate_root_html(self, base_source_path, root_html_path):
+        # registration files
+        file_gen_list = {'base', 'index'}
+
+        # generate the basic files
+        for e in file_gen_list:
+            self.generate(base_source_path + '/program' + '/templates' + '/t{e}.tx'.format(e=e),
+                          '{e}.html'.format(e=e), {'model': self.model}, root_html_path)

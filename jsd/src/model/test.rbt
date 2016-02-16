@@ -10,7 +10,7 @@
 }
 
 "Film" {
-	text "title" (error_messages=unique)
+	char "title" (null=false,max_length=80)
 	char "author" (null=false,max_length=80)
 	foreignKey "book"("Book")
 	decimal "duration" (decimal_places=4,max_digits=15)
