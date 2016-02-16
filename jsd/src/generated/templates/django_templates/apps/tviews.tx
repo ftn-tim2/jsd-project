@@ -1,0 +1,11 @@
+from django.http import HttpResponse
+
+
+def home(request):
+    html = """
+    <h1>Django CRUD Example</h1>
+    {% for definition in model.classes %}
+    <a href="/{{model.name}}/{{definition.name.lower()}}_list">{{definition.name}}</a><br>
+    {% endfor %}
+    """
+    return HttpResponse(html)
