@@ -7,8 +7,8 @@ Created on 06.12.2015.
 import os
 
 from execute.execute import execute
-from generate_django import DjangoGenerator
-from generate_play import PlayGenerator
+from generated.generate_django import DjangoGenerator
+from generated.generate_play import PlayGenerator
 from root import SRC_DIR
 
 

@@ -1,6 +1,6 @@
 import os
 
-from base_generator import BaseGenerator
+from generated.base_generator import BaseGenerator
 from root import BASE_PATH
 
 
