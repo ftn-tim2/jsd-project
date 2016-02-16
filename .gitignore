@@ -216,3 +216,6 @@ local.properties
 
 # Code Recommenders
 .recommenders/
+
+# Cusomt ignore files
+output/
