@@ -17,60 +17,6 @@ class BaseGenerator:
         self.model = model
         pass
 
-    def typeDef(self, typedef):
-        if typedef == "char":
-            return "CharField"
-        elif typedef == "int":
-            return "IntegerField"
-        elif typedef == "bigInteger":
-            return "BigIntegerField"
-        elif typedef == "binary":
-            return "BinaryField"
-        elif typedef == "boolean":
-            return "BooleanField"
-        elif typedef == "commaSeparatedInteger":
-            return "CommaSeparatedIntegerField"
-        elif typedef == "date":
-            return "DateField"
-        elif typedef == "dateTime":
-            return "DateTimeField"
-        elif typedef == "decimal":
-            return "DecimalField"
-        elif typedef == "duration":
-            return "DurationField"
-        elif typedef == "email":
-            return "EmailField"
-        elif typedef == "file":
-            return "FileField"
-        elif typedef == "filePath":
-            return "FilePathField"
-        elif typedef == "float":
-            return "FloatField"
-        elif typedef == "image":
-            return "ImageField"
-        elif typedef == "nullBoolean":
-            return "NullBooleanField"
-        elif typedef == "positiveInteger":
-            return "PositiveIntegerField"
-        elif typedef == "slug":
-            return "SlugField"
-        elif typedef == "smallInteger":
-            return "SmallIntegerField"
-        elif typedef == "text":
-            return "TextField"
-        elif typedef == "time":
-            return "TimeField"
-        elif typedef == "URL":
-            return "URLField"
-        elif typedef == "UUID":
-            return "UUIDField"
-        elif typedef == "foreignKey":
-            return "ForeignKey"
-        elif typedef == "oneToOne":
-            return "OneToOneField"
-        elif typedef == "manyToMany":
-            return "ManyToManyField"
-
     def checkType(self, someitem):
         if someitem == 'foreignKey' or someitem == 'oneToOne' or someitem == 'manyToMany':
             return True
