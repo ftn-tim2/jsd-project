@@ -1,6 +1,5 @@
-# Django CRUD Example Apps
+# Django CRUD App
 
-Here you will find two small CRUD applications for managing a books table, one application is implemented using Class Based Views (books\_cbv), and the other will implemented using Function Based Views (books\_fbv).
 
 ## Running the Application
 
