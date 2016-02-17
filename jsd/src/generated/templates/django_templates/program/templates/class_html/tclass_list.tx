@@ -6,8 +6,8 @@
     {{ '{%' }} for {{definition.name.lower()}} in object_list {{ '%}' }}
    <li>
     {% for attribute in definition.attributes %}
-    {{attribute.name}}
-    {% endfor %})
+    {{'{{'}} {{definition.name.lower()}}.{{attribute.name}} {{'}}'}}
+    {% endfor %}
         <a href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_edit' {{definition.name.lower()}}.id {{ '%}' }}">edit</a>
         <a href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_delete' {{definition.name.lower()}}.id {{ '%}' }}">delete</a>
     </li>
