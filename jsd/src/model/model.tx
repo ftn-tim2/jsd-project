@@ -65,7 +65,7 @@ ErrorMessages:
 ;
 
 Messages:
-	"null" | "blank" | "invalid" | "invalid_choice" | "unique"
+	"unique" | "null" | "blank" | "invalid" | "invalid_choice" 
 ;
 
 HelpText:
