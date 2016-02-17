@@ -94,12 +94,12 @@ class DjangoGenerator(BaseGenerator):
 
         # create the folders
         self.init_folder_structure(folder_gen_list)
+        self.copy_assets_folder(assets_source_path, assets_path)
         self.generate_program_files(base_source_path, program_path)
         self.generate_templates(base_source_path, final_templates_path)
         self.generate_registration_files(base_source_path, registration_path)
         self.generate_app_files(base_source_path, app_path)
         self.generate_root_html(base_source_path, root_html_path)
-        self.copy_assets_folder(assets_source_path, assets_path)
 
     def generate_program_files(self, base_source_path, program_path):
         # program files
