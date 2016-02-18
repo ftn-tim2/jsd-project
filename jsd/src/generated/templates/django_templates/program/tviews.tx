@@ -31,7 +31,7 @@ def {{definition.name.lower()}}_create(request, template_name='{{model.name}}/{{
         {{definition.name.lower()}}.user = request.user
         {{definition.name.lower()}}.save()
         return redirect('{{model.name}}:{{definition.name.lower()}}_list')
-    return render(request, template_name, {'form': form})
+    return render(request, template_name, {'form': form, 'form_type': 'Create'})
 
 
 @login_required
@@ -44,7 +44,7 @@ def {{definition.name.lower()}}_update(request, pk, template_name='{{model.name}
     if form.is_valid():
         form.save()
         return redirect('{{model.name}}:{{definition.name.lower()}}_list')
-    return render(request, template_name, {'form': form})
+    return render(request, template_name, {'form': form, 'form_type': 'Update'})
 
 
 @login_required
@@ -56,5 +56,5 @@ def {{definition.name.lower()}}_delete(request, pk, template_name='{{model.name}
     if request.method == 'POST':
         {{definition.name.lower()}}.delete()
         return redirect('{{model.name}}:{{definition.name.lower()}}_list')
-    return render(request, template_name, {'object': {{definition.name.lower()}}})
+    return render(request, template_name, {'object': {{definition.name.lower()}}, 'form_type': 'Delete'})
 {% endfor %}

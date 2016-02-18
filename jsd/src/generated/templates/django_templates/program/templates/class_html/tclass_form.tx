@@ -1,5 +1,6 @@
 {% raw %}
 {% extends "base.html" %}
+{% block breadcrumb-page %} <li><a href="{% url '{% endraw %}{{model.name}}:{{definition.name.lower()}}_list' {{'%}">'}}{{definition.name}} List {% raw %}</a> <span class="divider">/</span></li> {{form_type}}{% endblock breadcrumb-page %}
 {% block content %}
 <form method="post">{% csrf_token %}
     {{ form.as_table }}
