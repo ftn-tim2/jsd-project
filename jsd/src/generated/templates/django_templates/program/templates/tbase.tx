@@ -1,74 +1,60 @@
 {% raw %}
 
-{% load static from staticfiles %}
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <!-- [if it IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <![endif]-->
-    <title>
-        {% block title %}{% endblock title %} | JSD generated project
-    </title>
+{% load bootstrap3 %}
 
-    {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-custom.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "fonts/LigatureSymbols/style.css" %}">
-    {% endblock stylesheets %}
-    {% block page_styles %}{% endblock page_styles %}
-    {% block js %}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
-    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
-    {% endblock js %} {% block page_js %}{% endblock page_js %}
-</head>
-<body>
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
-<!-- navigation -->
-<div class="navbar navbar-static-top">
-    <div class="navbar-inner navbar-fixed-top ">
-        <div class="container" >
-            <div class="brand logo"><img src='{% static "img/docker-top-logo.png" %}' /> </div>
-            <ul class="nav pull-right">
-                {% if not user.is_anonymous %}
+{% block bootstrap3_content %}
+
+<div class="container">
+<!--
+{% block breadcrumbs %}
+<ul class="nav pull-left">
+    <li><a href="/">Home</a> <span class="divider">/</span></li>
+    {% block breadcrumb-page %}{% endblock breadcrumb-page %}
+</ul>
+{% endblock breadcrumbs %}
+-->
+    <!-- navigation -->
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">{% endraw %}{{model.name}}{% raw %}</a>
+        </div>
+         <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+            {% endraw %}
+            {% for definition in model.classes %}
+                <li><a href="/{{model.name}}/{{definition.name.lower()}}_list">{{definition.name}}</a></li>
+            {% endfor %}
+            {% raw %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            {% if not user.is_anonymous %}
                 <li>
                     <a class="lsf-icon" title="user" href="/TODO/Profile">{{ user }}</a>
                 </li>
+            {% endif %}
+            {% if not user.is_authenticated %}
+                <li><a href="{% url 'django.contrib.auth.views.login' %}">{% bootstrap_icon "login" %} Login</a></li>
+                <li><a href="{% url 'registration_register' %}">{% bootstrap_icon "register" %} Register</a></li>
+                {% else %}
+                <li><a href="{% url 'django.contrib.auth.views.logout' %}?next=/">{% bootstrap_icon "logout" %} Logout</a></li>
                 {% endif %}
-                <li>
-                    {% if user.is_anonymous %}
-                    <a class="lsf-icon" title="login" href="{% url 'django.contrib.auth.views.login' %}">login</a>
-                    {% else %}
-                    <a class="lsf-icon" title="logout" href="{% url 'django.contrib.auth.views.logout' %}">logout</a>
-                    {% endif %}
-                </li>
             </ul>
         </div>
-    </div>
-</div>
+    </nav>
 
-{% block breadcrumbs %}
-<ul class="breadcrumb">
-  <li><a href="/">Home</a> <span class="divider">/</span></li>
-  {% block breadcrumb-page %}{% endblock breadcrumb-page %}
-</ul>
-{% endblock breadcrumbs %}
-
-{% block body %}
-<div class="container">
     <div class="row">
-        <div class="span12 box">
-        {% block content %}
-            <h1>Example App</h1>
-        {% endblock content %}
+        <h1>{% block title %}{% endblock %}</h1>
 
+        {% bootstrap_messages %}
+
+        <div class="span12 box">
+            {% block content %}
+            {% endblock content %}
         </div>
     </div>
 </div>
-{% endblock body %}
-
-</body>
-</html>
+{% endblock %}
 {% endraw %}

@@ -112,7 +112,7 @@ class DjangoGenerator(BaseGenerator):
 
     def generate_registration_files(self, base_source_path, registration_path):
         # registration files
-        file_gen_list = {'logged_out', 'login'}
+        file_gen_list = {'login', 'registration_form', 'registration_complete'}
 
         # generate the basic files
         for e in file_gen_list:

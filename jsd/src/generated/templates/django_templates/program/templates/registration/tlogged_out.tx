@@ -1,9 +1,0 @@
-{% raw %}
-{% extends "base.html" %}
-
-{% block content %}
-
-Logged out!
-
-{% endblock %}
-{% endraw %}

@@ -1,2 +1,3 @@
 unipath
 Django==1.8.3
+django-bootstrap3
