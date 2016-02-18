@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <!-- [if it IE]> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <![endif]-->
     <title>
-        {% block title %}{% endblock title %} | Django + Docker Example
+        {% block title %}{% endblock title %} | JSD generated project
     </title>
 
     {% block stylesheets %}

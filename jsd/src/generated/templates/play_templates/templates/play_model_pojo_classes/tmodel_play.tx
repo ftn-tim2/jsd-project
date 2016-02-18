@@ -1,0 +1,15 @@
+package models;
+
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import javax.persistence.*;
+
+@Entity
+public class {{definition.name}} extends Model{
+
+{% for attribute in definition.attributes %}
+    @Column({% for argument in attribute.arguments%})
+    public {{attribute.type|typeDef}} {{attribute.type.pythonName}};
+
+{% endfor %}
+}
