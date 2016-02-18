@@ -108,15 +108,10 @@ class DjangoGenerator(BaseGenerator):
         self.generate_registration_files(base_source_path, registration_path)
         self.generate_app_files(base_source_path, app_path)
         self.generate_root_html(base_source_path, root_html_path)
-        process =  Popen('cmd.exe', cwd=base_path, shell=True,stdout=PIPE, stdin=PIPE, stderr=STDOUT)
-        process.stdin.write(b'python ./manage.py migrate\n')
-        process.stdin.write(b'python ./manage.py collectstatic\n')
-        process.stdin.write(b'python ./manage.py runserver\n')
-
-        process.communicate()[0]
-        process.stdin.close()
-       
-       
+        os.chdir(base_path)
+        os.system('python ./manage.py migrate')
+        os.system('python ./manage.py collectstatic')
+        os.system('python ./manage.py runserver')
         
     def generate_program_files(self, base_source_path, program_path):
         # program files
