@@ -3,7 +3,8 @@ import os
 from generated.base_generator import BaseGenerator
 from root import BASE_PATH, ROOT_DIR
 import shutil
-
+import subprocess
+from subprocess import Popen, PIPE, STDOUT
 
 class DjangoGenerator(BaseGenerator):
     def __init__(self, model):
@@ -76,6 +77,8 @@ class DjangoGenerator(BaseGenerator):
 
         # path to the target folder
         base_path = os.path.join(BASE_PATH, self.model.name)
+        
+        path = base_path
 
         app_path = os.path.join(base_path, 'apps')
         program_path = os.path.join(base_path, self.model.name)
@@ -105,8 +108,15 @@ class DjangoGenerator(BaseGenerator):
         self.generate_registration_files(base_source_path, registration_path)
         self.generate_app_files(base_source_path, app_path)
         self.generate_root_html(base_source_path, root_html_path)
-        
-        
+        process =  Popen('cmd.exe', cwd=base_path, shell=True,stdout=PIPE, stdin=PIPE, stderr=STDOUT)
+        process.stdin.write(b'python ./manage.py migrate\n')
+        process.stdin.write(b'python ./manage.py collectstatic\n')
+        process.stdin.write(b'python ./manage.py runserver\n')
+
+        process.communicate()[0]
+        process.stdin.close()
+       
+       
         
     def generate_program_files(self, base_source_path, program_path):
         # program files
