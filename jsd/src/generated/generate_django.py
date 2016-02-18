@@ -1,8 +1,8 @@
+import distutils.core
 import os
 
 from generated.base_generator import BaseGenerator
 from root import BASE_PATH, ROOT_DIR
-import shutil
 
 
 class DjangoGenerator(BaseGenerator):
@@ -70,6 +70,14 @@ class DjangoGenerator(BaseGenerator):
             if not os.path.exists(folder):
                 os.makedirs(folder)
 
+    @staticmethod
+    def copy_assets_folder(assets_folder, assets_path):
+        distutils.dir_util.copy_tree(assets_folder, assets_path)
+
+    @staticmethod
+    def copy_necessary_files(necessary_source_path, base_path):
+        distutils.dir_util.copy_tree(necessary_source_path, base_path)
+
     def generate_application(self):
         # path to django templates
         base_source_path = os.path.join('django_templates')
@@ -86,8 +94,8 @@ class DjangoGenerator(BaseGenerator):
         root_html_path = templates_path
         assets_path = os.path.join(base_path, 'assets')
         assets_source_path = os.path.join(ROOT_DIR, 'src', 'generated', 'templates', base_source_path, 'assets')
-        necessary_source_path = os.path.join(ROOT_DIR, 'src', 'generated', 'templates', base_source_path, 'necessary_files')
-
+        necessary_source_path = os.path.join(ROOT_DIR, 'src', 'generated', 'templates', base_source_path,
+                                             'necessary_files')
 
         folder_gen_list = [base_path,
                            app_path,
@@ -96,18 +104,18 @@ class DjangoGenerator(BaseGenerator):
                            final_templates_path,
                            registration_path]
 
-        # create the folders
+        # create and copy
         self.init_folder_structure(folder_gen_list)
         self.copy_assets_folder(assets_source_path, assets_path)
-        self.copy_necessary_files(necessary_source_path,base_path)
+        self.copy_necessary_files(necessary_source_path, base_path)
+
+        # generate files
         self.generate_program_files(base_source_path, program_path)
         self.generate_templates(base_source_path, final_templates_path)
         self.generate_registration_files(base_source_path, registration_path)
         self.generate_app_files(base_source_path, app_path)
         self.generate_root_html(base_source_path, root_html_path)
-        
-        
-        
+
     def generate_program_files(self, base_source_path, program_path):
         # program files
         file_gen_list = {'__init__', 'models', 'views', 'urls', 'admin', 'tests'}
@@ -156,13 +164,4 @@ class DjangoGenerator(BaseGenerator):
             self.generate(base_source_path + '/program' + '/templates' + '/t{e}.tx'.format(e=e),
                           '{e}.html'.format(e=e), {'model': self.model}, root_html_path)
 
-    def copy_assets_folder(self, assets_folder, assets_path):
-        import distutils.core
-        distutils.dir_util.copy_tree(assets_folder, assets_path)
-        
-    def copy_necessary_files(self,necessary_source_path, base_path):
-        src_files = os.listdir(necessary_source_path)
-        for file_name in src_files:
-            full_file_name = os.path.join(necessary_source_path, file_name)
-            if (os.path.isfile(full_file_name)):
-                    shutil.copy(full_file_name, base_path)
+
