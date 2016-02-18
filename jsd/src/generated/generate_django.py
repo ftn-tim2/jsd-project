@@ -1,8 +1,9 @@
-import distutils.core
 import os
 
 from generated.base_generator import BaseGenerator
+from subprocess import Popen, PIPE, STDOUT
 from root import BASE_PATH, ROOT_DIR
+import shutil
 
 
 class DjangoGenerator(BaseGenerator):
@@ -84,6 +85,7 @@ class DjangoGenerator(BaseGenerator):
 
         # path to the target folder
         base_path = os.path.join(BASE_PATH, self.model.name)
+        path = base_path
 
         app_path = os.path.join(base_path, 'apps')
         program_path = os.path.join(base_path, self.model.name)
@@ -94,8 +96,8 @@ class DjangoGenerator(BaseGenerator):
         root_html_path = templates_path
         assets_path = os.path.join(base_path, 'assets')
         assets_source_path = os.path.join(ROOT_DIR, 'src', 'generated', 'templates', base_source_path, 'assets')
-        necessary_source_path = os.path.join(ROOT_DIR, 'src', 'generated', 'templates', base_source_path,
-                                             'necessary_files')
+        necessary_source_path = os.path.join(ROOT_DIR, 'src', 'generated', 'templates', base_source_path, 'necessary_files')
+
 
         folder_gen_list = [base_path,
                            app_path,
@@ -115,7 +117,11 @@ class DjangoGenerator(BaseGenerator):
         self.generate_registration_files(base_source_path, registration_path)
         self.generate_app_files(base_source_path, app_path)
         self.generate_root_html(base_source_path, root_html_path)
-
+        os.chdir(base_path)
+        os.system('python ./manage.py migrate')
+        os.system('python ./manage.py collectstatic')
+        os.system('python ./manage.py runserver')
+        
     def generate_program_files(self, base_source_path, program_path):
         # program files
         file_gen_list = {'__init__', 'models', 'views', 'urls', 'admin', 'tests'}
