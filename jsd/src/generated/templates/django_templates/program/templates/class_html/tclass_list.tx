@@ -1,6 +1,8 @@
-{{'{% extends "base.html" %}
-
-{% block content %}'}}
+{% raw %}
+{% extends "base.html" %}
+{% block breadcrumb-page %}{% endraw %} {{definition.name}} List {% raw %}{% endblock breadcrumb-page %}
+{% block content %}
+{% endraw %}
 <h1>{{definition.name}}</h1>
 <ul>
     {{ '{%' }} for {{definition.name.lower()}} in object_list {{ '%}' }}
@@ -8,11 +10,11 @@
     {% for attribute in definition.attributes %}
     {{'{{'}} {{definition.name.lower()}}.{{attribute.name}} {{'}}'}}
     {% endfor %}
-        <a href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_edit' {{definition.name.lower()}}.id {{ '%}' }}">edit</a>
-        <a href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_delete' {{definition.name.lower()}}.id {{ '%}' }}">delete</a>
+        <a class="lsf-icon" title="edit" href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_edit' {{definition.name.lower()}}.id {{ '%}' }}">Update</a>
+        <a class="lsf-icon" title="delete" href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_delete' {{definition.name.lower()}}.id {{ '%}' }}">Delete</a>
     </li>
 {{'    {% endfor %}'}}
 </ul>
 
-<a href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_new' {{ '%}' }}">New</a>
+<a class="lsf-icon" title="add" href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_new' {{ '%}' }}">New</a>
 {{'{% endblock %}'}}

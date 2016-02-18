@@ -15,7 +15,9 @@
 
     {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-custom.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}"> {% endblock stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "fonts/LigatureSymbols/style.css" %}">
+    {% endblock stylesheets %}
     {% block page_styles %}{% endblock page_styles %}
     {% block js %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
@@ -32,14 +34,14 @@
             <ul class="nav pull-right">
                 {% if not user.is_anonymous %}
                 <li>
-                    <a href="{% url 'django.contrib.auth.views.logout' %}">{{ user }}</a>
+                    <a class="lsf-icon" title="user" href="/TODO/Profile">{{ user }}</a>
                 </li>
                 {% endif %}
                 <li>
                     {% if user.is_anonymous %}
-                    <a href="{% url 'django.contrib.auth.views.login' %}">login</a>
+                    <a class="lsf-icon" title="login" href="{% url 'django.contrib.auth.views.login' %}">login</a>
                     {% else %}
-                    <a href="{% url 'django.contrib.auth.views.logout' %}">logout</a>
+                    <a class="lsf-icon" title="logout" href="{% url 'django.contrib.auth.views.logout' %}">logout</a>
                     {% endif %}
                 </li>
             </ul>
