@@ -1,9 +1,8 @@
+import distutils.core
 import os
 
 from generated.base_generator import BaseGenerator
-from subprocess import Popen, PIPE, STDOUT
 from root import BASE_PATH, ROOT_DIR
-import shutil
 
 
 class DjangoGenerator(BaseGenerator):
@@ -12,58 +11,21 @@ class DjangoGenerator(BaseGenerator):
         pass
 
     def typeDef(self, typedef):
-        if typedef == "char":
-            return "CharField"
-        elif typedef == "int":
-            return "IntegerField"
-        elif typedef == "bigInteger":
-            return "BigIntegerField"
-        elif typedef == "binary":
-            return "BinaryField"
-        elif typedef == "boolean":
-            return "BooleanField"
-        elif typedef == "commaSeparatedInteger":
-            return "CommaSeparatedIntegerField"
-        elif typedef == "date":
-            return "DateField"
-        elif typedef == "dateTime":
-            return "DateTimeField"
-        elif typedef == "decimal":
-            return "DecimalField"
-        elif typedef == "duration":
-            return "DurationField"
-        elif typedef == "email":
-            return "EmailField"
-        elif typedef == "file":
-            return "FileField"
-        elif typedef == "filePath":
-            return "FilePathField"
-        elif typedef == "float":
-            return "FloatField"
-        elif typedef == "image":
-            return "ImageField"
-        elif typedef == "nullBoolean":
-            return "NullBooleanField"
-        elif typedef == "positiveInteger":
-            return "PositiveIntegerField"
-        elif typedef == "slug":
-            return "SlugField"
-        elif typedef == "smallInteger":
-            return "SmallIntegerField"
-        elif typedef == "text":
-            return "TextField"
-        elif typedef == "time":
-            return "TimeField"
-        elif typedef == "URL":
-            return "URLField"
-        elif typedef == "UUID":
-            return "UUIDField"
-        elif typedef == "foreignKey":
-            return "ForeignKey"
-        elif typedef == "oneToOne":
-            return "OneToOneField"
-        elif typedef == "manyToMany":
-            return "ManyToManyField"
+        type_list = ['bigInteger', 'binary', 'boolean', 'char', 'commaSeparatedInteger', 'date', 'dateTime', 'decimal',
+                     'duration', 'email', 'file', 'filePath', 'float', 'image', 'nullBoolean', 'positiveInteger',
+                     'positiveSmallInteger', 'slug', 'smallInteger', 'text', 'time', 'URL', 'UUID',
+                     'manyToMany', 'oneToOne']
+        if typedef in type_list:
+            return typedef.title() + 'Field'
+
+        type_list_special_case = ['int', 'foreignKey']
+        if typedef in type_list_special_case:
+            if typedef == 'int':
+                return 'IntegerField'
+            if typedef == 'foreignKey':
+                return 'ForeignKey'
+        else:
+            raise NameError('Unsupported typeDef was found')
 
     @staticmethod
     def init_folder_structure(folder_list):
@@ -85,7 +47,6 @@ class DjangoGenerator(BaseGenerator):
 
         # path to the target folder
         base_path = os.path.join(BASE_PATH, self.model.name)
-        path = base_path
 
         app_path = os.path.join(base_path, 'apps')
         program_path = os.path.join(base_path, self.model.name)
@@ -96,8 +57,8 @@ class DjangoGenerator(BaseGenerator):
         root_html_path = templates_path
         assets_path = os.path.join(base_path, 'assets')
         assets_source_path = os.path.join(ROOT_DIR, 'src', 'generated', 'templates', base_source_path, 'assets')
-        necessary_source_path = os.path.join(ROOT_DIR, 'src', 'generated', 'templates', base_source_path, 'necessary_files')
-
+        necessary_source_path = os.path.join(ROOT_DIR, 'src', 'generated', 'templates', base_source_path,
+                                             'necessary_files')
 
         folder_gen_list = [base_path,
                            app_path,
@@ -117,11 +78,20 @@ class DjangoGenerator(BaseGenerator):
         self.generate_registration_files(base_source_path, registration_path)
         self.generate_app_files(base_source_path, app_path)
         self.generate_root_html(base_source_path, root_html_path)
+
+        self.call_post_gen_script(base_path)
+
+    @staticmethod
+    def call_post_gen_script(base_path):
         os.chdir(base_path)
-        os.system('python ./manage.py migrate')
-        os.system('python ./manage.py collectstatic')
-        os.system('python ./manage.py runserver')
-        
+        os.system('python3.5 ./manage.py migrate')
+        os.system('python3.5 ./manage.py collectstatic --noinput')
+        #os.system('python ./manage.py runserver')
+
+    def gen_asd(self):
+        from django.contrib.auth.models import User
+        User.objects.create_superuser("admin", "admin@example.com", "pass")
+
     def generate_program_files(self, base_source_path, program_path):
         # program files
         file_gen_list = {'__init__', 'models', 'views', 'urls', 'admin', 'tests'}
@@ -169,5 +139,3 @@ class DjangoGenerator(BaseGenerator):
         for e in file_gen_list:
             self.generate(base_source_path + '/program' + '/templates' + '/t{e}.tx'.format(e=e),
                           '{e}.html'.format(e=e), {'model': self.model}, root_html_path)
-
-
