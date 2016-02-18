@@ -22,11 +22,18 @@ class BaseGenerator:
             return True
         else:
             return False
+    
+    def choice(self, someitem):
+        if someitem == 'choices':
+            return True
+        else:
+            return False
 
     def generate(self, template_name, output_name, render_vars, output_dir):
         env = Environment(trim_blocks=True, lstrip_blocks=True, loader=PackageLoader("generated", "templates"))
         env.filters["typeDef"] = self.typeDef
         env.tests["checkType"] = self.checkType
+        env.tests["choice"] = self.choice
 
         template = env.get_template(template_name)
         rendered = template.render(render_vars)

@@ -29,7 +29,7 @@ Blank:
 ;
 
 Choices:
-	name="choices" "=" "{" fields*=Field[","] "}"
+	name="choices" "=" "(" fields*=Field[","] ")"
 ;
 
 Field:
