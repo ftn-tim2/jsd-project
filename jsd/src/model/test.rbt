@@ -6,7 +6,7 @@
 
 "Picture" {
 	text "name" (null=true,default="ime")
-	boolean "fake" (blank=true)
+	boolean "fake" (choices=(("ime","vrednost"),("ime2","vrednost2")))
 }
 
 "Film" {
