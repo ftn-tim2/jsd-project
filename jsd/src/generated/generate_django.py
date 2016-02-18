@@ -25,7 +25,7 @@ class DjangoGenerator(BaseGenerator):
             if typedef == 'foreignKey':
                 return 'ForeignKey'
         else:
-            raise NameError('Unsupported typeDef was found')
+            raise NameError('Unsupported typeDef was found : ' + typedef)
 
     @staticmethod
     def init_folder_structure(folder_list):
@@ -40,6 +40,13 @@ class DjangoGenerator(BaseGenerator):
     @staticmethod
     def copy_necessary_files(necessary_source_path, base_path):
         distutils.dir_util.copy_tree(necessary_source_path, base_path)
+
+    @staticmethod
+    def call_post_gen_script(base_path):
+        os.chdir(base_path)
+        os.system('python3.5 ./manage.py migrate')
+        os.system('python3.5 ./manage.py collectstatic --noinput')
+        #os.system('python ./manage.py runserver')
 
     def generate_application(self):
         # path to django templates
@@ -79,18 +86,8 @@ class DjangoGenerator(BaseGenerator):
         self.generate_app_files(base_source_path, app_path)
         self.generate_root_html(base_source_path, root_html_path)
 
+        # post gen events
         self.call_post_gen_script(base_path)
-
-    @staticmethod
-    def call_post_gen_script(base_path):
-        os.chdir(base_path)
-        os.system('python3.5 ./manage.py migrate')
-        os.system('python3.5 ./manage.py collectstatic --noinput')
-        #os.system('python ./manage.py runserver')
-
-    def gen_asd(self):
-        from django.contrib.auth.models import User
-        User.objects.create_superuser("admin", "admin@example.com", "pass")
 
     def generate_program_files(self, base_source_path, program_path):
         # program files
