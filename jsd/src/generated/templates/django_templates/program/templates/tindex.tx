@@ -6,8 +6,12 @@
 {% block content %}
 
 {% endraw %}
+<h3>Classes</h3>
+<table class="table">
 {% for definition in model.classes %}
+<tr> <td>
 <a href="/{{model.name}}/{{definition.name.lower()}}_list">{{definition.name}}</a><br>
+</tr> </td>
 {% endfor %}
 
 {% raw %}
