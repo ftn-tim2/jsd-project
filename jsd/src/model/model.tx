@@ -141,7 +141,7 @@ Width:
 ;
 
 Key:
-	value=STRING
+	name="key" "=" value=STRING
 ;
 
 OnDelete:

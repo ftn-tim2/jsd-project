@@ -12,7 +12,7 @@
 "Film" {
 	char "title" (max_length=10)
 	char "author" (null=false,max_length=80)
-	foreignKey "book"("Book")
+	foreignKey "book"(key="Book")
 	decimal "duration" (decimal_places=4,max_digits=15)
 	
 	
