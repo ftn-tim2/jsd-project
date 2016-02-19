@@ -10,10 +10,16 @@
 {{ '{% endblock %} {% block content %}' }}
 <table class="table">
     {{ '{%' }} for {{definition.name.lower()}} in object_list {{ '%}' }}
+    <tr>
+    {% for attribute in definition.attributes %}
+    <th>{{attribute.name.title()}}</th>
+    {% endfor %} 
+    </tr>
    <tr>
     {% for attribute in definition.attributes %}
     <td>{{'{{'}} {{definition.name.lower()}}.{{attribute.name}} {{'}}'}}</td>
-    {% endfor %} </tr>
+    {% endfor %} 
+    </tr>
  <tr>  
     {{ '{%' }} if '{{model.name}}.change_{{definition.name.lower()}}' in user.get_all_permissions {{ '%}' }}
  <td>     <a class="lsf-icon" title="edit" href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_edit' {{definition.name.lower()}}.id {{ '%}' }}">Update</a> </td>
