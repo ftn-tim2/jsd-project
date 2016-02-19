@@ -8,8 +8,26 @@ import javax.persistence.*;
 public class {{definition.name}} extends Model{
 
 {% for attribute in definition.attributes %}
-    @Column({% for argument in attribute.arguments%})
-    public {{attribute.type|typeDef}} {{attribute.type.pythonName}};
+    {# ---- Generate @Required for attributes ---- #}
+    {% for argument in attribute.arguments %}
+        {% if argument.name is equalto null and argument.value is equalto false %}
+    @Required(message = "validation.required")
+        {% endif %}
+    {% endfor %}
+    {# ---- Generate @Column, @OnetoMany, @ManyToOne, @ManyToMany, @OneToOne ---- #}
+    {% for argument in attribute.arguments%}
+        {% if attribute.type is equalto 'foreignKey' %}
+            {% for argument in attribute.arguments %}
+    @ManyToOne
+    public {{argument.value}} {{attribute.name}};
 
+            {% endfor %}
+        {% else %}
+                                                                                                                           {# nullable                                                                 #}
+    @Column({% for argument in attribute.arguments %}{% if argument.name is equalto 'db_column' %}name = {{argument.value}}, {% elif argument.name is equalto 'null' %}nullable = {{argument.value}}{% endif %}{% endfor %})
+    public {{attribute.type|typeDef}} {{attribute.name}};
+
+        {% endif %}
+    {% endfor %}
 {% endfor %}
 }
