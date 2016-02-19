@@ -8,25 +8,25 @@
 {% endraw %}
 <h1>{{definition.name}}</h1>
 {{ '{% endblock %} {% block content %}' }}
-<ul>
+<table class="table">
     {{ '{%' }} for {{definition.name.lower()}} in object_list {{ '%}' }}
-   <li>
+   <tr>
     {% for attribute in definition.attributes %}
-    {{'{{'}} {{definition.name.lower()}}.{{attribute.name}} {{'}}'}}
-    {% endfor %}
-
+    <td>{{'{{'}} {{definition.name.lower()}}.{{attribute.name}} {{'}}'}}</td>
+    {% endfor %} </tr>
+ <tr>  
     {{ '{%' }} if '{{model.name}}.change_{{definition.name.lower()}}' in user.get_all_permissions {{ '%}' }}
-        <a class="lsf-icon" title="edit" href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_edit' {{definition.name.lower()}}.id {{ '%}' }}">Update</a>
+ <td>     <a class="lsf-icon" title="edit" href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_edit' {{definition.name.lower()}}.id {{ '%}' }}">Update</a> </td>
     {{ '{%' }} endif {{ '%}' }}
 
     {{ '{%' }} if '{{model.name}}.delete_{{definition.name.lower()}}' in user.get_all_permissions {{ '%}' }}
-        <a class="lsf-icon" title="delete" href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_delete' {{definition.name.lower()}}.id {{ '%}' }}">Delete</a>
+ <td>       <a class="lsf-icon" title="delete" href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_delete' {{definition.name.lower()}}.id {{ '%}' }}">Delete</a> </td>
     {{ '{%' }} endif {{ '%}' }}
 
-    </li>
+    
 {{'    {% endfor %}'}}
-</ul>
+
 {{ '{%' }} if '{{model.name}}.add_{{definition.name.lower()}}' in user.get_all_permissions {{ '%}' }}
-<a class="lsf-icon" title="add" href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_new' {{ '%}' }}">New</a>
-{{ '{%' }} endif {{ '%}' }}
+<td> <a class="lsf-icon" title="add" href="{{ '{%' }} url '{{model.name}}:{{definition.name.lower()}}_new' {{ '%}' }}">New</a> </td>
+{{ '{%' }} endif {{ '%}' }} </tr> </table>
 {{'{% endblock %}'}}

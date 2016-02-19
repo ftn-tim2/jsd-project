@@ -44,9 +44,10 @@ class DjangoGenerator(BaseGenerator):
     @staticmethod
     def call_post_gen_script(base_path):
         os.chdir(base_path)
-        os.system('python3.5 ./manage.py migrate')
-        os.system('python3.5 ./manage.py collectstatic --noinput')
-        #os.system('python ./manage.py runserver')
+        os.system('python ./manage.py migrate')
+        os.system('python ./manage.py collectstatic --noinput')
+        os.system('python ./manage.py runserver')
+
 
     def generate_application(self):
         # path to django templates
