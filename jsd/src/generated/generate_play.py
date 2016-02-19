@@ -69,6 +69,7 @@ class PlayGenerator(BaseGenerator):
         elif annotationDef == "manyToMany":
             return "@ManyToMany"
 
+
     
     @staticmethod
     def init_folder_structure(folder_list):
@@ -114,13 +115,80 @@ class PlayGenerator(BaseGenerator):
             self.generate(base_source_path + '/templates' + '/play_class_html' + '/t{e}.tx'.format(e=e),
                           '{e}.html'.format(e=e), {'model': self.model}, play_class_html_path)    
 
+
+    def prepare_play_data_model(self):
+        class PreparedClass:
+            def __init__(self, name, prepared_attributes):
+                self.name = name
+                self.prepared_attributes = prepared_attributes
+
+            name = ""
+            prepared_attributes = []
+
+        class PreparedAttribute:
+            def __init__(self, name, annotation, connected_class_name, prepared_arguments):
+                self.name = name
+                self.annotation = annotation
+                self.connected_class_name = connected_class_name
+                self.prepared_arguments = prepared_arguments
+
+            name = ""
+            annotation = ""
+            connected_class_name = ""
+            prepared_arguments = []
+
+        class PreparedArgument:
+            def __init__(self, name, value):
+                self.name = name
+                self.value = value
+
+            name = ""
+            value = ""
+
+        prepared_classes = []
+
+        for clazz in self.model.classes:
+            attributes = []
+
+            for attribute in clazz.attributes:
+                arguments = []
+                arguments_key_value = ""
+
+                for argument in attribute.arguments:
+
+                    if argument.name == "db_column" or "null" or "max_length" or "unique":
+                        prepared_argument = PreparedArgument(argument.name, argument.value)
+                    if argument.name == "key":
+                        arguments_key_value = argument.value
+                    arguments.append(prepared_argument)
+
+                if attribute.type == "foreignKey":
+                    prepared_attribute = PreparedAttribute(attribute.name, "ManyToOne", arguments_key_value, arguments)
+                elif attribute.type == "manyToMany":
+                    prepared_attribute = PreparedAttribute(attribute.name, "ManyToMany", arguments_key_value, arguments)
+                elif attribute.type == "oneToOne":
+                    prepared_attribute = PreparedAttribute(attribute.name, "OneToOne", arguments_key_value, arguments)
+                else:
+                    prepared_attribute = PreparedAttribute(attribute.name, "Column", arguments_key_value, arguments)
+
+                attributes.append(prepared_attribute)
+
+            prepared_class = PreparedClass(clazz.name, attributes)
+            prepared_classes.append(prepared_class)
+
+        return prepared_classes
+
+
     def generate_play_model_bean_classes(self, base_source_path, play_model_pojo_classes_path):
         # list of template files
         # file_gen_list = "classname.java"
 
+        self.prepare_play_data_model()
+
         # generate the template files
         for definition in self.model.classes:
             # output_file_name = file_gen_list.replace('class', definition.name)
+            
             self.generate(base_source_path + '/templates' + '/' + 'play_model_pojo_classes' + '/tmodel_play.tx',
                           '{classname}.java'.format(classname=definition.name),
                           {'model': self.model, 'definition': definition}, play_model_pojo_classes_path)
