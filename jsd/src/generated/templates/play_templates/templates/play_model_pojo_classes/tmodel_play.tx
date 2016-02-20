@@ -7,10 +7,45 @@ import javax.persistence.*;
 @Entity
 public class {{clazz.name}} extends Model{
 
-{% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}
+    {% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}
     {{attribute_value.annotation}}{% if attribute_value.prepared_arguments.__len__() > 0 %}({% for argument_key, argument_value in attribute_value.prepared_arguments.items() %}{{argument_value.name}} = {{argument_value.value.lower()}}{% if not loop.last %}, {% endif %}{% endfor %}){% endif %}
 
     public {{attribute_value.type|typeDef}} {{attribute_value.name}};
 
-{% endfor %}
+    {% endfor %}
+
+    public {{clazz.name}}(){
+        super();
+    }
+
+    public {{clazz.name}}({% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}{{attribute_value.type|typeDef}} {{attribute_value.name}}{% if not loop.last %}, {% endif %}{% endfor %}){
+        super();
+        {% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}
+        this.{{attribute_value.name}} = {{attribute_value.name}};
+        {% endfor %}
+    }
+
+    {% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}
+    public {{attribute_value.type|typeDef}} get{{attribute_value.type|typeDef}}(){
+        return {{attribute_value.name}};
+    }
+
+    {% endfor %}
+
+    {% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}
+    public void set{{attribute_value.type|typeDef}}({{attribute_value.type|typeDef}} {{attribute_value.name}}){
+        this.{{attribute_value.name}} = {{attribute_value.name}};
+    }
+
+    {% endfor %}
+
+    @Override
+    public String toString(){
+        return "{{clazz.name}}{" +
+    {% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}
+                "{{attribute_value.name}} = " + {{attribute_value.name}} + {% if not loop.last %}", " + {% endif %}
+                {% if loop.last %}"}";{% endif %}
+
+    {% endfor %}
+    }
 }
