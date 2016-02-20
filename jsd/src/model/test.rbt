@@ -1,4 +1,5 @@
 "jsd_app_name"
+css="journal"
 "Book" {
 	text "title"
 	int "author" (default=90)

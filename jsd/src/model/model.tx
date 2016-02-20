@@ -1,5 +1,6 @@
 Model: 
 	name = STRING
+	("css" "=" value=STRING)?
 	classes*= Definition
 ;
 
