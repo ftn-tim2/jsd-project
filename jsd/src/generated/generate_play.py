@@ -59,6 +59,8 @@ class PlayGenerator(BaseGenerator):
             return "String"
         elif typedef == "UUID":
             return "UUIDField"
+        else:
+            return typedef
 
 
     def annotationdef(self, annotationDef):
@@ -123,19 +125,19 @@ class PlayGenerator(BaseGenerator):
                 self.prepared_attributes = prepared_attributes
 
             name = ""
-            prepared_attributes = []
+            prepared_attributes = dict()
 
         class PreparedAttribute:
-            def __init__(self, name, annotation, connected_class_name, prepared_arguments):
+            def __init__(self, type, name, annotation, prepared_arguments):
+                self.type = type
                 self.name = name
                 self.annotation = annotation
-                self.connected_class_name = connected_class_name
                 self.prepared_arguments = prepared_arguments
 
+            type = ""
             name = ""
             annotation = ""
-            connected_class_name = ""
-            prepared_arguments = []
+            prepared_arguments = dict()
 
         class PreparedArgument:
             def __init__(self, name, value):
@@ -145,36 +147,48 @@ class PlayGenerator(BaseGenerator):
             name = ""
             value = ""
 
-        prepared_classes = []
+        prepared_classes = dict()
 
         for clazz in self.model.classes:
-            attributes = []
+            attributes = dict()
 
             for attribute in clazz.attributes:
-                arguments = []
+                arguments = dict()
                 arguments_key_value = ""
 
                 for argument in attribute.arguments:
 
-                    if argument.name == "db_column" or "null" or "max_length" or "unique":
-                        prepared_argument = PreparedArgument(argument.name, argument.value)
+                    if argument.name == "db_column" or argument.name == "null" or argument.name == "max_length" or argument.name == "unique":
+                        prepared_argument = PreparedArgument(argument.name, str(argument.value))
+                        arguments[prepared_argument.name] = prepared_argument
                     if argument.name == "key":
-                        arguments_key_value = argument.value
-                    arguments.append(prepared_argument)
+                        arguments_key_value = str(argument.value)
+                        arguments[prepared_argument.name] = prepared_argument
+
 
                 if attribute.type == "foreignKey":
-                    prepared_attribute = PreparedAttribute(attribute.name, "ManyToOne", arguments_key_value, arguments)
+                    prepared_attribute = PreparedAttribute(arguments_key_value, attribute.name, "@ManyToOne", arguments)
                 elif attribute.type == "manyToMany":
-                    prepared_attribute = PreparedAttribute(attribute.name, "ManyToMany", arguments_key_value, arguments)
+                    prepared_attribute = PreparedAttribute(arguments_key_value, attribute.name, "@ManyToMany", arguments)
                 elif attribute.type == "oneToOne":
-                    prepared_attribute = PreparedAttribute(attribute.name, "OneToOne", arguments_key_value, arguments)
+                    prepared_attribute = PreparedAttribute(arguments_key_value, attribute.name, "@OneToOne", arguments)
                 else:
-                    prepared_attribute = PreparedAttribute(attribute.name, "Column", arguments_key_value, arguments)
+                    prepared_attribute = PreparedAttribute(attribute.type, attribute.name, "@Column", arguments)
 
-                attributes.append(prepared_attribute)
+                attributes[prepared_attribute.name] = prepared_attribute
 
             prepared_class = PreparedClass(clazz.name, attributes)
-            prepared_classes.append(prepared_class)
+            prepared_classes[prepared_class.name] = prepared_class
+
+            for class_key, class_value in prepared_classes.items():
+                for attribute_key, attribute_value in class_value.prepared_attributes.items():
+                    if attribute_value.annotation == "@ManyToOne":
+                        related_class = prepared_classes.get(attribute_value.type)
+                        related_class.prepared_attributes[class_value.name] = PreparedAttribute("List<" + class_value.name + ">", class_value.name.lower() + "s", "@OneToMany", {"mappedBy" : PreparedArgument("mappedBy", "\"" + class_value.name + "\"")})
+                    elif attribute_value.annotation == "@ManyToMany":
+                        related_class = prepared_classes.get(attribute_value.type)
+                        related_class.prepared_attributes[class_value.name] = PreparedAttribute("List<" + class_value.name + ">", class_value.name.lower() + "s", "@ManyToMany", {"mappedBy" : PreparedArgument("mappedBy", "\"" + class_value.name + "\"")})
+
 
         return prepared_classes
 
@@ -183,14 +197,14 @@ class PlayGenerator(BaseGenerator):
         # list of template files
         # file_gen_list = "classname.java"
 
-        self.prepare_play_data_model()
+        prepared_classes = self.prepare_play_data_model()
 
         # generate the template files
-        for definition in self.model.classes:
+        for clazz_key, clazz_value in prepared_classes.items():
             # output_file_name = file_gen_list.replace('class', definition.name)
-            
+
             self.generate(base_source_path + '/templates' + '/' + 'play_model_pojo_classes' + '/tmodel_play.tx',
-                          '{classname}.java'.format(classname=definition.name),
-                          {'model': self.model, 'definition': definition}, play_model_pojo_classes_path)
+                          '{classname}.java'.format(classname=clazz_key),
+                          {'clazz': clazz_value}, play_model_pojo_classes_path)
 
 
