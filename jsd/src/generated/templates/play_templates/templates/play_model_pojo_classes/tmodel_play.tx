@@ -7,17 +7,27 @@ import javax.persistence.*;
 @Entity
 public class {{clazz.name}} extends Model{
 
+    {# ---- Generate attributes of class ---- #}
     {% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}
+    {# ---- Generate @Required annotation of class ---- #}
+    {% if attribute_value.prepared_arguments.get("null").value is defined %}
+        {% if attribute_value.prepared_arguments.get("null").value.lower() is equalto "false" %}
+    @Required(message = "validation.required")
+        {% endif %}
+    {% endif %}
+    {# ---- Generate @Column, @ManyToMany, @OneToOne, @ManyToOne and @OneToMany annotations with attributes of class ---- #}
     {{attribute_value.annotation}}{% if attribute_value.prepared_arguments.__len__() > 0 %}({% for argument_key, argument_value in attribute_value.prepared_arguments.items() %}{{argument_value.name}} = {{argument_value.value.lower()}}{% if not loop.last %}, {% endif %}{% endfor %}){% endif %}
 
     public {{attribute_value.type|typeDef}} {{attribute_value.name}};
 
     {% endfor %}
 
+    {# ---- Generate constructor of class ---- #}
     public {{clazz.name}}(){
         super();
     }
 
+    {# ---- Generate parametrized constructor of class ---- #}
     public {{clazz.name}}({% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}{{attribute_value.type|typeDef}} {{attribute_value.name}}{% if not loop.last %}, {% endif %}{% endfor %}){
         super();
         {% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}
@@ -25,20 +35,23 @@ public class {{clazz.name}} extends Model{
         {% endfor %}
     }
 
+    {# ---- Generate getters of attributes ---- #}
     {% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}
-    public {{attribute_value.type|typeDef}} get{{attribute_value.type|typeDef}}(){
+    public {{attribute_value.type|typeDef}} get{{attribute_value.name.title()}}(){
         return {{attribute_value.name}};
     }
 
     {% endfor %}
 
+    {# ---- Generate setters of attributes ---- #}
     {% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}
-    public void set{{attribute_value.type|typeDef}}({{attribute_value.type|typeDef}} {{attribute_value.name}}){
+    public void set{{attribute_value.name.title()}}({{attribute_value.type|typeDef}} {{attribute_value.name}}){
         this.{{attribute_value.name}} = {{attribute_value.name}};
     }
 
     {% endfor %}
 
+    {# ---- Generate toString() method of class ---- #}
     @Override
     public String toString(){
         return "{{clazz.name}}{" +

@@ -184,10 +184,10 @@ class PlayGenerator(BaseGenerator):
                 for attribute_key, attribute_value in class_value.prepared_attributes.items():
                     if attribute_value.annotation == "@ManyToOne":
                         related_class = prepared_classes.get(attribute_value.type)
-                        related_class.prepared_attributes[class_value.name] = PreparedAttribute("List<" + class_value.name + ">", class_value.name.lower() + "s", "@OneToMany", {"mappedBy" : PreparedArgument("mappedBy", "\"" + class_value.name + "\"")})
+                        related_class.prepared_attributes[class_value.name] = PreparedAttribute("List<" + class_value.name + ">", class_value.name.lower() + "s", "@OneToMany", {"mappedBy" : PreparedArgument("mappedBy", "\"" + related_class.name + "\"")})
                     elif attribute_value.annotation == "@ManyToMany":
                         related_class = prepared_classes.get(attribute_value.type)
-                        related_class.prepared_attributes[class_value.name] = PreparedAttribute("List<" + class_value.name + ">", class_value.name.lower() + "s", "@ManyToMany", {"mappedBy" : PreparedArgument("mappedBy", "\"" + class_value.name + "\"")})
+                        related_class.prepared_attributes[class_value.name] = PreparedAttribute("List<" + class_value.name + ">", class_value.name.lower() + "s", "@ManyToMany", {"mappedBy" : PreparedArgument("mappedBy", "\"" + related_class.name + "\"")})
 
 
         return prepared_classes
