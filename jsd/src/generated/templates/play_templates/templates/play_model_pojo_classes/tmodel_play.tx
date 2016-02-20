@@ -5,29 +5,12 @@ import play.data.validation.Required;
 import javax.persistence.*;
 
 @Entity
-public class {{definition.name}} extends Model{
+public class {{clazz.name}} extends Model{
 
-{% for attribute in definition.attributes %}
-    {# ---- Generate @Required for attributes ---- #}
-    {% for argument in attribute.arguments %}
-        {% if argument.name is equalto null and argument.value is equalto false %}
-    @Required(message = "validation.required")
-        {% endif %}
-    {% endfor %}
-    {# ---- Generate @Column, @OnetoMany, @ManyToOne, @ManyToMany, @OneToOne ---- #}
-    {% for argument in attribute.arguments%}
-        {% if attribute.type is equalto 'foreignKey' %}
-            {% for argument in attribute.arguments %}
-    @ManyToOne
-    public {{argument.value}} {{attribute.name}};
+{% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}
+    {{attribute_value.annotation}}{% if attribute_value.prepared_arguments.__len__() > 0 %}({% for argument_key, argument_value in attribute_value.prepared_arguments.items() %}{{argument_value.name}} = {{argument_value.value.lower()}}{% if not loop.last %}, {% endif %}{% endfor %}){% endif %}
 
-            {% endfor %}
-        {% else %}
-                                                                                                                           {# nullable                                                                 #}
-    @Column({% for argument in attribute.arguments %}{% if argument.name is equalto 'db_column' %}name = {{argument.value}}, {% elif argument.name is equalto 'null' %}nullable = {{argument.value}}{% endif %}{% endfor %})
-    public {{attribute.type|typeDef}} {{attribute.name}};
+    public {{attribute_value.type|typeDef}} {{attribute_value.name}};
 
-        {% endif %}
-    {% endfor %}
 {% endfor %}
 }
