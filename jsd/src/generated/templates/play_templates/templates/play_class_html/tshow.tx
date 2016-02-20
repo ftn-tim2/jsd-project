@@ -1,0 +1,33 @@
+{% raw %}
+{% #{extends 'CRUD/layout.html' /} %}
+{% #{set title:messages.get('crud.show.title', type.modelName) /} %}
+
+{% block content %}
+
+<div id="crudShow" class="{% ${type.name} %}">
+
+    <h2 id="crudShowTitle">{% &{'crud.show.title', type.modelName} %}</h2>
+
+    <div class="objectForm">
+   {%  #{form action:@edit(object._key()), enctype:'multipart/form-data'} %}
+     {%   #{crud.form /} %}
+     {%   #{secure.check 'T_edit_' + type + '_' + object._key()} %}
+        <p class="crudButtons">
+            <input type="submit" name="_save" value="{% &{'crud.save', type.modelName} %}" />
+            <input type="submit" name="_saveAndContinue" value="{% &{'crud.saveAndContinue', type.modelName} %}" />
+        </p>
+       {% #{/secure.check} %}
+   {% #{/form} %}
+    </div>
+{% #{secure.check 'T_delete_' + type + '_' + object._key()} %}
+  {%  #{form @delete(object._key())} %}
+        <p class="crudDelete">
+            <input type="submit" value="{% &{'crud.delete', type.modelName} %}" />
+        </p>
+  {%  #{/form} %}
+{% #{/secure.check} %}
+</div>
+
+
+{% endblock %}
+{% endraw %}
