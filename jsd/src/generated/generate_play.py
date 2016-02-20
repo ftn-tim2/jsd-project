@@ -110,7 +110,7 @@ class PlayGenerator(BaseGenerator):
 
     def generate_play_class_html(self, base_source_path, play_class_html_path):
         # list of template files
-        file_gen_list = {'login_play', 'logout_play', 'change_password_play', 'list' , 'index', 'layout', 'create_Page', 'show' }
+        file_gen_list = {'login_play', 'logout_play', 'change_password_play', 'list' , 'index', 'layout', 'create_Page', 'show', '404', '500' }
 
         # generate the template files
         for e in file_gen_list:
