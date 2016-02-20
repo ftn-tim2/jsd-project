@@ -1,5 +1,5 @@
 "jsd_app_name"
-css="journal"
+css="http://bootswatch.com/superhero/bootstrap.min.css"
 "Book" {
 	text "title"
 	int "author" (default=90)

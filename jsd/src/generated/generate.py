@@ -12,7 +12,7 @@ from generated.generate_play import PlayGenerator
 from root import SRC_DIR
 
 
-def main(debug=False, project_type='play'):
+def main(debug=False, project_type='django'):
     model = execute(os.path.join(SRC_DIR, "model"), 'model.tx', 'test.rbt', debug, debug)
     if project_type == 'play':
         generator = PlayGenerator(model)
@@ -24,4 +24,4 @@ def main(debug=False, project_type='play'):
 
 
 if __name__ == '__main__':
-    main(False, 'play')
+    main(False, 'django')
