@@ -4,9 +4,9 @@
 
 {% block content %}
 
-<div id="crudList" class="{% ${type.name} %}">
+<div id="crudList" class="{{ ${type.name} }}">
 
-    <h2 id="crudListTitle">{% &{'crud.list.title', type.name} %}</h2>
+    <h2 id="crudListTitle">{{ &{'crud.list.title', type.name} }}</h2>
 
     <div id="crudListSearch">
       {%  #{crud.search /} %}
@@ -21,7 +21,7 @@
     </div>
 {% #{secure.check 'T_create_' + type} %}
     <p id="crudListAdd">
-        <a href="@{createPage()}">{% &{'crud.add', type.modelName} %}</a>
+        <a href="{% @{createPage()} %}">{{ &{'crud.add', type.modelName} }}</a>
     </p>
 {% #{/secure.check}  %}
 </div>

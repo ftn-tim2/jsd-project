@@ -1,6 +1,7 @@
 Model: 
 	name = STRING
-	("css" "=" value=STRING)?
+	("css" "=" css=STRING)?
+	(user = SuperUser) ?
 	classes*= Definition
 ;
 
@@ -8,6 +9,12 @@ Definition:
 	name = STRING "{"
 	attributes*= Attribute
 	"}"
+;
+
+SuperUser:
+	"username" "=" username=STRING
+	"emailAdress" "=" email=STRING
+	"password" "=" password=STRING
 ;
 
 Attribute:
