@@ -16,7 +16,11 @@ public class {{clazz.name}} extends Model{
         {% endif %}
     {% endif %}
     {# ---- Generate @Column, @ManyToMany, @OneToOne, @ManyToOne and @OneToMany annotations with attributes of class ---- #}
-    {{attribute_value.annotation}}{% if attribute_value.prepared_arguments.__len__() > 0 %}({% for argument_key, argument_value in attribute_value.prepared_arguments.items() %}{{argument_value.name}} = {{argument_value.value.lower()}}{% if not loop.last %}, {% endif %}{% endfor %}){% endif %}
+    {% if "-generated" in attribute_value.annotation %}
+    {{attribute_value.annotation.split("-")[0]}}{% if attribute_value.prepared_arguments.__len__() > 0 %}({% for argument_key, argument_value in attribute_value.prepared_arguments.items() %}{{argument_value.name|annotation_attribute_def}} = {{argument_value.value.lower()}}{% if not loop.last %}, {% endif %}{% endfor %}){% endif %}
+    {% else %}
+    {{attribute_value.annotation}}{% if attribute_value.prepared_arguments.__len__() > 0 %}({% for argument_key, argument_value in attribute_value.prepared_arguments.items() %}{{argument_value.name|annotation_attribute_def}} = {{argument_value.value.lower()}}{% if not loop.last %}, {% endif %}{% endfor %}){% endif %}
+    {% endif %}
 
     public {{attribute_value.type|typeDef}} {{attribute_value.name}};
 
