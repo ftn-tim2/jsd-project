@@ -32,7 +32,8 @@ class BaseGenerator:
     def generate(self, template_name, output_name, render_vars, output_dir):
         env = Environment(trim_blocks=True, lstrip_blocks=True, loader=PackageLoader("generated", "templates"))
         env.filters["typeDef"] = self.typeDef
-        env.filters["annotationdef"] = self.typeDef
+        env.filters["annotationdef"] = self.annotationdef
+        env.filters["annotation_attribute_def"] = self.annotation_attribute_def
         env.tests["checkType"] = self.checkType
         env.tests["choice"] = self.choice
 
