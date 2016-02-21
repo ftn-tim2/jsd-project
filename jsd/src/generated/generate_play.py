@@ -110,13 +110,16 @@ class PlayGenerator(BaseGenerator):
         base_path = os.path.join(BASE_PATH, self.model.name)
         play_class_html_path = os.path.join(base_path, self.model.name, 'play_class_html')
         play_model_pojo_classes_path = os.path.join(base_path, self.model.name, 'play_model_pojo_classes')
+        tags_play_path = os.path.join(play_class_html_path, 'tags_play')
         folder_gen_list = [base_path,
                            play_class_html_path,
-                           play_model_pojo_classes_path]
+                           play_model_pojo_classes_path,
+                           tags_play_path]
 
         # create the folders
         self.init_folder_structure(folder_gen_list)
         self.generate_play_class_html(base_source_path, play_class_html_path)
+        self.generate_tags_play(base_source_path, tags_play_path)
         self.generate_play_model_bean_classes(base_source_path, play_model_pojo_classes_path)
 
     def generate_play_class_html(self, base_source_path, play_class_html_path):
@@ -128,7 +131,17 @@ class PlayGenerator(BaseGenerator):
             self.generate(base_source_path + '/templates' + '/play_class_html' + '/t{e}.tx'.format(e=e),
                           '{e}.html'.format(e=e), {'model': self.model}, play_class_html_path)    
 
+    def generate_tags_play(self, base_source_path, tags_play_path):
+        # registration files
+        file_gen_list = {'checkField', 'custom', 'dateField', 'enumField', 'fileField', 'form', 'hiddenField',
+                         'longtextField', 'navigation', 'numberField', 'pagination', 'passwordField', 'relationFiled',
+                         'search', 'serializedField', 'table', 'textField'}
 
+        # generate the basic files
+        for e in file_gen_list:
+            self.generate(base_source_path +'/templates' + + '/play_class_html' + '/tags_play' + '/t{e}.tx'.format(e=e),
+                          '{e}.html'.format(e=e), {'model': self.model}, tags_play_path)
+            
     def prepare_play_data_model(self):
         class PreparedClass:
             def __init__(self, name, prepared_attributes):
