@@ -46,8 +46,7 @@ class DjangoGenerator(BaseGenerator):
         os.chdir(base_path)
         os.system('python3.5 ./manage.py migrate')
         os.system('python3.5 ./manage.py collectstatic --noinput')
-        #os.system('python ./manage.py runserver')
-
+        # os.system('python ./manage.py runserver')
 
     def generate_application(self):
         # path to django templates
@@ -113,7 +112,8 @@ class DjangoGenerator(BaseGenerator):
 
     def generate_registration_files(self, base_source_path, registration_path):
         # registration files
-        file_gen_list = {'login', 'registration_form', 'registration_complete'}
+        file_gen_list = {'login', 'registration_form', 'registration_complete', 'password_change_form',
+                         'password_change_done'}
 
         # generate the basic files
         for e in file_gen_list:
