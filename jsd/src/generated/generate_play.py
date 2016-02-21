@@ -71,6 +71,17 @@ class PlayGenerator(BaseGenerator):
         elif annotationDef == "manyToMany":
             return "@ManyToMany"
 
+    def annotation_attribute_def(self, attribute_def):
+        if attribute_def == "db_column":
+            return "name"
+        if attribute_def == "null":
+            return "nullable"
+        if attribute_def == "max_length":
+            return "length"
+        if attribute_def == "max_digits":
+            return "length"
+        else:
+            return attribute_def
 
     
     @staticmethod
@@ -158,12 +169,11 @@ class PlayGenerator(BaseGenerator):
 
                 for argument in attribute.arguments:
 
-                    if argument.name == "db_column" or argument.name == "null" or argument.name == "max_length" or argument.name == "unique":
+                    if argument.name == "db_column" or argument.name == "null" or argument.name == "max_length" or argument.name == "unique" or argument.name == "max_digits":
                         prepared_argument = PreparedArgument(argument.name, str(argument.value))
                         arguments[prepared_argument.name] = prepared_argument
                     if argument.name == "key":
                         arguments_key_value = str(argument.value)
-                        arguments[prepared_argument.name] = prepared_argument
 
 
                 if attribute.type == "foreignKey":
@@ -180,14 +190,17 @@ class PlayGenerator(BaseGenerator):
             prepared_class = PreparedClass(clazz.name, attributes)
             prepared_classes[prepared_class.name] = prepared_class
 
-            for class_key, class_value in prepared_classes.items():
-                for attribute_key, attribute_value in class_value.prepared_attributes.items():
-                    if attribute_value.annotation == "@ManyToOne":
-                        related_class = prepared_classes.get(attribute_value.type)
-                        related_class.prepared_attributes[class_value.name] = PreparedAttribute("List<" + class_value.name + ">", class_value.name.lower() + "s", "@OneToMany", {"mappedBy" : PreparedArgument("mappedBy", "\"" + related_class.name + "\"")})
-                    elif attribute_value.annotation == "@ManyToMany":
-                        related_class = prepared_classes.get(attribute_value.type)
-                        related_class.prepared_attributes[class_value.name] = PreparedAttribute("List<" + class_value.name + ">", class_value.name.lower() + "s", "@ManyToMany", {"mappedBy" : PreparedArgument("mappedBy", "\"" + related_class.name + "\"")})
+        for class_key, class_value in prepared_classes.items():
+            for attribute_key, attribute_value in class_value.prepared_attributes.items():
+                if attribute_value.annotation == "@ManyToOne":
+                    related_class = prepared_classes.get(attribute_value.type)
+                    related_class.prepared_attributes[class_value.name] = PreparedAttribute("List<" + class_value.name + ">", class_value.name.lower() + "s", "@OneToMany", {"mappedBy" : PreparedArgument("mappedBy", "\"" + related_class.name + "\"")})
+                elif attribute_value.annotation == "@ManyToMany":
+                    related_class = prepared_classes.get(attribute_value.type)
+                    related_class.prepared_attributes[class_value.name] = PreparedAttribute("List<" + class_value.name + ">", class_value.name.lower() + "s", "@ManyToMany-generated ", {"mappedBy" : PreparedArgument("mappedBy", "\"" + related_class.name + "\"")})
+                elif attribute_value.annotation == "@OneToOne":
+                    related_class = prepared_classes.get(attribute_value.type)
+                    related_class.prepared_attributes[class_value.name] = PreparedAttribute(class_value.name, class_value.name.lower(), "@OneToOne-generated", {"mappedBy" : PreparedArgument("mappedBy", "\"" + related_class.name + "\"")})
 
 
         return prepared_classes
