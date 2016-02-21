@@ -134,12 +134,12 @@ class PlayGenerator(BaseGenerator):
     def generate_tags_play(self, base_source_path, tags_play_path):
         # registration files
         file_gen_list = {'checkField', 'custom', 'dateField', 'enumField', 'fileField', 'form', 'hiddenField',
-                         'longtextField', 'navigation', 'numberField', 'pagination', 'passwordField', 'relationFiled',
+                         'longtextField', 'navigation', 'numberField', 'pagination', 'passwordField', 'relationField',
                          'search', 'serializedField', 'table', 'textField'}
 
         # generate the basic files
         for e in file_gen_list:
-            self.generate(base_source_path +'/templates' + + '/play_class_html' + '/tags_play' + '/t{e}.tx'.format(e=e),
+            self.generate(base_source_path +'/templates' +  '/play_class_html' + '/tags_play' + '/t{e}.tx'.format(e=e),
                           '{e}.html'.format(e=e), {'model': self.model}, tags_play_path)
             
     def prepare_play_data_model(self):

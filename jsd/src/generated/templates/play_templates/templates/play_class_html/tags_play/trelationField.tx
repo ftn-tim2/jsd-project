@@ -11,7 +11,7 @@
 
    {% #{if _field.multiple} %}
         <input type="hidden" name="{{ ${pName} }}" value="" />
-        <select id="{{ ${field.id} }}" name="{{ ${pName} }}" multiple="yes">
+       {% <select id="{{ ${field.id} }}" name="{{ ${pName} }}" multiple="yes"> %}
             {% %{ _field.choices.each() { }% %}
             {% %{
                 selected = false;
@@ -27,12 +27,12 @@
                     }
                 }
             }% %}
-            <option value="{{ ${it._key()} }}" {{${selected ? 'selected="true"'.raw() : ''} }}>{{ ${it} }}</option>
+           {% <option value="{{ ${it._key()} }}" {{${selected ? 'selected="true"'.raw() : ''} }}>{{ ${it} }}</option> %}
            {% %{ } }% %}
-        </select>
+       {% </select> %}
     {% #{/if} %}
     {% #{else} %}
-        <select id="{{ ${field.id} }}" name="{{ ${pName} }}">
+      {%  <select id="{{ ${field.id} }}" name="{{ ${pName} }}"> %}
             {% #{ifnot _field.required} %}
                 <option value="">{{ &{'crud.none'} }}</option>
             {% #{/ifnot} %}
@@ -50,9 +50,9 @@
                     }
                 }
             }% %}
-            <option value="{{ ${it._key()} }}" {{${selected ? 'selected="true"'.raw() : ''} }}>{{ ${it} }}</option>
+          {%  <option value="{{ ${it._key()} }}" {{ ${selected ? 'selected="true"'.raw() : ''} }}>{{ ${it} }}</option> %}
            {%  %{ } }% %}
-        </select>
+      {%  </select> %}
    {% #{/else} %}
 
    {%  #{ifError field.name} %}
