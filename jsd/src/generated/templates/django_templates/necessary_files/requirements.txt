@@ -1,4 +1,4 @@
 unipath
 Django==1.8.3
-django-registration-redux
+django-registration
 django-bootstrap3

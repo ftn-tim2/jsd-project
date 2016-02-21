@@ -8,6 +8,11 @@ class {{definition.name}}(models.Model):
     {{attribute.name}} = models.{{attribute.type|typeDef}}({% for argument in attribute.arguments%}{% if argument.value is string and attribute.type is not checkType %}{{argument.name}}="{{argument.value}}"{% elif attribute.type is checkType %}{{argument.value}}{% elif argument.name is choice %}{{argument.name}}={% for field in argument.fields%}("{{field.name}}","{{field.value}}"){% endfor %}{% else %}{{argument.name}}={{argument.value}}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %})
     {% if loop.last %}
 
+    class Meta:
+        permissions = (
+            ("view_{{definition.name.lower()}}", "Can view the {{definition.name}}"),
+        )
+
     def __unicode__(self):
         return self.{% for attribute in definition.attributes %}{% if loop.first %}{{attribute.name}}{% endif %}{% endfor %}{% endif %}
     {% endfor %}

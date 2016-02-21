@@ -25,7 +25,9 @@
             <ul class="nav navbar-nav">
             {% endraw %}
             {% for definition in model.classes %}
-                <li><a href="/{{model.name}}/{{definition.name.lower()}}_list">{{definition.name}}</a></li>
+                 {{ '{%' }} if '{{model.name}}.view_{{definition.name.lower()}}' in user.get_all_permissions {{ '%}' }}
+                    <li><a href="/{{model.name}}/{{definition.name.lower()}}_list">{{definition.name}}</a></li>
+                 {{ '{%' }} endif {{ '%}' }}
             {% endfor %}
             {% raw %}
             </ul>
