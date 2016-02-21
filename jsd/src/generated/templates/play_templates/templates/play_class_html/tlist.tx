@@ -21,7 +21,7 @@
     </div>
 {% #{secure.check 'T_create_' + type} %}
     <p id="crudListAdd">
-        <a href="{{ @{createPage()} }}">{{ &{'crud.add', type.modelName} }}</a>
+        <a href="{% @{createPage()} %}">{{ &{'crud.add', type.modelName} }}</a>
     </p>
 {% #{/secure.check}  %}
 </div>

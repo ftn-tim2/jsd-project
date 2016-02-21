@@ -18,10 +18,10 @@
 			{% #{crud.types} %}
 				{% #{secure.check 'T_read_' + type} %}
 				<tr>
-					<td><a href="{{ ${type.listAction} }}">{{ &{type.name} }}</a>
+					<td><a href="{% ${type.listAction} %}">{{ &{type.name} }}</a>
 					</td>
 					{% #{secure.check 'T_create_' + type} %}
-						<td class="crudNew"><a href="{{ ${type.createPageAction} }}">{{ &{'crud.index.add',type} }}</a>
+						<td class="crudNew"><a href="{% ${type.createPageAction} %}">{{ &{'crud.index.add',type} }}</a>
 						</td>
 				    {% #{/secure.check} %}
 				</tr>
@@ -29,10 +29,10 @@
 		{%	#{/crud.types} %}
 		{%	#{secure.check 'T_hack_others'} %}
 				<tr>
-					<td><a href="{{@{HackerController.listFiles}}}">List Files on HD</a></td>
+					<td><a href="{% @{HackerController.listFiles} %}">List Files on HD</a></td>
 				</tr>
 				<tr>
-					<td><a href="{{@{HackerController.getusersforteam}}}">Connect To database</a></td>
+					<td><a href="{% @{HackerController.getusersforteam} %}">Connect To database</a></td>
 				</tr>
 			{% #{/secure.check} %}
 		</tbody>
@@ -40,18 +40,13 @@
 	
 	<table > 
 	<tr align="center">
-	<td  class="crudButton">
+	<td  class="crudButton" >
 	{% #{secure.check 'T_edit_User_'+userID} %}
-		<a href="{{ @{Users.show(userID)} }}" >Change your settings</a>
+	<a href="{% @{Users.showPassword(userID)} %}">Change your password</a>
 	{% #{/secure.check} %}
 	</td>
 	<td  class="crudButton" >
-	{% #{secure.check 'T_edit_User_'+userID} %}
-	<a href="{{ @{Users.showPassword(userID)} }}">Change your password</a>
-	{% #{/secure.check} %}
-	</td>
-	<td  class="crudButton" >
-	{{ #{a @Secure.logout()}Logout#{/a} }}
+	{% #{a @Secure.logout()}Logout#{/a} %}
 	</td>
 	</tr>
 	</table>
