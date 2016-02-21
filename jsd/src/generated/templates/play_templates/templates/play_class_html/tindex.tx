@@ -18,10 +18,12 @@
 			{% #{crud.types} %}
 				{% #{secure.check 'T_read_' + type} %}
 				<tr>
-					<td><a href="{% ${type.listAction} %}">{% &{type.name} %}</a></td>
+					<td><a href="{{ ${type.listAction} }}">{{ &{type.name} }}</a>
+					</td>
 					{% #{secure.check 'T_create_' + type} %}
-					<td class="crudNew"><a href="{% ${type.createPageAction} %}">{% &{'crud.index.add',
-							type} %}</a></td> {% #{/secure.check} %}
+						<td class="crudNew"><a href="{{ ${type.createPageAction} }}">{{ &{'crud.index.add',type} }}</a>
+						</td>
+				    {% #{/secure.check} %}
 				</tr>
 				{% #{/secure.check} %}
 		{%	#{/crud.types} %}
@@ -49,7 +51,7 @@
 	{% #{/secure.check} %}
 	</td>
 	<td  class="crudButton" >
-	{% #{a @Secure.logout()}Logout#{/a} %}
+	{{ #{a @Secure.logout()}Logout#{/a} }}
 	</td>
 	</tr>
 	</table>
