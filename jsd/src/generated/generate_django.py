@@ -144,3 +144,13 @@ class DjangoGenerator(BaseGenerator):
         for e in file_gen_list:
             self.generate(base_source_path + '/program' + '/templates' + '/t{e}.tx'.format(e=e),
                           '{e}.html'.format(e=e), {'model': self.model}, root_html_path)
+
+    # TODO change the Base generator in a way that these should disapear from here
+
+    def annotation_attribute_def(self, annotationDef):
+        # place holder
+        a = 1
+
+    def annotationdef(self, annotationDef):
+        # place holder
+        a = 1
