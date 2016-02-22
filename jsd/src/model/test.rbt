@@ -1,5 +1,8 @@
 "jsd_app_name"
 css="http://bootswatch.com/superhero/bootstrap.min.css"
+username="admin"
+emailAdress="email@gmail.com"
+password="admin"
 "Book" {
 	text "title"
 	int "author" (default=90)
