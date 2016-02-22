@@ -1,0 +1,2 @@
+play dependencies --verbose
+play run
