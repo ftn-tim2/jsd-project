@@ -1,0 +1,98 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+userName=User name
+firstName=First name
+lastName=Last name
+password=Password
+detailsTitle=%s details for : %s
+createTitle=Create new: %s
+overviewTitle=%s
+cancel=Cancel
+create=Create
+edit=Edit
+users_overview=Users
+edit=Edit
+create=Create
+delete=Delete
+validation.required=Required
+actionName=Action name
+date=Date
+message=Message
+logType=Log type
+user=User
+group=Group
+tableName=Table name
+rowId=Row id
+fullname=Full name
+password=Password
+email=Email
+lastLogin=Last login
+blocked=Blocked
+groupName=Group name
+AuditLogs=Audit logs
+UserGroups=User groups
+loggedEntity=Logged entity
+loggedResource=Logged resource
+loggedAction=Logged action
+groups=Groups
+parentGroup=Parent group
+userGroup=User group
+controlPoints=Control points
+users=Users
+childGroups=Child groups
+tableName=Table name
+rowId=Row id
+allowed=Allowed
+controlledUser=Controlled user
+controlledGroup=Controlled group
+controlledResource=Controlled resource
+controlledAction=Controlled action
+
+
+# Default CRUD messages
+# ~~~~~~
+
+crud.title=Administration
+crud.home=Home
+crud.blank=New
+crud.index.title=Choose the object to edit
+crud.index.objectType=Object type
+crud.index.action=
+crud.index.add=Add
+crud.add=Add &{% raw %}{%s}{% endraw %}
+crud.list.title=&{% raw %}{%s}{% endraw %}
+crud.list.size=%d &{% raw %}{%s}{% endraw %}
+crud.list.totalSize=%d total
+crud.pagination.previous=< Previous
+crud.pagination.next=Next >
+crud.pagination.last=Last >>
+crud.pagination.first=<< First
+crud.show.title=Edit &{% raw %}{%s}{% endraw %}
+crud.save=Save
+crud.saveAndContinue=Save and continue editing
+crud.cancel=Cancel
+crud.hasErrors=Please correct errors
+crud.blank.title=Add &{% raw %}{%s}{% endraw %}
+crud.saveAndAddAnother=Save and create another
+crud.delete=Delete &{% raw %}{%s}{% endraw %}
+crud.created=The &{% raw %}{%s}{% endraw %} has been created
+crud.saved=The &{% raw %}{%s}{% endraw %} has been saved
+crud.deleted=The &{% raw %}{%s}{% endraw %} has been deleted
+crud.delete.error=Cannot delete this object
+crud.search=Search
+crud.none=(None)
+crud.selectValue=(Please select a value)
+
+crud.help.required=Required.
+crud.help.minlength=Min length is %d.
+crud.help.maxlength=Max length is %d.
+crud.help.email=Valid email address.
+crud.help.dateformat=&{% raw %}{%s}{% endraw %} format.
+crud.help.numeric=Numeric.
+crud.help.min=Must be greater than %d.
+crud.help.future=In the future.
+crud.help.past=In the past.
+crud.help.after=After %s.
+crud.help.before=Before %s.
+crud.help.range=Between %d and %d
