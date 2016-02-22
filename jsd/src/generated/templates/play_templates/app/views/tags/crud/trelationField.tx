@@ -1,19 +1,15 @@
-{% raw %}
-{% block content %}
+%{ pName = 'object.' + _name + '.' + play.db.Model.Manager.factoryFor(_field.property.relationType).keyName() }%
 
-
-{% %{ pName = 'object.' + _name + '.' + play.db.Model.Manager.factoryFor(_field.property.relationType).keyName() }% %}
-
-{% #{field 'object.' + _name} %}
-    <label for="{{ ${field.id} }}">
-       {{ &{_name} }}
+#{field 'object.' + _name}
+    <label for="${field.id}">
+        &{_name}
     </label>
 
-   {% #{if _field.multiple} %}
-        <input type="hidden" name="{{ ${pName} }}" value="" />
-       {% <select id="{{ ${field.id} }}" name="{{ ${pName} }}" multiple="yes"> %}
-            {% %{ _field.choices.each() { }% %}
-            {% %{
+    #{if _field.multiple}
+        <input type="hidden" name="${pName}" value="" />
+        <select id="${field.id}" name="${pName}" multiple="yes">
+            %{ _field.choices.each() { }%
+            %{
                 selected = false;
                 if(field.error?.message != 'validation.required') {
                     if(params[pName]) {
@@ -26,21 +22,21 @@
                         }
                     }
                 }
-            }% %}
-           {% <option value="{{ ${it._key()} }}" {{${selected ? 'selected="true"'.raw() : ''} }}>{{ ${it} }}</option> %}
-           {% %{ } }% %}
-       {% </select> %}
-    {% #{/if} %}
-    {% #{else} %}
-      {%  <select id="{{ ${field.id} }}" name="{{ ${pName} }}"> %}
-            {% #{ifnot _field.required} %}
-                <option value="">{{ &{'crud.none'} }}</option>
-            {% #{/ifnot} %}
-            {% #{else} %}
-                <option value="">{{ &{'crud.selectValue'} }}</option>
-            {% #{/else} %}
-            {% %{ _field.choices.each() { }% %}
-            {% %{
+            }%
+            <option value="${it._key()}" ${selected ? 'selected="true"'.raw() : ''}>${it}</option>
+            %{ } }%
+        </select>
+    #{/if}
+    #{else}
+        <select id="${field.id}" name="${pName}">
+            #{ifnot _field.required}
+                <option value="">&{'crud.none'}</option>
+            #{/ifnot}
+            #{else}
+                <option value="">&{'crud.selectValue'}</option>
+            #{/else}
+            %{ _field.choices.each() { }%
+            %{
                 selected = false
                 if(field.error?.message != 'validation.required') {
                     if(params[pName]) {
@@ -49,16 +45,13 @@
                         selected = it._key() == _value?._key()
                     }
                 }
-            }% %}
-          {%  <option value="{{ ${it._key()} }}" {{ ${selected ? 'selected="true"'.raw() : ''} }}>{{ ${it} }}</option> %}
-           {%  %{ } }% %}
-      {%  </select> %}
-   {% #{/else} %}
+            }%
+            <option value="${it._key()}" ${selected ? 'selected="true"'.raw() : ''}>${it}</option>
+            %{ } }%
+        </select>
+    #{/else}
 
-   {%  #{ifError field.name} %}
-        <span class="error">{{ ${field.error.raw()} }}</span>
-   {% #{/ifError} %}
-{% #{/field} %}
-
-{% endblock content %}
-{% endraw %}
+    #{ifError field.name}
+        <span class="error">${field.error.raw()}</span>
+    #{/ifError}
+#{/field}
