@@ -1,28 +1,19 @@
-{% raw %}
 <!DOCTYPE html>
-
-{% block content %}
-
 <html>
     <head>
         <title>Not found</title>
         <meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}"/>    
     </head>
     <body>
-       {% #{if play.mode.name() == 'DEV'} %}
-        {%   #{404 result /} %}
-       {% #{/if} %}
-       {% #{else} %}
+        #{if play.mode.name() == 'DEV'} 
+           #{404 result /} 
+        #{/if} 
+        #{else} 
             <h1>Not found</h1>
             <p>
-             {%  ${result.message} %}
+               ${result.message} 
             </p>
-      {%  #{/else} %}
+        #{/else} 
     </body>
-    
-
+   
 </html>
-
-
-{% endblock %}
-{% endraw %}
