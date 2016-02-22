@@ -159,6 +159,16 @@ class PlayGenerator(BaseGenerator):
         self.generate_play_public_stylesheet(source_play_public_stylesheets, output_play_public_stylesheets)
         self.generate_play_conf(source_play_conf, output_play_conf)
         self.generate_play_run(source_play_run, output_play_run)
+        self.generate_play_app_controllers_CRUD(source_play_controllers, output_play_controllers)
+
+    def generate_play_app_controllers_CRUD(self, source, output):
+        # list of template files
+        file_gen_list = {'CRUD'}
+
+        # generate the template files
+        for e in file_gen_list:
+            self.generate(source + '/t{e}.tx'.format(e=e),
+                          '{e}.java'.format(e=e), {'model': self.model}, output)
 
     def generate_play_run(self, source, output):
         # list of template files
