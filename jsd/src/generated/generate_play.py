@@ -110,14 +110,17 @@ class PlayGenerator(BaseGenerator):
         base_path = os.path.join(BASE_PATH, self.model.name)
         play_class_html_path = os.path.join(base_path, self.model.name, 'play_class_html')
         play_model_pojo_classes_path = os.path.join(base_path, self.model.name, 'play_model_pojo_classes')
+        play_controller_classes_path = os.path.join(base_path, self.model.name, 'play_controller_classes')
         folder_gen_list = [base_path,
                            play_class_html_path,
-                           play_model_pojo_classes_path]
+                           play_model_pojo_classes_path,
+                           play_controller_classes_path]
 
         # create the folders
         self.init_folder_structure(folder_gen_list)
         self.generate_play_class_html(base_source_path, play_class_html_path)
         self.generate_play_model_bean_classes(base_source_path, play_model_pojo_classes_path)
+        self.generate_play_controller_classes(base_source_path, play_controller_classes_path)
 
     def generate_play_class_html(self, base_source_path, play_class_html_path):
         # list of template files
@@ -202,7 +205,6 @@ class PlayGenerator(BaseGenerator):
                     related_class = prepared_classes.get(attribute_value.type)
                     related_class.prepared_attributes[class_value.name] = PreparedAttribute(class_value.name, class_value.name.lower(), "@OneToOne-generated", {"mappedBy" : PreparedArgument("mappedBy", "\"" + related_class.name + "\"")})
 
-
         return prepared_classes
 
 
@@ -220,4 +222,16 @@ class PlayGenerator(BaseGenerator):
                           '{classname}.java'.format(classname=clazz_key),
                           {'clazz': clazz_value}, play_model_pojo_classes_path)
 
+    def generate_play_controller_classes(self, base_source_path, play_controller_classes_path):
+            # list of template files
+            # file_gen_list = "classname.java"
 
+            prepared_classes = self.prepare_play_data_model()
+
+            # generate the template files
+            for clazz_key, clazz_value in prepared_classes.items():
+                # output_file_name = file_gen_list.replace('class', definition.name)
+
+                self.generate(base_source_path + '/templates' + '/' + 'play_controller_classes' + '/tcontroller_play.tx',
+                              '{classname}.java'.format(classname=clazz_key),
+                              {'clazz': clazz_value}, play_controller_classes_path)

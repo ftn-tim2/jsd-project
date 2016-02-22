@@ -1,0 +1,9 @@
+package controllers;
+
+import play.data.validation.Required;
+import javax.persistence.*;
+import models.*;
+
+public class {{clazz.name}}s extends CRUD{
+
+}
