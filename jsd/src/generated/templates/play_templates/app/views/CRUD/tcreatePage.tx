@@ -1,29 +1,22 @@
-{% raw %}
 
-{% #{extends 'CRUD/layout.html' /} %}
-{% #{set title:messages.get('crud.blank.title', type.modelName) /} %}
+ #{extends 'CRUD/layout.html' /} %}
+ #{set title:messages.get('crud.blank.title', type.modelName) /} 
 
-{% block content %}
+<div id="crudBlank" class=" ${type.name} ">
 
-
-<div id="crudBlank" class="{{ ${type.name} }}">
-
-    <h2 id="crudBlankTitle">{{ &{'crud.blank.title', type.modelName} }}</h2>
+    <h2 id="crudBlankTitle"> &{'crud.blank.title', type.modelName} </h2>
 
     <div class="objectForm">
-   		{% #{form action:@create(), enctype:'multipart/form-data'} %}
-   		{% #{crud.form /} %}
-  		{% #{secure.check 'T_create_' + type}  %}
+   		 #{form action:@create(), enctype:'multipart/form-data'} 
+   		 #{crud.form /} 
+  		 #{secure.check 'T_create_' + type}  
        		 <p class="crudButtons">
-            	<input type="submit" name="_save" value="{{ &{'crud.save', type.modelName} }}" />
-            	<input type="submit" name="_saveAndContinue" value="{{ &{'crud.saveAndContinue', type.modelName} }}" />
-            	<input type="submit" name="_saveAndAddAnother" value="{{ &{'crud.saveAndAddAnother', type.modelName} }}" />
+            	<input type="submit" name="_save" value=" &{'crud.save', type.modelName} " />
+            	<input type="submit" name="_saveAndContinue" value=" &{'crud.saveAndContinue', type.modelName} " />
+            	<input type="submit" name="_saveAndAddAnother" value=" &{'crud.saveAndAddAnother', type.modelName} " />
         	 </p>
-  		{% #{/secure.check} %}
-  		{% #{/form} %}
+  		 #{/secure.check} 
+  		 #{/form} 
     </div>
 
 </div>
-
-{% endblock %}
-{% endraw %}

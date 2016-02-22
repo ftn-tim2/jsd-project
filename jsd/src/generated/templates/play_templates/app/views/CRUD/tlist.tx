@@ -1,31 +1,26 @@
-{% raw %}
-{% #{extends 'CRUD/layout.html' /} %}
-{% #{set title:messages.get('crud.list.title', type.name) /} %}
 
-{% block content %}
+ #{extends 'CRUD/layout.html' /} 
+ #{set title:messages.get('crud.list.title', type.name) /} 
 
-<div id="crudList" class="{{ ${type.name} }}">
+<div id="crudList" class=" ${type.name} ">
 
-    <h2 id="crudListTitle">{{ &{'crud.list.title', type.name} }}</h2>
+    <h2 id="crudListTitle"> &{'crud.list.title', type.name} </h2>
 
     <div id="crudListSearch">
-      {%  #{crud.search /} %}
+        #{crud.search /} 
     </div>
 
     <div id="crudListTable">
-      {%  #{crud.table /} %}
+        #{crud.table /} 
     </div>
 
     <div id="crudListPagination">
-       {% #{crud.pagination /} %}
+        #{crud.pagination /} 
     </div>
-{% #{secure.check 'T_create_' + type} %}
+ #{secure.check 'T_create_' + type} 
     <p id="crudListAdd">
-        <a href="{% @{createPage()} %}">{{ &{'crud.add', type.modelName} }}</a>
+        <a href=" @{createPage()} "> &{'crud.add', type.modelName} </a>
     </p>
-{% #{/secure.check}  %}
+ #{/secure.check}  
 </div>
 
-
-{% endblock %}
-{% endraw %}
