@@ -115,7 +115,7 @@ class PlayGenerator(BaseGenerator):
         folder_gen_list = [base_path,
                            play_class_html_path,
                            play_model_pojo_classes_path,
-                           play_controller_classes_path],
+                           play_controller_classes_path,
                            tags_play_path]
 
         # create the folders
