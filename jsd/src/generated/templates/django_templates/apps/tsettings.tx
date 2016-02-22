@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'bootstrap3',
     'registration',
+    'finalware',
 
     '{{model.name}}',
 )
@@ -53,6 +54,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+SITE_SUPERUSER_USERNAME = '{{model.user.username}}'
+SITE_SUPERUSER_EMAIL = '{{model.user.email}}'
+SITE_SUPERUSER_PASSWORD  = '{{model.user.password}}'
 
 ROOT_URLCONF = 'apps.urls'
 
@@ -79,8 +84,15 @@ WSGI_APPLICATION = 'apps.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'jsd_app_name_db',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'admin',
+        'PASSWORD': 'admin',
+        'HOST': '10.0.2.15', #docker machine ip
+        'PORT': '3306',
+        'OPTIONS': {
+          'autocommit': True,
+        },
     }
 }
 
@@ -134,7 +146,7 @@ BOOTSTRAP3 = {
     'base_url': '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/',
 
     # The complete URL to the Bootstrap CSS file (None means derive it from base_url)
-    'css_url': '{{model.value}}',
+    'css_url': '{{model.css}}',
 
     # The complete URL to the Bootstrap CSS file (None means no theme)
     'theme_url': None,

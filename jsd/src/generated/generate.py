@@ -24,4 +24,4 @@ def main(debug=False, project_type='django'):
 
 
 if __name__ == '__main__':
-    main(False, 'django')
+    main(False, 'play')
