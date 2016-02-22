@@ -117,6 +117,8 @@ class PlayGenerator(BaseGenerator):
         source_play_views_tags_crud = os.path.join(base_source_path, 'app', 'views', 'tags', 'crud')
         source_play_public_javascript = os.path.join(base_source_path, 'public', 'javascript')
         source_play_public_stylesheets = os.path.join(base_source_path, 'public', 'stylesheets')
+        source_play_conf = os.path.join(base_source_path, 'conf')
+        source_play_run = os.path.join(base_source_path)
 
         # path to the target folder
         output_play_controllers = os.path.join(base_output_path, 'app', 'controllers')
@@ -128,6 +130,8 @@ class PlayGenerator(BaseGenerator):
         output_play_views_tags_crud = os.path.join(base_output_path, 'app', 'views', 'tags', 'crud')
         output_play_public_javascript = os.path.join(base_output_path, 'public', 'javascript')
         output_play_public_stylesheets = os.path.join(base_output_path, 'public', 'stylesheets')
+        output_play_conf = os.path.join(base_output_path, 'conf')
+        output_play_run = os.path.join(base_output_path)
 
         folder_gen_list = [base_output_path,
                            output_play_controllers,
@@ -138,7 +142,9 @@ class PlayGenerator(BaseGenerator):
                            output_play_views_errors,
                            output_play_views_tags_crud,
                            output_play_public_javascript,
-                           output_play_public_stylesheets]
+                           output_play_public_stylesheets,
+                           output_play_conf,
+                           output_play_run]
 
         # create the folders
         self.init_folder_structure(folder_gen_list)
@@ -151,6 +157,26 @@ class PlayGenerator(BaseGenerator):
         self.generate_play_controllers(source_play_controllers, output_play_controllers)
         self.generate_play_public_javascript(source_play_public_javascript, output_play_public_javascript)
         self.generate_play_public_stylesheet(source_play_public_stylesheets, output_play_public_stylesheets)
+        self.generate_play_conf(source_play_conf, output_play_conf)
+        self.generate_play_run(source_play_run, output_play_run)
+
+    def generate_play_run(self, source, output):
+        # list of template files
+        file_gen_list = {'run'}
+
+        # generate the template files
+        for e in file_gen_list:
+            self.generate(source + '/t{e}.tx'.format(e=e),
+                          '{e}.sh'.format(e=e), {'model': self.model}, output)
+
+    def generate_play_conf(self, source, output):
+        # list of template files
+        file_gen_list = {'application.conf' , 'dependencies.yml', 'initial-data.yml', 'messages', 'routes'}
+
+        # generate the template files
+        for e in file_gen_list:
+            self.generate(source + '/t{e}'.format(e=e),
+                          '{e}'.format(e=e), {'model': self.model}, output)
 
     def generate_play_view_CRUD(self, source, output):
         # list of template files
