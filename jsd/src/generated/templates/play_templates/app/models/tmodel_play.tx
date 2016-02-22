@@ -3,6 +3,8 @@ package models;
 import play.db.jpa.Model;
 import play.data.validation.Required;
 import javax.persistence.*;
+import java.util.*;
+import java.math.*;
 
 @Entity
 public class {{clazz.name}} extends Model{
