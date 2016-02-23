@@ -14,7 +14,7 @@ class PlayGenerator(BaseGenerator):
 
     def typeDef(self, typedef):
         if typedef == "char":
-            return "char"
+            return "String"
         elif typedef == "int":
             return "Integer"
         elif typedef == "bigInteger":
