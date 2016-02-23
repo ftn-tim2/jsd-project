@@ -1,7 +1,4 @@
-
-<!DOCTYPE html>
-
-
+{% raw %}<!DOCTYPE html>
 <html>
     <head>
         <title>Application error</title>
@@ -20,4 +17,4 @@
            #{/if} 
         #{/else} 
     </body>
-</html>
+</html>{% endraw %}

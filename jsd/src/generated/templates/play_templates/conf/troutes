@@ -1,9 +1,6 @@
-# Routes
+{% raw %}# Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
-
-# Home page
-#GET     /                                       Application.index
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
@@ -13,10 +10,8 @@ GET     /public/                                staticDir:public
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
-# Import Secure routes
-#*      /                						module:secure
+
 
 # Routes for the CRUD module
 # ~~~~~~~~~~~
-*			/											CRUD.index
-
+*			/											CRUD.index{% endraw %}

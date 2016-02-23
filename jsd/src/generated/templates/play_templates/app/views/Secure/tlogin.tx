@@ -1,5 +1,4 @@
-
- #{extends 'Secure/layout.html' /} 
+{% raw %} #{extends 'Secure/layout.html' /}
 <div id="login">
 	
 	<h1 align="center"><a>  &{'secure.title'}  Login </a></h1>
@@ -33,5 +32,4 @@
 			<input type="submit" id="signin" value=" &{' secure.signin'}  " />
 		</p>
 	 #{/form} 
-</div>
-
+</div>{% endraw %}

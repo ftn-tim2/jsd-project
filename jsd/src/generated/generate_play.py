@@ -89,18 +89,7 @@ class PlayGenerator(BaseGenerator):
         for folder in folder_list:
             if not os.path.exists(folder):
                 os.makedirs(folder)
-                
 
-    # @staticmethod
-    #  def init_folder_structure(base_path, templates_path, final_templates_path):
-    #     if not os.path.exists(base_path):
-    #        os.makedirs(base_path)
-    #
-    #   if not os.path.exists(templates_path):
-    #      os.makedirs(templates_path)
-    #
-    # if not os.path.exists(final_templates_path):
-    #    os.makedirs(final_templates_path)
 
     def generate_application(self):
         # path to django templates
@@ -137,7 +126,7 @@ class PlayGenerator(BaseGenerator):
         self.init_folder_structure(folder_gen_list)
         self.generate_play_view_CRUD(base_source_path, output_play_views_CRUD)
         # self.generate_play_view_secure(base_source_path, output_play_views_Secure)
-        # self.generate_play_view_errors(base_source_path, output_play_views_errors)
+        self.generate_play_view_errors(base_source_path, output_play_views_errors)
         self.generate_play_view_tags_crud(base_source_path, output_play_views_tags_crud)
         self.generate_play_view(base_source_path, output_play_views)
         self.generate_play_models_DSL(base_source_path, output_play_models)
@@ -342,13 +331,11 @@ class PlayGenerator(BaseGenerator):
 
     def generate_play_models_DSL(self, source, output):
         # list of template files
-        # file_gen_list = "classname.java"
 
         prepared_classes = self.prepare_play_data_model()
 
         # generate the template files
         for clazz_key, clazz_value in prepared_classes.items():
-            # output_file_name = file_gen_list.replace('class', definition.name)
 
             self.generate(source + '/app' + '/models' + '/tmodel_play.tx',
                           '{classname}.java'.format(classname=clazz_key),
@@ -356,13 +343,11 @@ class PlayGenerator(BaseGenerator):
 
     def generate_play_controllers_DSL(self, source, output):
             # list of template files
-            # file_gen_list = "classname.java"
 
             prepared_classes = self.prepare_play_data_model()
 
             # generate the template files
             for clazz_key, clazz_value in prepared_classes.items():
-                # output_file_name = file_gen_list.replace('class', definition.name)
 
                 self.generate(source + '/app' + '/controllers' + '/tcontroller_play.tx',
                               '{classname}s.java'.format(classname=clazz_key),

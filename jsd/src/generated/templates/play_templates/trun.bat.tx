@@ -1,1 +1,1 @@
-start cmd /k "play dependencies --verbose & play run"
+{% raw %}start cmd /k "play dependencies --verbose & play run"{% endraw %}
