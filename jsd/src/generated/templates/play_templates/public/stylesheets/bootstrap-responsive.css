@@ -1,4 +1,4 @@
-/*!
+{% raw %}/*!
  * Bootstrap Responsive v2.3.2
  *
  * Copyright 2013 Twitter, Inc
@@ -1106,4 +1106,4 @@
     height: auto !important;
     overflow: visible !important;
   }
-}
+}{% endraw %}

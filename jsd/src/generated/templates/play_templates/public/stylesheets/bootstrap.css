@@ -1,4 +1,4 @@
-/*!
+{% raw %}/*!
  * Bootstrap v2.3.2
  *
  * Copyright 2013 Twitter, Inc
@@ -6164,4 +6164,4 @@ a.badge:focus {
 
 .affix {
   position: fixed;
-}
+}{% endraw %}

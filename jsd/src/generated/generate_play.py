@@ -107,19 +107,6 @@ class PlayGenerator(BaseGenerator):
         base_source_path = os.path.join('play_templates')
         base_output_path = os.path.join(BASE_PATH, "PLAY")
 
-        # path to source folders
-        source_play_controllers = os.path.join(base_source_path, 'app', 'controllers')
-        source_play_models = os.path.join(base_source_path, 'app', 'models')
-        source_play_views = os.path.join(base_source_path, 'app', 'views')
-        source_play_views_CRUD = os.path.join(base_source_path, 'app', 'views', 'CRUD')
-        source_play_views_Secure = os.path.join(base_source_path, 'app', 'views', 'Secure')
-        source_play_views_errors = os.path.join(base_source_path, 'app', 'views', 'errors')
-        source_play_views_tags_crud = os.path.join(base_source_path, 'app', 'views', 'tags', 'crud')
-        source_play_public_javascript = os.path.join(base_source_path, 'public', 'javascript')
-        source_play_public_stylesheets = os.path.join(base_source_path, 'public', 'stylesheets')
-        source_play_conf = os.path.join(base_source_path, 'conf')
-        source_play_run = os.path.join(base_source_path)
-
         # path to the target folder
         output_play_controllers = os.path.join(base_output_path, 'app', 'controllers')
         output_play_models = os.path.join(base_output_path, 'app', 'models')
@@ -261,7 +248,7 @@ class PlayGenerator(BaseGenerator):
 
     def generate_play_public_javascript(self,source, output):
         # list of template files
-        file_gen_list = {'jquery-1.5.2.min'}
+        file_gen_list = {'jquery-1.5.2.min', 'bootstrap'}
 
         # generate the template files
         for e in file_gen_list:
@@ -270,7 +257,7 @@ class PlayGenerator(BaseGenerator):
 
     def generate_play_public_stylesheet(self,source, output):
         # list of template files
-        file_gen_list = {'crud', 'main', 'secure'}
+        file_gen_list = {'crud', 'main', 'secure', 'bootstrap', 'bootstrap-responsive'}
 
         # generate the template files
         for e in file_gen_list:
