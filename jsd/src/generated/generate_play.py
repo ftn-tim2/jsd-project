@@ -179,14 +179,12 @@ class PlayGenerator(BaseGenerator):
 
     def generate_play_run(self, source, output):
         # list of template files
-        file_gen_list = {'run'}
+        file_gen_list = {'run.bat', 'run.sh', 'runDB.bat', 'runDb.sh'}
 
         # generate the template files
         for e in file_gen_list:
             self.generate(source + '/t{e}.tx'.format(e=e),
-                          '{e}.sh'.format(e=e), {'model': self.model}, output)
-            self.generate(source + '/t{e}.tx'.format(e=e),
-                          '{e}.bat'.format(e=e), {'model': self.model}, output)
+                          '{e}'.format(e=e), {'model': self.model}, output)
 
     def generate_play_conf(self, source, output):
         # list of template files
