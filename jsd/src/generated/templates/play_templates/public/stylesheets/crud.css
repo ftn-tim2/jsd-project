@@ -130,11 +130,11 @@
 }
 
 .crudSortedAsc:after {
-	content: 'DOWN';
+	content: '▼';
 }
 
 .crudSortedDesc:after {
-	content: 'UP';
+	content: '▲';
 }
 
 /** Forms **/

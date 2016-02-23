@@ -5,9 +5,11 @@ Created on 06.12.2015.
 """
 
 import os
+import codecs
 
 from jinja2.environment import Environment
 from jinja2.loaders import PackageLoader
+
 
 
 class BaseGenerator:
@@ -42,7 +44,7 @@ class BaseGenerator:
 
         file_name = os.path.join(output_dir, output_name)
         print(file_name)
-        with open(file_name, "w+") as f:
+        with codecs.open(file_name, "w+", "utf-8") as f:
             f.write(rendered)
 
     def generate_application(self):
