@@ -210,7 +210,7 @@ class PlayGenerator(BaseGenerator):
 
     def generate_play_view_CRUD(self, source, output):
         # list of template files
-        file_gen_list = {'list', 'index', 'layout', 'createPage', 'show', 'blank'}
+        file_gen_list = {'list', 'index', 'layout', 'show', 'blank'}
 
         # generate the template files
         for e in file_gen_list:
@@ -252,7 +252,7 @@ class PlayGenerator(BaseGenerator):
 
     def generate_play_view(self,source, output):
         # list of template files
-        file_gen_list = {'logout', 'changePassword'}
+        file_gen_list = {'logout'}
 
         # generate the template files
         for e in file_gen_list:
