@@ -185,6 +185,8 @@ class PlayGenerator(BaseGenerator):
         for e in file_gen_list:
             self.generate(source + '/t{e}.tx'.format(e=e),
                           '{e}.sh'.format(e=e), {'model': self.model}, output)
+            self.generate(source + '/t{e}.tx'.format(e=e),
+                          '{e}.bat'.format(e=e), {'model': self.model}, output)
 
     def generate_play_conf(self, source, output):
         # list of template files
