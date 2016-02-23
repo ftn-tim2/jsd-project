@@ -1,2 +1,1 @@
-start cmd /k "play dependencies --verbose"
-play run
+start cmd /k "play dependencies --verbose & play run"
