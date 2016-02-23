@@ -1,4 +1,4 @@
-User:
-    userName: {{model.user.username}}
+User({{model.user.username}}):
+    username: {{model.user.username}}
     password: {{model.user.password}}
-    email: {{model.user.email}}
+    emailAddress: {{model.user.email}}
