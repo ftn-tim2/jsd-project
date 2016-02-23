@@ -1,0 +1,54 @@
+package models;
+
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import javax.persistence.*;
+import java.util.*;
+import java.math.*;
+
+@Entity
+public class User extends Model{
+
+    @Column
+    public String username;
+
+    @Column
+    public String password;
+
+    @Column
+    public String emailAddress;
+
+    public User(String username, String password, String emailAddress){
+        this.username = username;
+        this.password = password;
+        this.emailAddress = emailAddress;
+    }
+
+    public User(){
+        super();
+    }
+
+    public String getUsername(){
+        return username;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+
+    public String getEmailAddress(){
+        return emailAddress;
+    }
+
+    public void setUsername(){
+        this.username = username;
+    }
+
+    public void setPassword(){
+        this.password = password;
+    }
+
+    public void setEmailAddress(){
+        this.emailAddress = emailAddress;
+    }
+}
