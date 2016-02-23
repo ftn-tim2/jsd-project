@@ -7,6 +7,7 @@
         <li>&gt; <a href="@{show(_caller.object._key())}">${_caller.object?.toString()?.escape()?.raw()}</a></li>
     #{/if}
     #{if request.actionMethod == 'blank' || request.actionMethod == 'create'}
-        <li>&gt; <a href="@{createPage()}">&{'crud.blank'}</a></li>
+        <li>&gt; <a href="@{blank()}">&{'crud.blank'}</a></li>
     #{/if}
 </ul>
+

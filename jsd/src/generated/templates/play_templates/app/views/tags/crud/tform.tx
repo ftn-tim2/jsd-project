@@ -69,7 +69,7 @@
             #{crud.dateField name:field.name, value:(currentObject ? currentObject[field.name] : null) /}
             %{ am = messages.get('crud.help.dateformat',play.libs.I18N.getDateFormat()) }%
         #{/if}
-        
+
         #{if field.type == 'relation'}
             #{crud.relationField name:field.name, value:(currentObject ? currentObject[field.name] : null), field:field /}
         #{/if}

@@ -1,54 +1,37 @@
+#{extends 'CRUD/layout.html' /}
+#{set title:messages.get('crud.title') /}
 
- #{extends 'CRUD/layout.html' /} 
- #{set title:messages.get('crud.title')/} 
+<div id="crudIndex">
 
-<div id="crudIndex" align="center">
+    <h2>&{'crud.index.title'}</h2>
 
-	<h2> &{'crud.index.title'} </h2>
+    <table>
+        <thead>
+            <tr>
+                <th>&{'crud.index.objectType'}</th>
+                <th width="20%">&{'crud.index.action'}</th>
+            </tr>
+        </thead>
+        <tbody>
+#{crud.types}
+            <tr>
+                <td>
+                    <a href="${type.listAction}">&{type.name}</a>
+                </td>
+                <td class="crudNew" >
+                    <a href="${type.blankAction}">&{'crud.index.add', type}</a>
+                </td>
+            </tr>
+#{/crud.types}
+        </tbody>
+    </table>
 
-	<table>
-		<thead>
-			<tr>
-				<th> &{'crud.index.objectType'} </th>
-				<th width="20%"> &{'crud.index.action'} </th>
-			</tr>
-		</thead>
-		<tbody>
-			#{crud.types} 
-				 #{secure.check 'T_read_' + type} 
-				<tr>
-					<td><a href=" ${type.listAction} "> &{type.name} </a>
-					</td>
-					 #{secure.check 'T_create_' + type} 
-						<td class="crudNew"><a href=" ${type.createPageAction} "> &{'crud.index.add',type} </a>
-						</td>
-				     #{/secure.check} 
-				</tr>
-				 #{/secure.check} 
-			#{/crud.types} 
-			#{secure.check 'T_hack_others'} 
-				<tr>
-					<td><a href=" @{HackerController.listFiles} ">List Files on HD</a></td>
-				</tr>
-				<tr>
-					<td><a href=" @{HackerController.getusersforteam} ">Connect To database</a></td>
-				</tr>
-			 #{/secure.check} 
-		</tbody>
+    <table >
+        <tr align="center">
+            <td  class="crudButton" >
+                #{a @Secure.logout()}Logout#{/a}
+            </td>
+        </tr>
 	</table>
-	
-	<table > 
-	<tr align="center">
-	<td  class="crudButton" >
-	 #{secure.check 'T_edit_User_'+userID} 
-	<a href=" @{Users.showPassword(userID)} ">Change your password</a>
-	 #{/secure.check} 
-	</td>
-	<td  class="crudButton" >
-	 #{a @Secure.logout()}Logout#{/a} 
-	</td>
-	</tr>
-	</table>
+
 </div>
-
-
