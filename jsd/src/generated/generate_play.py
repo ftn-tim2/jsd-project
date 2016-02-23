@@ -149,17 +149,37 @@ class PlayGenerator(BaseGenerator):
         # create the folders
         self.init_folder_structure(folder_gen_list)
         self.generate_play_view_CRUD(source_play_views_CRUD, output_play_views_CRUD)
-        self.generate_play_view_secure(source_play_views_Secure, output_play_views_Secure)
-        self.generate_play_view_errors(source_play_views_errors, output_play_views_errors)
+        # self.generate_play_view_secure(source_play_views_Secure, output_play_views_Secure)
+        # self.generate_play_view_errors(source_play_views_errors, output_play_views_errors)
         self.generate_play_view_tags_crud(source_play_views_tags_crud, output_play_views_tags_crud)
         self.generate_play_view(source_play_views, output_play_views)
-        self.generate_play_models(source_play_models, output_play_models)
-        self.generate_play_controllers(source_play_controllers, output_play_controllers)
+        self.generate_play_models_DSL(source_play_models, output_play_models)
+        self.generate_play_controllers_DSL(source_play_controllers, output_play_controllers)
         self.generate_play_public_javascript(source_play_public_javascript, output_play_public_javascript)
         self.generate_play_public_stylesheet(source_play_public_stylesheets, output_play_public_stylesheets)
         self.generate_play_conf(source_play_conf, output_play_conf)
         self.generate_play_run(source_play_run, output_play_run)
         self.generate_play_app_controllers_CRUD(source_play_controllers, output_play_controllers)
+        self.generate_play_models_rest(source_play_models, output_play_models)
+        self.generate_play_controllers_rest(source_play_controllers, output_play_controllers)
+
+    def generate_play_controllers_rest(self, source, output):
+        # list of template files
+        file_gen_list = {'Users'}
+
+        # generate the template files
+        for e in file_gen_list:
+            self.generate(source + '/t{e}.tx'.format(e=e),
+                          '{e}.java'.format(e=e), {'classname': e}, output)
+
+    def generate_play_models_rest(self, source, output):
+        # list of template files
+        file_gen_list = {'Bootstrap', 'User'}
+
+        # generate the template files
+        for e in file_gen_list:
+            self.generate(source + '/t{e}.tx'.format(e=e),
+                          '{e}.java'.format(e=e), {'model': self.model}, output)
 
     def generate_play_app_controllers_CRUD(self, source, output):
         # list of template files
@@ -219,11 +239,15 @@ class PlayGenerator(BaseGenerator):
         # list of template files
         file_gen_list = {'checkField', 'custom', 'dateField', 'enumField', 'fileField', 'form', 'hiddenField',
                          'longtextField', 'navigation', 'numberField', 'pagination', 'passwordField', 'relationField',
-                         'search', 'serializedField', 'table', 'textField'}
+                         'search', 'serializedField', 'table', 'textField', 'types'}
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(source + '/t{e}.tx'.format(e=e),
+            if e == 'types':
+                self.generate(source + '/t{e}.tx'.format(e=e),
+                          '{e}.tag'.format(e=e), {'model': self.model}, output)
+            else:
+                self.generate(source + '/t{e}.tx'.format(e=e),
                           '{e}.html'.format(e=e), {'model': self.model}, output)
 
     def generate_play_view(self,source, output):
@@ -329,7 +353,7 @@ class PlayGenerator(BaseGenerator):
         return prepared_classes
 
 
-    def generate_play_models(self, source, output):
+    def generate_play_models_DSL(self, source, output):
         # list of template files
         # file_gen_list = "classname.java"
 
@@ -343,7 +367,7 @@ class PlayGenerator(BaseGenerator):
                           '{classname}.java'.format(classname=clazz_key),
                           {'clazz': clazz_value}, output)
 
-    def generate_play_controllers(self, source, output):
+    def generate_play_controllers_DSL(self, source, output):
             # list of template files
             # file_gen_list = "classname.java"
 
