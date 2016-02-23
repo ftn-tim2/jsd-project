@@ -1,4 +1,4 @@
-html, body {
+{% raw %}html, body {
     background: #ffffff ;
     font-family: 'Lucida grande', verdana, sans-serif;
 }
@@ -93,4 +93,4 @@ html, body {
 
 #login .success {
     background: #008800 !important;
-}
+}{% endraw %}

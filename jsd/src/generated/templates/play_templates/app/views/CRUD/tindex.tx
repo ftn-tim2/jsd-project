@@ -1,4 +1,4 @@
-#{extends 'CRUD/layout.html' /}
+{% raw %}#{extends 'CRUD/layout.html' /}
 #{set title:messages.get('crud.title') /}
 
 <div id="crudIndex">
@@ -26,12 +26,4 @@
         </tbody>
     </table>
 
-    <table >
-        <tr align="center">
-            <td  class="crudButton" >
-                #{a @Secure.logout()}Logout#{/a}
-            </td>
-        </tr>
-	</table>
-
-</div>
+</div>{% endraw %}

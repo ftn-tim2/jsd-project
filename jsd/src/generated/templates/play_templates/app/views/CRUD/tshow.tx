@@ -1,4 +1,4 @@
-#{extends 'CRUD/layout.html' /}
+{% raw %}#{extends 'CRUD/layout.html' /}
 #{set title:messages.get('crud.show.title', type.modelName) /}
 
 <div id="crudShow" class="${type.name}">
@@ -21,4 +21,4 @@
         </p>
     #{/form}
 
-</div>
+</div>{% endraw %}

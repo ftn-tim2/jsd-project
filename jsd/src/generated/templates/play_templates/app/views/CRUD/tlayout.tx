@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% raw %}<!DOCTYPE html>
 
 <html lang="${lang}">
     <head>
@@ -38,4 +38,4 @@
         </div>
 
     </body>
-</html>
+</html>{% endraw %}

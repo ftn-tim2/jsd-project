@@ -1,4 +1,4 @@
-#{field 'object.' + _name}
+{% raw %}#{field 'object.' + _name}
     <label for="${field.id}">
         &{_name}
     </label>
@@ -10,4 +10,4 @@
         <a class="currentAttachment" href="@{attachment(_id, _name)}">Download current file (${_value.length().formatSize()})</a>
         <span class="removeAttachment"><input type="checkbox" name="${field.name}_delete_" value="true" /> (delete)</span>
     #{/if}
-#{/field}
+#{/field}{% endraw %}

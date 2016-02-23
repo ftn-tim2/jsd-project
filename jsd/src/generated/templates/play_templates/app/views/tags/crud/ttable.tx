@@ -1,4 +1,4 @@
-%{
+{% raw %}%{
     // Eval fields tags
     def fieldsHandler = [:]
     if(_body) {
@@ -79,4 +79,4 @@
         %{ } }%
     </tr>
     %{ } }%
-</table>
+</table>{% endraw %}
