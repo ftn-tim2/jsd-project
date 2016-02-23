@@ -13,6 +13,7 @@ import play.data.validation.*;
 import play.exceptions.*;
 import play.i18n.*;
 
+@With(Secure.class)
 public abstract class CRUD extends Controller {
 
     @Before
