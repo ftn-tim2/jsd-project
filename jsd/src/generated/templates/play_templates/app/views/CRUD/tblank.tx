@@ -1,19 +1,16 @@
-{% raw %}#{extends 'CRUD/layout.html' /}
+{% raw %}
+#{extends 'CRUD/layout.html' /}
 #{set title:messages.get('crud.blank.title', type.modelName) /}
 
-<div id="crudBlank" class="${type.name}">
+<h2>&{'crud.blank.title', type.modelName}</h2>
+<hr>
 
-    <h2 id="crudBlankTitle">&{'crud.blank.title', type.modelName}</h2>
-
-    <div class="objectForm">
-    #{form action:@create(), enctype:'multipart/form-data'}
-        #{crud.form /}
-        <p class="crudButtons">
-            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
-            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
-            <input type="submit" name="_saveAndAddAnother" value="&{'crud.saveAndAddAnother', type.modelName}" />
-        </p>
-    #{/form}
+#{form action:@create(), enctype:'multipart/form-data', class:'form-horizontal'}
+    #{crud.form /}
+    <div class="form-actions">
+        <input type="submit" class="btn btn-primary" name="_save" value="&{'crud.save', type.modelName}" />
+        <a href="@{list()}" class="btn">&{'crud.cancel', type.modelName}</a>
     </div>
+#{/form}
 
-</div>{% endraw %}
+{% endraw %}

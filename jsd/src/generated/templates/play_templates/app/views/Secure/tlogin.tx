@@ -1,35 +1,38 @@
 {% raw %} #{extends 'Secure/layout.html' /}
-<div id="login">
+#{extends 'Secure/layout.html' /}
+
+<div id="login" class="login">
 	
-	<h1 align="center"><a>  &{'secure.title'}  Login </a></h1>
+	<h1 align="center">&{'secure.title'}</h1>
 		
-	 #{form @authenticate()} 
+	#{form @authenticate()}
 		
-		 #{if flash.error} 
+		#{if flash.error}
 			<p class="error">
-				&{flash.error} 
+				&{flash.error}
 			</p>
-		 #{/if} 
-		 #{if flash.success} 
+		#{/if}
+		#{if flash.success}
 			<p class="success">
-				&{flash.success} 
+				&{flash.success}
 			</p>
-		 #{/if} 
+		#{/if}
 	
-		<p id="username-field">
-			<label for="username"> &{' secure.username '} </label>
-			<input type="text" name="username" id="username" value=" ${flash.username} " />
+		<p id="username-field" align="center">
+			<label for="username">&{'secure.username'}</label>
+			<input type="text" name="username" id="username" value="${flash.username}" />
 		</p>
-		<p id="password-field">
-			<label for="password"> &{'secure.password'}  </label>
+		<p id="password-field" align="center">
+			<label for="password">&{'secure.password'}</label>
 			<input type="password" name="password" id="password" value="" />
 		</p>
-		<p id="remember-field">
-			<input type="checkbox" name="remember" id="remember" value="true"   ${ flash.remember ? 'checked="true"' : ''}  />
-			<label for="remember">  &{'secure.remember'}  </label>
+		<p id="remember-field" align="center">
+			<input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
+			<label for="remember">&{'secure.remember'}</label>
 		</p>
 		<p id="signin-field">
-			<input type="submit" id="signin" value=" &{' secure.signin'}  " />
+			<input type="submit" id="signin" value="&{'secure.signin'}" />
 		</p>
-	 #{/form} 
-</div>{% endraw %}
+	#{/form}
+</div>
+{% endraw %}

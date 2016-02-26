@@ -104,8 +104,8 @@ class PlayGenerator(BaseGenerator):
         output_play_views_Secure = os.path.join(base_output_path, 'app', 'views', 'Secure')
         output_play_views_errors = os.path.join(base_output_path, 'app', 'views', 'errors')
         output_play_views_tags_crud = os.path.join(base_output_path, 'app', 'views', 'tags', 'crud')
-        output_play_public_javascript = os.path.join(base_output_path, 'public', 'javascript')
-        output_play_public_stylesheets = os.path.join(base_output_path, 'public', 'stylesheets')
+        output_play_public_javascript = os.path.join(base_output_path, 'public', 'js')
+        output_play_public_stylesheets = os.path.join(base_output_path, 'public', 'css')
         output_play_conf = os.path.join(base_output_path, 'conf')
         output_play_run = os.path.join(base_output_path)
 
@@ -125,7 +125,7 @@ class PlayGenerator(BaseGenerator):
         # create the folders
         self.init_folder_structure(folder_gen_list)
         self.generate_play_view_CRUD(base_source_path, output_play_views_CRUD)
-        # self.generate_play_view_secure(base_source_path, output_play_views_Secure)
+        self.generate_play_view_secure(base_source_path, output_play_views_Secure)
         self.generate_play_view_errors(base_source_path, output_play_views_errors)
         self.generate_play_view_tags_crud(base_source_path, output_play_views_tags_crud)
         self.generate_play_view(base_source_path, output_play_views)
@@ -138,6 +138,7 @@ class PlayGenerator(BaseGenerator):
         self.generate_play_app_controllers_CRUD(base_source_path, output_play_controllers)
         self.generate_play_models_rest(base_source_path, output_play_models)
         self.generate_play_controllers_rest(base_source_path, output_play_controllers)
+        
 
     def generate_play_controllers_rest(self, source, output):
         # list of template files
@@ -195,7 +196,7 @@ class PlayGenerator(BaseGenerator):
 
     def generate_play_view_secure(self,source, output):
         # list of template files
-        file_gen_list = {'login'}
+        file_gen_list = {'login','layout'}
 
         # generate the template files
         for e in file_gen_list:
@@ -237,22 +238,23 @@ class PlayGenerator(BaseGenerator):
 
     def generate_play_public_javascript(self,source, output):
         # list of template files
-        file_gen_list = {'jquery-1.5.2.min', 'bootstrap'}
+        file_gen_list = {'jquery', 'bootstrap-alert', 'bootstrap-button', 'bootstrap-dropdown', 'redactor.min'}
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(source + '/public' + '/javascript' + '/{e}.js'.format(e=e),
+            self.generate(source + '/public' + '/js' + '/{e}.js'.format(e=e),
                           '{e}.js'.format(e=e), {'model': self.model}, output)
 
     def generate_play_public_stylesheet(self,source, output):
         # list of template files
-        file_gen_list = {'crud', 'main', 'secure', 'bootstrap', 'bootstrap-responsive'}
+        file_gen_list = { 'secure', 'bootstrap', 'redactor'}
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(source + '/public' + '/stylesheets' + '/{e}.css'.format(e=e),
+            self.generate(source + '/public' + '/css' + '/{e}.css'.format(e=e),
                           '{e}.css'.format(e=e), {'model': self.model}, output)
-
+            
+            
     def prepare_play_data_model(self):
         class PreparedClass:
             def __init__(self, name, prepared_attributes):
