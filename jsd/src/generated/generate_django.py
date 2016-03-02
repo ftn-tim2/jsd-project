@@ -1,5 +1,6 @@
 import distutils.core
 import os
+import re
 
 from generated.base_generator import BaseGenerator
 from root import BASE_PATH, ROOT_DIR
@@ -11,12 +12,13 @@ class DjangoGenerator(BaseGenerator):
         pass
 
     def typeDef(self, typedef):
-        type_list = ['bigInteger', 'binary', 'boolean', 'char', 'commaSeparatedInteger', 'date', 'dateTime', 'decimal',
-                     'duration', 'email', 'file', 'filePath', 'float', 'image', 'nullBoolean', 'positiveInteger',
-                     'positiveSmallInteger', 'slug', 'smallInteger', 'text', 'time', 'URL', 'UUID',
-                     'manyToMany', 'oneToOne']
+        type_list = ['binary', 'boolean', 'char', 'date',  'decimal',
+                     'duration', 'email', 'file', 'float', 'image','slug', 
+                     'text', 'time', 'URL', 'UUID','dateTime','manyToMany', 'oneToOne','bigInteger',
+                    'commaSeparatedInteger','filePath', 'nullBoolean', 'positiveInteger',
+                    'positiveSmallInteger','smallInteger']
         if typedef in type_list:
-            return typedef.title() + 'Field'
+            return re.sub('([a-zA-Z])', lambda x: x.groups()[0].upper(), typedef, 1) + 'Field'
 
         type_list_special_case = ['int', 'foreignKey']
         if typedef in type_list_special_case:
@@ -48,9 +50,9 @@ class DjangoGenerator(BaseGenerator):
     @staticmethod
     def call_post_gen_script(base_path):
         os.chdir(base_path)
-        os.system('python3.5 ./manage.py migrate')
-        os.system('python3.5 ./manage.py collectstatic --noinput')
-        # os.system('python ./manage.py runserver')
+        os.system('python ./manage.py migrate')
+        os.system('python ./manage.py collectstatic --noinput')
+        os.system('python ./manage.py runserver')
 
     def generate_application(self):
         # path to django templates

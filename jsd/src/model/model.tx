@@ -21,7 +21,7 @@ Attribute:
 	type = FieldType name = STRING ("(" arguments *= Arguments[","] ")")? 
 ;
 
-FieldType: "bigInteger" | "binary" | "boolean" | "char" | "commaSeparatedInteger" | "date" | "dateTime" | "decimal" | "duration" | "email" | "file" | "filePath" | "float" | "image" | "int" | "nullBoolean" | "positiveInteger" | "positiveSmallInteger" | "slug" | "smallInteger" | "text" | "time" | "URL" | "UUID" | "foreignKey"| "manyToMany" | "oneToOne"
+FieldType: "bigInteger" | "binary" | "boolean" | "char" | "commaSeparatedInteger" | "Date" | "dateTime" | "decimal" | "duration" | "email" | "file" | "filePath" | "float" | "image" | "int" | "nullBoolean" | "positiveInteger" | "positiveSmallInteger" | "slug" | "smallInteger" | "text" | "time" | "URL" | "UUID" | "foreignKey"| "manyToMany" | "oneToOne"
 ;
 
 Arguments:
