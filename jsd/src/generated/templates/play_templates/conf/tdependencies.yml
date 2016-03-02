@@ -1,5 +1,5 @@
-require:
+{% raw %}require:
   - play
   - play -> db 1.1.1
   - org.apache.poi -> poi 3.7
-  - play -> secure
+  - play -> secure{% endraw %}

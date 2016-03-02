@@ -1,4 +1,4 @@
-%{ nbPages = _caller.count.page(controllers.CRUD.getPageSize()) }%
+{% raw %}%{ nbPages = _caller.count.page(controllers.CRUD.getPageSize()) }%
 
 <p class="crudCount">
     &{'crud.list.size', _caller.count, _caller.type.name}
@@ -59,4 +59,4 @@
         #{/if}
 
     </p>
-#{/if}
+#{/if}{% endraw %}

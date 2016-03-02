@@ -1,4 +1,4 @@
-%{
+{% raw %}%{
     if(_object) {
         currentObject = _object
         currentType = _('controllers.CRUD$ObjectType').forClass(_object.getClass().getName())
@@ -135,4 +135,4 @@
 
 </div>
 
-#{/list}
+#{/list}{% endraw %}

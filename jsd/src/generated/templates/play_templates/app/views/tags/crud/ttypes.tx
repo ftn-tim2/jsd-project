@@ -1,4 +1,4 @@
-%{
+{% raw %}%{
     models = [];
     for(controllerClass in play.Play.classloader.getAssignableClasses(_('controllers.CRUD'))) {
         resourceModel = _('controllers.CRUD$ObjectType').get(controllerClass)
@@ -21,4 +21,4 @@
 		attrs.put('type', item)
 	}%
     #{doBody vars:attrs /}
-%{ } }%
+%{ } }%{% endraw %}

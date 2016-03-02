@@ -1,0 +1,2 @@
+{% raw %}play dependencies --verbose
+play run{% endraw %}

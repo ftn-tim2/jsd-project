@@ -62,9 +62,12 @@ public class {{clazz.name}} extends Model{
     public String toString(){
         return "{{clazz.name}}{" +
     {% for attribute_key, attribute_value in clazz.prepared_attributes.items() %}
-                "{{attribute_value.name}} = " + {{attribute_value.name}} + {% if not loop.last %}", " + {% endif %}
+                {% if attribute_value.annotation is equalto '@Column'%}
+                "{{attribute_value.name}} = " + {{attribute_value.name}} +
+                {% endif %}
+                {% if not loop.last %}", " + {% endif %}
                 {% if loop.last %}"}";{% endif %}
-
+                
     {% endfor %}
     }
 }

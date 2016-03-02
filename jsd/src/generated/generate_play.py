@@ -14,7 +14,7 @@ class PlayGenerator(BaseGenerator):
 
     def typeDef(self, typedef):
         if typedef == "char":
-            return "char"
+            return "String"
         elif typedef == "int":
             return "Integer"
         elif typedef == "bigInteger":
@@ -89,36 +89,12 @@ class PlayGenerator(BaseGenerator):
         for folder in folder_list:
             if not os.path.exists(folder):
                 os.makedirs(folder)
-                
 
-    # @staticmethod
-    #  def init_folder_structure(base_path, templates_path, final_templates_path):
-    #     if not os.path.exists(base_path):
-    #        os.makedirs(base_path)
-    #
-    #   if not os.path.exists(templates_path):
-    #      os.makedirs(templates_path)
-    #
-    # if not os.path.exists(final_templates_path):
-    #    os.makedirs(final_templates_path)
 
     def generate_application(self):
         # path to django templates
         base_source_path = os.path.join('play_templates')
         base_output_path = os.path.join(BASE_PATH, "PLAY")
-
-        # path to source folders
-        source_play_controllers = os.path.join(base_source_path, 'app', 'controllers')
-        source_play_models = os.path.join(base_source_path, 'app', 'models')
-        source_play_views = os.path.join(base_source_path, 'app', 'views')
-        source_play_views_CRUD = os.path.join(base_source_path, 'app', 'views', 'CRUD')
-        source_play_views_Secure = os.path.join(base_source_path, 'app', 'views', 'Secure')
-        source_play_views_errors = os.path.join(base_source_path, 'app', 'views', 'errors')
-        source_play_views_tags_crud = os.path.join(base_source_path, 'app', 'views', 'tags', 'crud')
-        source_play_public_javascript = os.path.join(base_source_path, 'public', 'javascript')
-        source_play_public_stylesheets = os.path.join(base_source_path, 'public', 'stylesheets')
-        source_play_conf = os.path.join(base_source_path, 'conf')
-        source_play_run = os.path.join(base_source_path)
 
         # path to the target folder
         output_play_controllers = os.path.join(base_output_path, 'app', 'controllers')
@@ -128,8 +104,8 @@ class PlayGenerator(BaseGenerator):
         output_play_views_Secure = os.path.join(base_output_path, 'app', 'views', 'Secure')
         output_play_views_errors = os.path.join(base_output_path, 'app', 'views', 'errors')
         output_play_views_tags_crud = os.path.join(base_output_path, 'app', 'views', 'tags', 'crud')
-        output_play_public_javascript = os.path.join(base_output_path, 'public', 'javascript')
-        output_play_public_stylesheets = os.path.join(base_output_path, 'public', 'stylesheets')
+        output_play_public_javascript = os.path.join(base_output_path, 'public', 'js')
+        output_play_public_stylesheets = os.path.join(base_output_path, 'public', 'css')
         output_play_conf = os.path.join(base_output_path, 'conf')
         output_play_run = os.path.join(base_output_path)
 
@@ -148,20 +124,21 @@ class PlayGenerator(BaseGenerator):
 
         # create the folders
         self.init_folder_structure(folder_gen_list)
-        self.generate_play_view_CRUD(source_play_views_CRUD, output_play_views_CRUD)
-        # self.generate_play_view_secure(source_play_views_Secure, output_play_views_Secure)
-        # self.generate_play_view_errors(source_play_views_errors, output_play_views_errors)
-        self.generate_play_view_tags_crud(source_play_views_tags_crud, output_play_views_tags_crud)
-        self.generate_play_view(source_play_views, output_play_views)
-        self.generate_play_models_DSL(source_play_models, output_play_models)
-        self.generate_play_controllers_DSL(source_play_controllers, output_play_controllers)
-        self.generate_play_public_javascript(source_play_public_javascript, output_play_public_javascript)
-        self.generate_play_public_stylesheet(source_play_public_stylesheets, output_play_public_stylesheets)
-        self.generate_play_conf(source_play_conf, output_play_conf)
-        self.generate_play_run(source_play_run, output_play_run)
-        self.generate_play_app_controllers_CRUD(source_play_controllers, output_play_controllers)
-        self.generate_play_models_rest(source_play_models, output_play_models)
-        self.generate_play_controllers_rest(source_play_controllers, output_play_controllers)
+        self.generate_play_view_CRUD(base_source_path, output_play_views_CRUD)
+        self.generate_play_view_secure(base_source_path, output_play_views_Secure)
+        self.generate_play_view_errors(base_source_path, output_play_views_errors)
+        self.generate_play_view_tags_crud(base_source_path, output_play_views_tags_crud)
+        self.generate_play_view(base_source_path, output_play_views)
+        self.generate_play_models_DSL(base_source_path, output_play_models)
+        self.generate_play_controllers_DSL(base_source_path, output_play_controllers)
+        self.generate_play_public_javascript(base_source_path, output_play_public_javascript)
+        self.generate_play_public_stylesheet(base_source_path, output_play_public_stylesheets)
+        self.generate_play_conf(base_source_path, output_play_conf)
+        self.generate_play_run(base_source_path, output_play_run)
+        self.generate_play_app_controllers_CRUD(base_source_path, output_play_controllers)
+        self.generate_play_models_rest(base_source_path, output_play_models)
+        self.generate_play_controllers_rest(base_source_path, output_play_controllers)
+        
 
     def generate_play_controllers_rest(self, source, output):
         # list of template files
@@ -169,7 +146,7 @@ class PlayGenerator(BaseGenerator):
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(os.path.join(source, 't{e}.tx'.format(e=e)),
+            self.generate(source + '/app' + '/controllers' + '/t{e}.tx'.format(e=e),
                           '{e}.java'.format(e=e), {'classname': e}, output)
 
     def generate_play_models_rest(self, source, output):
@@ -178,7 +155,7 @@ class PlayGenerator(BaseGenerator):
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(os.path.join(source, 't{e}.tx'.format(e=e)),
+            self.generate(source + '/app' + '/models' + '/t{e}.tx'.format(e=e),
                           '{e}.java'.format(e=e), {'model': self.model}, output)
 
     def generate_play_app_controllers_CRUD(self, source, output):
@@ -187,17 +164,17 @@ class PlayGenerator(BaseGenerator):
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(os.path.join(source, 't{e}.tx'.format(e=e)),
+            self.generate(source + '/app' + '/controllers' + '/t{e}.tx'.format(e=e),
                           '{e}.java'.format(e=e), {'model': self.model}, output)
 
     def generate_play_run(self, source, output):
         # list of template files
-        file_gen_list = {'run'}
+        file_gen_list = {'run.bat', 'run.sh', 'runDB.bat', 'runDb.sh'}
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(os.path.join(source, 't{e}.tx'.format(e=e)),
-                          '{e}.sh'.format(e=e), {'model': self.model}, output)
+            self.generate(source + '/t{e}.tx'.format(e=e),
+                          '{e}'.format(e=e), {'model': self.model}, output)
 
     def generate_play_conf(self, source, output):
         # list of template files
@@ -205,7 +182,7 @@ class PlayGenerator(BaseGenerator):
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(os.path.join(source, 't{e}'.format(e=e)),
+            self.generate(source + '/conf' + '/t{e}'.format(e=e),
                           '{e}'.format(e=e), {'model': self.model}, output)
 
     def generate_play_view_CRUD(self, source, output):
@@ -214,16 +191,16 @@ class PlayGenerator(BaseGenerator):
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(os.path.join(source, 't{e}.tx'.format(e=e)),
+            self.generate(source + '/app' + '/views' + '/CRUD' + '/t{e}.tx'.format(e=e),
                           '{e}.html'.format(e=e), {'model': self.model}, output)
 
     def generate_play_view_secure(self,source, output):
         # list of template files
-        file_gen_list = {'login'}
+        file_gen_list = {'login','layout'}
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(os.path.join(source, 't{e}.tx'.format(e=e)),
+            self.generate(source + '/app' + '/views' + '/Secure' + '/t{e}.tx'.format(e=e),
                           '{e}.html'.format(e=e), {'model': self.model}, output)
 
     def generate_play_view_errors(self,source, output):
@@ -232,7 +209,7 @@ class PlayGenerator(BaseGenerator):
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(os.path.join(source, 't{e}.tx'.format(e=e)),
+            self.generate(source + '/app' + '/views' + '/errors' + '/t{e}.tx'.format(e=e),
                           '{e}.html'.format(e=e), {'model': self.model}, output)
 
     def generate_play_view_tags_crud(self,source, output):
@@ -244,10 +221,10 @@ class PlayGenerator(BaseGenerator):
         # generate the template files
         for e in file_gen_list:
             if e == 'types':
-                self.generate(os.path.join(source, 't{e}.tx'.format(e=e)),
+                self.generate(source + '/app' + '/views' + '/tags' + '/crud' + '/t{e}.tx'.format(e=e),
                           '{e}.tag'.format(e=e), {'model': self.model}, output)
             else:
-                self.generate(os.path.join(source, 't{e}.tx'.format(e=e)),
+                self.generate(source + '/app' + '/views' + '/tags' + '/crud' + '/t{e}.tx'.format(e=e),
                           '{e}.html'.format(e=e), {'model': self.model}, output)
 
     def generate_play_view(self,source, output):
@@ -256,27 +233,28 @@ class PlayGenerator(BaseGenerator):
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(os.path.join(source, 't{e}.tx'.format(e=e)),
+            self.generate(source + '/app' + '/views' + '/t{e}.tx'.format(e=e),
                           '{e}.html'.format(e=e), {'model': self.model}, output)
 
     def generate_play_public_javascript(self,source, output):
         # list of template files
-        file_gen_list = {'jquery-1.5.2.min'}
+        file_gen_list = {'jquery', 'bootstrap-alert', 'bootstrap-button', 'bootstrap-dropdown', 'redactor.min'}
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(os.path.join(source, '{e}.js'.format(e=e)),
+            self.generate(source + '/public' + '/js' + '/{e}.js'.format(e=e),
                           '{e}.js'.format(e=e), {'model': self.model}, output)
 
     def generate_play_public_stylesheet(self,source, output):
         # list of template files
-        file_gen_list = {'crud', 'main', 'secure'}
+        file_gen_list = { 'secure', 'bootstrap', 'redactor'}
 
         # generate the template files
         for e in file_gen_list:
-            self.generate(os.path.join(source, '{e}.css'.format(e=e)),
+            self.generate(source + '/public' + '/css' + '/{e}.css'.format(e=e),
                           '{e}.css'.format(e=e), {'model': self.model}, output)
-
+            
+            
     def prepare_play_data_model(self):
         class PreparedClass:
             def __init__(self, name, prepared_attributes):
@@ -355,28 +333,24 @@ class PlayGenerator(BaseGenerator):
 
     def generate_play_models_DSL(self, source, output):
         # list of template files
-        # file_gen_list = "classname.java"
 
         prepared_classes = self.prepare_play_data_model()
 
         # generate the template files
         for clazz_key, clazz_value in prepared_classes.items():
-            # output_file_name = file_gen_list.replace('class', definition.name)
 
-            self.generate(os.path.join(source, 'tmodel_play.tx'),
+            self.generate(source + '/app' + '/models' + '/tmodel_play.tx',
                           '{classname}.java'.format(classname=clazz_key),
                           {'clazz': clazz_value}, output)
 
     def generate_play_controllers_DSL(self, source, output):
             # list of template files
-            # file_gen_list = "classname.java"
 
             prepared_classes = self.prepare_play_data_model()
 
             # generate the template files
             for clazz_key, clazz_value in prepared_classes.items():
-                # output_file_name = file_gen_list.replace('class', definition.name)
 
-                self.generate(os.path.join(source, 'tcontroller_play.tx'),
+                self.generate(source + '/app' + '/controllers' + '/tcontroller_play.tx',
                               '{classname}s.java'.format(classname=clazz_key),
                               {'clazz': clazz_value}, output)

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% raw %}<!DOCTYPE html>
 <html>
     <head>
         <title>Not found</title>
@@ -16,4 +16,4 @@
         #{/else} 
     </body>
    
-</html>
+</html>{% endraw %}
