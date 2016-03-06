@@ -96,7 +96,7 @@ class DjangoGenerator(BaseGenerator):
         self.generate_root_html(base_source_path, root_html_path)
 
         # post gen events
-        self.call_post_gen_script(base_path)
+        # self.call_post_gen_script(base_path)
 
     def generate_program_files(self, base_source_path, program_path):
         # program files

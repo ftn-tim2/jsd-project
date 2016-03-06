@@ -25,7 +25,7 @@ FieldType: "bigInteger" | "binary" | "boolean" | "char" | "commaSeparatedInteger
 ;
 
 Arguments:
-	Null | Blank | Choices | DBColumn | DBIndex | Default | Description | Editable | ErrorMessages | HelpText | PrimaryKey | Unique | VerboseName | Validators | Match | Recursive | AllowFiles | AllowFolders | Max_lenght | Height | Width | OnDelete | LimitChoices | RelatedName | RelatedQueryName | DBTable | DBConstraint | Swappable | ParentLink | Key | DecimalPlaces | MaxDigits | Path | UploadTo | Storage | DBTableSpace 
+	Null | Blank | Choices | DBColumn | DBIndex | Default | Description | Editable | ErrorMessages | HelpText | PrimaryKey | Unique | VerboseName | Validators | Match | Recursive | AllowFiles | AllowFolders | Max_lenght | Height | Width | OnDelete | LimitChoices | RelatedName | RelatedQueryName | DBTable | DBConstraint | Swappable | ParentLink | Key | DecimalPlaces | MaxDigits | Path | UploadTo | Storage | DBTableSpace | To
 ;
 
 Null:
@@ -184,3 +184,6 @@ ParentLink:
 	name="parent_link" "=" value=BOOL
 ;
 
+To:
+	name="to" "=" value=STRING
+;
