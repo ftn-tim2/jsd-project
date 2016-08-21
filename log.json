@@ -1,0 +1,882 @@
+[{
+  "commit": "870661818a57208f2b0a55d95e1f543b90d20027",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 23:57:44 2016 +0100",
+  "message": "Merge-branch-master-of-personal-ftn-tim2-jsd-project"
+},
+{
+  "commit": "4831f72a03662c88d045645b0743e32582dbf56e",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 23:57:23 2016 +0100",
+  "message": "cleanup-project-and-wrapping-files-with-raw-jinja-tag"
+},
+{
+  "commit": "b1010ea378c5d26fc67ee0a623fcc646fc0652a6",
+  "author": "Kovács József <thekrushka@gmail.com>",
+  "date": "Tue Feb 23 23:49:27 2016 +0100",
+  "message": "Update-README.md"
+},
+{
+  "commit": "73b07d2d0b97335bf56e805c50c813df8ea6a973",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 23:39:57 2016 +0100",
+  "message": "improved-bat-file"
+},
+{
+  "commit": "5d39bc613c0fd9972e6c7e9995273964cffd8c0d",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 23:33:15 2016 +0100",
+  "message": "generating-seperate-startup-files-for-windows-and-unix-like-systems"
+},
+{
+  "commit": "aa3513d76355891f7ecbc88d252f291ddc9ffa74",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 22:38:25 2016 +0100",
+  "message": "generating-run.bat-file-for-windows-systems"
+},
+{
+  "commit": "146f7859f6a915fc6c05af07cd8029d67315b2f2",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 22:36:04 2016 +0100",
+  "message": "wrapped-addes-javascipt-and-css-with-raw-tags.-delete-unnecessary-javascript-and-css-files.-add-new-javascrpit-and-css-files-to-generator"
+},
+{
+  "commit": "7e0ebde2716de7c76a444fed64488fdd17bf0214",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 21:34:39 2016 +0100",
+  "message": "refactoring-paths-for-generator-methods"
+},
+{
+  "commit": "e5ead99980a76ca8402a41b377296348727bf598",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 21:20:14 2016 +0100",
+  "message": "Merge-branch-master-of-personal-ftn-tim2-jsd-project"
+},
+{
+  "commit": "bf5e4dac5036af9b856e4f2e2071af146b0b8594",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 21:20:09 2016 +0100",
+  "message": "all-out-of-box-templates-are-now-wrapped-with-jinja-raw"
+},
+{
+  "commit": "5631b27b8fd2c1086818db11168abcbb9357bae9",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Tue Feb 23 20:11:00 2016 +0100",
+  "message": "Dodavanje-bootstrap-a-za-play-aplikaciju"
+},
+{
+  "commit": "e9a58cea0a1f7f5615792a3335547806a282ed7f",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 18:49:27 2016 +0100",
+  "message": "minor-fix-for-attribute-generation"
+},
+{
+  "commit": "060f9ee223fc56f1e2cd5c87f7fe8fe66412ec58",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 17:32:14 2016 +0100",
+  "message": "make-the-paths-more-generic"
+},
+{
+  "commit": "64db5865996a57ff591677c0b03c1f28d200f1e9",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 17:19:09 2016 +0100",
+  "message": "add-utf-8-encoding-to-python-write-to-file-function"
+},
+{
+  "commit": "56d0bd5fcfba287049af778a7b658dee1b3ff8e9",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 17:18:44 2016 +0100",
+  "message": "removing-file-names-from-list"
+},
+{
+  "commit": "5cf702ae06d26c41d072d458c3379cc66426b3cc",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 17:17:56 2016 +0100",
+  "message": "escaping-jinja2-tags"
+},
+{
+  "commit": "c8f8c92253a1c6c8f5327ffd10faf2aa0ec25011",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Tue Feb 23 17:15:34 2016 +0100",
+  "message": "Ispravka-nad-html-stranicama-play-a"
+},
+{
+  "commit": "4da65816c6027add52ebd0a8202f62759dd6969c",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 14:45:49 2016 +0100",
+  "message": "extend-Security-inner-class-from-secure-module-and-override-authenticate-method-in-jinja-template"
+},
+{
+  "commit": "77a5be8464e087ef3de0f1ee5f0f1db06d26b6bb",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 14:45:06 2016 +0100",
+  "message": "minor-fixes-in-template-of-initial-data.yml-and-routes"
+},
+{
+  "commit": "c26d32f65f61ca1e45664c14bea0797528f7dab2",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 14:44:29 2016 +0100",
+  "message": "minor-fix-for-CRUD-controller-template"
+},
+{
+  "commit": "9df9b80f24993ad3dbd7d8e89ba64b1e562c54b8",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 13:26:55 2016 +0100",
+  "message": "added-Bootstrap-template"
+},
+{
+  "commit": "3e0897cb113b32135543b03da6463c059853e0a3",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 13:26:41 2016 +0100",
+  "message": "added-With-annotation-for-CRUD-class.-You-can-login-with-random-credentials-now"
+},
+{
+  "commit": "821fd63a8ce014b16e91e94a617c0e45bc46b2ba",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 13:25:57 2016 +0100",
+  "message": "minor-fixes-of-conf-files"
+},
+{
+  "commit": "04f8bb3b860f3be045d8c43e16276d1bb30f3735",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 13:25:41 2016 +0100",
+  "message": "little-fixes-in-generator-and-added-3-new-methods-to-generate-Bootstrap.java-User.java-and-Users.java"
+},
+{
+  "commit": "0f899c3e27cfea4577caccd32041cadf62a3d0b8",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 11:48:51 2016 +0100",
+  "message": "missing-templates-for-CRUD-modul-html-components"
+},
+{
+  "commit": "90d9a760b0c36c0630a74d974fb87357fd3349e8",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 11:48:27 2016 +0100",
+  "message": "templates-for-User-pojo-class-and-controller"
+},
+{
+  "commit": "6d31ff6cc3e41c6fe2f1902f008a63910c0857bb",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 23 11:47:52 2016 +0100",
+  "message": "out-of-box-CRUD-controller"
+},
+{
+  "commit": "4d4bfbdff69d6c295d1a337651beef3c405ebabc",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Mon Feb 22 22:54:45 2016 +0100",
+  "message": "Kreiran-fajl-types.tag-u-crud-tags-paketu"
+},
+{
+  "commit": "a5b6cc38c073badc6dfe6447a2ae00a03b409876",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Mon Feb 22 22:51:12 2016 +0100",
+  "message": "Ispravljeni-bagovi-na-html-stranicama-crud-tags-modula"
+},
+{
+  "commit": "ded06d652ccb603945e6f2caa0e9d6840f26d3dd",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Mon Feb 22 22:41:53 2016 +0100",
+  "message": "Ispravljeni-bagovi-vezani-zahtml-stranice-secure-modula"
+},
+{
+  "commit": "36e56b78f6ce964aa3462c937ab877427f4fa1de",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Mon Feb 22 22:35:00 2016 +0100",
+  "message": "Ispravljeni-bagovi-na-error-html-stranicama-za-play"
+},
+{
+  "commit": "ee8c119d8bee60c8a2293eb318b9697d42190ff5",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Mon Feb 22 22:31:53 2016 +0100",
+  "message": "Ispravljeni-bagovi-na-html-stranicama-crud-modula"
+},
+{
+  "commit": "fe00d7fb1079f87ece33be1b30e178c121cd8c63",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 19:06:27 2016 +0100",
+  "message": "added-method-for-generating-CRUD-class"
+},
+{
+  "commit": "241b674f257c510b77f1a3cb71ed2821a11e5765",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 19:05:44 2016 +0100",
+  "message": "minor-fixes-of-import-for-model-classes"
+},
+{
+  "commit": "02849abfa4a174f3a5de8c79d11803bee601956f",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 19:05:33 2016 +0100",
+  "message": "change-the-CRUD-content-to-basic-out-of-box-CRUD-content"
+},
+{
+  "commit": "50b570c56a6a553c233a5bc2ddd9bd1e124b55b8",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 18:28:30 2016 +0100",
+  "message": "added-necessary-methods-to-generate-concrete-files-from-conf-and-run-templates"
+},
+{
+  "commit": "f212308a62e576c3d2795dba7c1a21cb96d8f922",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 18:28:08 2016 +0100",
+  "message": "file-to-resolve-dependencies-and-start-play-application"
+},
+{
+  "commit": "49b7d843b37a958efaf3b3dd25f24897ec9c5a83",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 18:27:02 2016 +0100",
+  "message": "added-templates-for-files-in-conf-folder"
+},
+{
+  "commit": "9c1d1b963345010e3cf4038c0383b23f3df86613",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 17:08:55 2016 +0100",
+  "message": "added-new-methods-to-generate-concrete-files-from-templates"
+},
+{
+  "commit": "2396556788ca912b7dfe82baf0002fa79bffd01f",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 17:07:57 2016 +0100",
+  "message": "added-missing-CRUD-controller-class"
+},
+{
+  "commit": "95837736d629bc22ad62702ad345a18e94c16ba7",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 17:07:38 2016 +0100",
+  "message": "Folder-structure-for-templates-and-output-are-now-follow-a-Play-application-folder-structure"
+},
+{
+  "commit": "588363043a4c7c4f5cde68dd8a928de5a8935aa9",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 13:48:43 2016 +0100",
+  "message": "Merge-branch-master-of-personal-ftn-tim2-jsd-project"
+},
+{
+  "commit": "9cf937e7934820d38b5b8996f3ce5bf6b57309bf",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 13:47:30 2016 +0100",
+  "message": "Merge-branch-master-of-personal-ftn-tim2-jsd-project"
+},
+{
+  "commit": "22bda47cb0bc708662fa00d509e4393df770e229",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 13:47:30 2016 +0100",
+  "message": "Merge-branch-master-of-personal-ftn-tim2-jsd-project"
+},
+{
+  "commit": "901c99e4d2cf98e15c7f92c097031017210cabef",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 13:34:10 2016 +0100",
+  "message": "Merge-branch-master-of-personal-ftn-tim2-jsd-project"
+},
+{
+  "commit": "9ef976b707d1f9a42acabefac983f983f52f5fc8",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 13:34:10 2016 +0100",
+  "message": "Merge-branch-master-of-personal-ftn-tim2-jsd-project"
+},
+{
+  "commit": "438cb926ee1b8489489f419645871a8b3664921c",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Mon Feb 22 13:33:03 2016 +0100",
+  "message": "added-method-for-generating-controller-classes"
+},
+{
+  "commit": "2a8fe1e9f5c5404f6f5c6518df5355d922f0c8c4",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sun Feb 21 23:06:44 2016 +0100",
+  "message": "Merge-branch-master-of-https-github.com-ftn-tim2-jsd-project"
+},
+{
+  "commit": "6cdb2b9a9b6178556733cc73de68117622cba63b",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sun Feb 21 23:06:02 2016 +0100",
+  "message": "Ispravljen-bag-vezan-za-html-tags_play"
+},
+{
+  "commit": "e667d5c7fcc1db852e07547f1a4ba499a4b9556c",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Sun Feb 21 23:06:00 2016 +0100",
+  "message": "workaround-for-a-missing-methods"
+},
+{
+  "commit": "ef5ebd1ff8f829d795258d8ba7cd3d06c12e3fed",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Sun Feb 21 23:04:37 2016 +0100",
+  "message": "Merge-branch-master-of-https-github.com-ftn-tim2-jsd-project"
+},
+{
+  "commit": "ed91a9e8e6b306ddaca988c38da50efa7414fa14",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Sun Feb 21 22:55:11 2016 +0100",
+  "message": "Merge-branch-master-of-https-github.com-ftn-tim2-jsd-project"
+},
+{
+  "commit": "25ee1e2ade3445e842fcc14bb6a418c9ee0c28bf",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Sun Feb 21 22:54:58 2016 +0100",
+  "message": "issue-Docker-support-13-and-issue-Separate-the-database-from-the-web-application-10"
+},
+{
+  "commit": "62eccefeca7dc26a6c97ad7c3d495cb7750d465f",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sun Feb 21 22:54:57 2016 +0100",
+  "message": "Merge-branch-master-of-https-github.com-ftn-tim2-jsd-project"
+},
+{
+  "commit": "af85754d42b1285e0733886402c4c1db0b38ff84",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sun Feb 21 22:54:50 2016 +0100",
+  "message": "Odradjeno-generisanje-crud-tags-html-stranica-za-play"
+},
+{
+  "commit": "7ceac02ed1cb4ec835917522deed1cf6ba3fd96a",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Sun Feb 21 22:51:35 2016 +0100",
+  "message": "Merge-branch-master-of-https-github.com-ftn-tim2-jsd-project.git"
+},
+{
+  "commit": "c2645b948b8553da0ccc3013a04683784198646e",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Sun Feb 21 22:51:15 2016 +0100",
+  "message": "Creating-superuser"
+},
+{
+  "commit": "587c6cd7c49111fcbb212bc173131f7b9945278e",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sun Feb 21 22:42:32 2016 +0100",
+  "message": "Merge-branch-master-of-https-github.com-ftn-tim2-jsd-project"
+},
+{
+  "commit": "78c17b0fafa553430cdafb0d30756e3043d9d368",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sun Feb 21 22:42:17 2016 +0100",
+  "message": "Odradjeno-kreiranje-crud-tags-html-stranica-za-play"
+},
+{
+  "commit": "60a6c47e99fa4b0b17ecb0712007232fd4f2dd52",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Sun Feb 21 22:07:15 2016 +0100",
+  "message": "Merge-branch-master-of-personal-ftn-tim2-jsd-project"
+},
+{
+  "commit": "b9353879d47f328bb86b4607c9a58b7ed04a46d3",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Sun Feb 21 22:07:07 2016 +0100",
+  "message": "added-filter-for-annotation-attributes"
+},
+{
+  "commit": "2bebff67430383d1f0143e3fbe4e575940d5a00d",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Sun Feb 21 22:06:48 2016 +0100",
+  "message": "added-OneToOne-annotation-for-java-pojo-classes.-added-mapping-of-dsl-annotation-attributes"
+},
+{
+  "commit": "d9e5c6d0285efc3fd5902a1ac77305e0f1615223",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Sun Feb 21 22:05:40 2016 +0100",
+  "message": "minor-fixes-on-template-file-to-fully-support-ManyToMany-and-OneToOne-annotations"
+},
+{
+  "commit": "e704a6d67d6c64104c226d7fbce7bf1dbadee2cb",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sun Feb 21 20:36:33 2016 +0100",
+  "message": "Ispravka-linkova-na-html-stranicama-za-play"
+},
+{
+  "commit": "0677428120f04db1924f2ee678dadaa4970a82ba",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sun Feb 21 20:24:16 2016 +0100",
+  "message": "Merge-branch-master-of-https-github.com-ftn-tim2-jsd-project"
+},
+{
+  "commit": "06b13d2105ed92aea060c66f904e6dc4efc32e6b",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sun Feb 21 20:24:07 2016 +0100",
+  "message": "Ispravka-nad-html-stranicama-za-play"
+},
+{
+  "commit": "2864e21579494e15c43a2bde7ef50492545138ce",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Sun Feb 21 16:19:03 2016 +0100",
+  "message": "issue-User-profile-page-11"
+},
+{
+  "commit": "bc65239431e8be97323cefc8d5a1a147c6a349f7",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Sun Feb 21 13:52:42 2016 +0100",
+  "message": "issue-View-permission-12"
+},
+{
+  "commit": "0c7541840f4ad795e7999f6b59b4622e7c267e6b",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Sat Feb 20 17:39:21 2016 +0100",
+  "message": "Changed-the-way-user-defines-css"
+},
+{
+  "commit": "2c683f31ceb2236ab867984607b6bf22eb106c10",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Sat Feb 20 17:27:23 2016 +0100",
+  "message": "Added-option-for-choosing-css-in-model-specification"
+},
+{
+  "commit": "a1e02edcffe2f16b66a8aa1e7567c4c825683bb4",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sat Feb 20 15:19:01 2016 +0100",
+  "message": "Odradjene-html-stranice-za-greske-404-500-play"
+},
+{
+  "commit": "e20ecdf5c45db8874bb83c20d2a550b61ee5fcce",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sat Feb 20 15:10:51 2016 +0100",
+  "message": "Odradjeno-generisanje-show.html-stranica-za-play"
+},
+{
+  "commit": "1b8879dcc47cbed92cc245db3e7c3dbc64bf8b98",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sat Feb 20 15:03:13 2016 +0100",
+  "message": "Odradjena-create_Page.html-stranica-za-play"
+},
+{
+  "commit": "bf87a5da25ee28362050b3f29bb8a2d54acebcd1",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sat Feb 20 14:53:48 2016 +0100",
+  "message": "Merge-branch-master-of-https-github.com-ftn-tim2-jsd-project"
+},
+{
+  "commit": "bd6cdef7466e1dbb95e21e53add0e3ab6c0a77b4",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sat Feb 20 14:53:23 2016 +0100",
+  "message": "Odradjeno-generisanje-layout.html-stranice-za-play"
+},
+{
+  "commit": "87ae096c87694e14209ac698f8c69390f137de69",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Sat Feb 20 14:32:27 2016 +0100",
+  "message": "Merge-branch-master-of-personal-ftn-tim2-jsd-project"
+},
+{
+  "commit": "20f1caed6e482fa0b8f9b210b3efe0b64c0e1aa6",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Sat Feb 20 14:32:18 2016 +0100",
+  "message": "added-comments-for-the-template.-added-Required-annotation.-minor-fixes-of-getters-and-setters"
+},
+{
+  "commit": "4310ea4eacbe8fa1b80fa05567bc7ce6fecb8612",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sat Feb 20 14:27:42 2016 +0100",
+  "message": "Odradjena-index.html-i-list.html-za-play"
+},
+{
+  "commit": "6f77667aefbb1e7fa3bf3c6e92a329fd144e9f1a",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sat Feb 20 14:04:58 2016 +0100",
+  "message": "Merge-branch-master-of-https-github.com-ftn-tim2-jsd-project"
+},
+{
+  "commit": "5b7b0910c6916976211cf8904fbbfe12b6888164",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Sat Feb 20 14:04:51 2016 +0100",
+  "message": "Dodati-css-fajlovi-i-napravljene-inicijalne-html-stranice-za-play"
+},
+{
+  "commit": "5ec094fb32252489225022a27cb9d539a8181da6",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Sat Feb 20 13:59:02 2016 +0100",
+  "message": "Merge-remote-tracking-branch-origin-master"
+},
+{
+  "commit": "765c0f10e8da7e17352dc6386c0c153ea7fd4d51",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Sat Feb 20 13:58:47 2016 +0100",
+  "message": "fixed-table-generation-for-overview-screen"
+},
+{
+  "commit": "a923197ff1530ed65630a3cd8b996af860139f67",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Sat Feb 20 13:28:08 2016 +0100",
+  "message": "adedd-parametrized-constructod-constructor-without-parameters-getters-setters-and-toString-method-to-template"
+},
+{
+  "commit": "b92d763f819bac0487c4f8e89fdfe970353d05f4",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Sat Feb 20 02:19:50 2016 +0100",
+  "message": "fix-some-bugs-and-issues-of-the-prepare_play_data_model-method"
+},
+{
+  "commit": "ea0c665425a8d855711f4aabfeaebbd49df466bf",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Sat Feb 20 02:18:30 2016 +0100",
+  "message": "adepted-template-for-the-new-metodology"
+},
+{
+  "commit": "81ddbfb3b320586b62798f15f885810f13673fb0",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Fri Feb 19 23:29:03 2016 +0100",
+  "message": "added-method-to-prepare-model-for-generating-java-pojo-classes"
+},
+{
+  "commit": "ebecdd06f28568848d280b8d9692a4cd69c6be5e",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Fri Feb 19 23:28:25 2016 +0100",
+  "message": "added-filter-for-annotation-types"
+},
+{
+  "commit": "466f2db9d2a4572dae72f59ca6e18f6a47ac7956",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Fri Feb 19 23:28:10 2016 +0100",
+  "message": "added-basic-template-for-java-pojo-class-templates"
+},
+{
+  "commit": "faa9b7a63a223a56a86a729e8f01c1cee7b1d535",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Fri Feb 19 17:58:09 2016 +0100",
+  "message": "Improved-grammar-and-changed-template-for-models.py"
+},
+{
+  "commit": "e2f50e0809b46db8adff193c6f127a53df91311c",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Fri Feb 19 02:38:30 2016 +0100",
+  "message": "Few-changes-to-index-page"
+},
+{
+  "commit": "da5586b498997978c487328b86b2a9c9ccdea8df",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Fri Feb 19 01:59:35 2016 +0100",
+  "message": "added-table-headings"
+},
+{
+  "commit": "83cfc47d9608fa4ac66b437ed30ef05c538751e4",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Fri Feb 19 01:29:31 2016 +0100",
+  "message": "Added-table-in-list-html"
+},
+{
+  "commit": "c57ca775644240246dacfdf0eb7192eb346b91f1",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Thu Feb 18 23:04:48 2016 +0100",
+  "message": "Merge-remote-tracking-branch-origin-master"
+},
+{
+  "commit": "44c0df67278315f2f90b5d1e9892b5f2d5f9275d",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Thu Feb 18 23:04:33 2016 +0100",
+  "message": "added-django-bootstrap3-added-registration-page"
+},
+{
+  "commit": "3eb7fe6bc4a3eab6ac2bf47a8641051501ca2fe5",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 18 21:46:31 2016 +0100",
+  "message": "Merge-branch-master-of-https-github.com-ftn-tim2-jsd-project.git"
+},
+{
+  "commit": "2ab0463840e52dfe24febefba4dccce073eb115e",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 18 21:45:30 2016 +0100",
+  "message": "Generate-django-minor-change"
+},
+{
+  "commit": "3bcb9836bcf03992f7853f2231e4bd8d829c39c7",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Thu Feb 18 18:31:25 2016 +0100",
+  "message": "generate_play_model_bean_classes-method-add.-basic-template-file-for-java-classes"
+},
+{
+  "commit": "1932e3b642eb549aa5154a53f001b8f07add6584",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Thu Feb 18 16:24:21 2016 +0100",
+  "message": "fixed-login-redirect"
+},
+{
+  "commit": "77266ddf5366e28015692db7cbd62c53591ab63b",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Thu Feb 18 14:55:19 2016 +0100",
+  "message": "refactored-generate_django.py"
+},
+{
+  "commit": "ae5b0a600da2c229898923752085a02c8654ab4e",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Thu Feb 18 14:20:57 2016 +0100",
+  "message": "Merge-remote-tracking-branch-origin-master"
+},
+{
+  "commit": "c5723907d8b0057c5fd2d029f1e23f57b87ffe75",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Thu Feb 18 14:17:47 2016 +0100",
+  "message": "changed-copying-files-method"
+},
+{
+  "commit": "df4ff190b1783297a0f182d27830f00869d43b7c",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 18 04:31:31 2016 +0100",
+  "message": "running-django-app-directly-after-generating-app"
+},
+{
+  "commit": "baa23b2ab1177bb5b90625b2cb1aa412d8cebd4a",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 18 04:01:53 2016 +0100",
+  "message": "Trying-to-make-migration-and-runserver-django-app-automatic"
+},
+{
+  "commit": "1685ad83fe31c63b7b6c4c08ba7e2db1c7cd2d26",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 18 03:13:02 2016 +0100",
+  "message": "Merge-branch-master-of-https-github.com-ftn-tim2-jsd-project.git"
+},
+{
+  "commit": "a979a9a4193d04d5061e5dec63ba12e1dad77c39",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 18 03:12:22 2016 +0100",
+  "message": "Testing"
+},
+{
+  "commit": "1f5dfa33c94ffe1ca8c06282c719171046af378d",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Thu Feb 18 02:33:49 2016 +0100",
+  "message": "Merge-remote-tracking-branch-origin-master"
+},
+{
+  "commit": "1d5c67a14c4ba4ed8755174231b391892c3d5076",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Thu Feb 18 02:33:18 2016 +0100",
+  "message": "added-breadcrumbs-and-small-icons-beside-links"
+},
+{
+  "commit": "0c0bf80a5bc23e9f42175ffa09350e455559a456",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 18 01:13:02 2016 +0100",
+  "message": "added-choice-field-support"
+},
+{
+  "commit": "62215c086e05168366c35fb9d6cdab228d53880f",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 18 00:42:35 2016 +0100",
+  "message": "changing-readme-file"
+},
+{
+  "commit": "571160ecacd5e7e73e475ae1e3da4505293c8c74",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 18 00:38:55 2016 +0100",
+  "message": "copying-necessary-files"
+},
+{
+  "commit": "76fea17b8cf1bf3d1eb7c5ef063b4783c766ed3a",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Wed Feb 17 23:47:56 2016 +0100",
+  "message": "added-assets-folder"
+},
+{
+  "commit": "f57017a8bc10dd76fc90be8f5c7b914dd8abb9b3",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Wed Feb 17 23:45:07 2016 +0100",
+  "message": "improved-base-template"
+},
+{
+  "commit": "9c97691cac77ecaeadcbfc9972e6c0841c7f2fcb",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Wed Feb 17 23:00:44 2016 +0100",
+  "message": "Merge-branch-master-of-https-github.com-ftn-tim2-jsd-project"
+},
+{
+  "commit": "51744f35abba01482736ab97393f7110b1e9ee9d",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Wed Feb 17 23:00:35 2016 +0100",
+  "message": "added-copy-assets"
+},
+{
+  "commit": "9d0928b4ce32df912366677ef53ec2f0e09e31ff",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Wed Feb 17 22:37:46 2016 +0100",
+  "message": "removed-typedef-method-from-base_generator.py-and-make-it-separately-for-django-and-play"
+},
+{
+  "commit": "42fb705975328458d7657e145bcbc6f347863d27",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Wed Feb 17 18:29:25 2016 +0100",
+  "message": "Odradjeno-generisanje-change-password.html-za-play"
+},
+{
+  "commit": "e41f46960c3e9d6defbbec71a1428aba82f88565",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Wed Feb 17 18:21:37 2016 +0100",
+  "message": "Odradjeno-generisanje-logout.html-za-play"
+},
+{
+  "commit": "ab834ef9699fd4f5e90d3071425689a3415147bf",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Wed Feb 17 18:09:44 2016 +0100",
+  "message": "Odradjeno-generisanje-login-stranice-za-play"
+},
+{
+  "commit": "f5b7e3013a98f90444aaea6d0a681db390bb6718",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 16 23:14:36 2016 +0100",
+  "message": "added-output-folder-to-gitignore-file"
+},
+{
+  "commit": "12a0e703b1fb6ee53ae990704fc1c4125e14b5d6",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Tue Feb 16 23:11:13 2016 +0100",
+  "message": "upgraded-django-templates"
+},
+{
+  "commit": "e8e7d94bf3adcf377975bffc098094f2dfa58312",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 16 22:55:35 2016 +0100",
+  "message": "added-the-.idea-folder-to-.gitignore"
+},
+{
+  "commit": "b5cdcb38cb6e51027bdc63a8ee7ab4084c9da6e2",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 16 22:52:22 2016 +0100",
+  "message": "removed-junk-from-project-files"
+},
+{
+  "commit": "8463b78abd5483ab475650c097324220ad0680f3",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 16 22:09:01 2016 +0100",
+  "message": "Merge-branch-master-of-personal-ftn-tim2-jsd-project"
+},
+{
+  "commit": "78536dabad0746c4a99d956b2015e7613a18385b",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Tue Feb 16 22:08:50 2016 +0100",
+  "message": "modified-gitignore-file.-Ignoring-OS-junk-files-IDE-junk-files-etc"
+},
+{
+  "commit": "9080b40a58a3b002fe7460a47998c75494b8aabf",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Tue Feb 16 19:00:31 2016 +0100",
+  "message": "bugfix-added-new-templates-for-django"
+},
+{
+  "commit": "832478ef41c894ee39b6fd62076ace18dd1b2290",
+  "author": "AnaLukic <analukic.ns@gmail.com>",
+  "date": "Tue Feb 16 16:13:54 2016 +0100",
+  "message": "Ispravljen-bag"
+},
+{
+  "commit": "e23e7efc68e6a83e512e70dfe173bebb1e030f1a",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Tue Feb 16 16:00:42 2016 +0100",
+  "message": "split-generators-to-play-and-django"
+},
+{
+  "commit": "5a69f4d5c37b3e004c5b0c227c0e76ced165b868",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Tue Feb 16 14:50:36 2016 +0100",
+  "message": "first-version-of-html-templates"
+},
+{
+  "commit": "7ba96e9b968fb50c4193b4517d5aa52d091582fe",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Tue Feb 16 00:07:17 2016 +0100",
+  "message": "html-templates-support"
+},
+{
+  "commit": "134efe1afab177827bb353d9a17211c8d08287c4",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Mon Feb 15 20:23:20 2016 +0100",
+  "message": "minor-grammar-change"
+},
+{
+  "commit": "7f13c829c63597e64d8801281389d9c1a5334ba0",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Mon Feb 15 20:01:37 2016 +0100",
+  "message": "Improved-grammar"
+},
+{
+  "commit": "e50499c8786cab80123705dd793c9a102753d54c",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Mon Feb 15 19:50:02 2016 +0100",
+  "message": "Improved-grammar"
+},
+{
+  "commit": "cc5c67fce4768ede7933973e92288a72dd3c51ef",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Mon Feb 15 18:56:46 2016 +0100",
+  "message": "Added-model-name-in-grammar"
+},
+{
+  "commit": "8585f046b15aacf44ec56e9378cbad9af9e4894c",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Sun Feb 14 17:50:19 2016 +0100",
+  "message": "added-support-for-basic-folder-structure"
+},
+{
+  "commit": "9ea15eb12b5ca4e099badfdeecdccd0dd92a60d4",
+  "author": "Jozef Kovac <thekrushka@gmail.com>",
+  "date": "Sun Feb 14 15:16:50 2016 +0100",
+  "message": "Formated-Code-and-template-to-generate-well-formated-code"
+},
+{
+  "commit": "4d4fcf29f213041de0dba7db8a84a2893773648c",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Sun Feb 14 02:24:54 2016 +0100",
+  "message": "generating-model-classes-with-str-method"
+},
+{
+  "commit": "f8dc1daf90e4ccca8a4b083df4fc266b9129aaaf",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Sat Feb 13 18:28:07 2016 +0100",
+  "message": "simple-filter-class-for-two-types"
+},
+{
+  "commit": "036ac387c84568d37a39697e97bc206322f27ab4",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Fri Feb 12 01:21:11 2016 +0100",
+  "message": "grammar-minor-change"
+},
+{
+  "commit": "b94e5ef3c294e53fe5f3608233709681df951a2f",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Fri Feb 12 01:17:50 2016 +0100",
+  "message": "changed-grammar"
+},
+{
+  "commit": "2daeaf9c69948639d4bb3b02ab86a4ccf84b4f8e",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Fri Feb 12 01:12:57 2016 +0100",
+  "message": "Chagned-grammar"
+},
+{
+  "commit": "f29bec2ca59888791a40c92ca87593b7e21a0ebb",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Fri Feb 12 00:27:37 2016 +0100",
+  "message": "testiranje-generisanja"
+},
+{
+  "commit": "828320da745f8d4a17a3b7ae318a6691fccc36a3",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 11 22:46:59 2016 +0100",
+  "message": "Removing-lines-unnecessary"
+},
+{
+  "commit": "873e555fc99877ab91d3bb62e3454a78f9b0a3b9",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 11 15:34:45 2016 +0100",
+  "message": "Removing-unused-lines"
+},
+{
+  "commit": "f64a14130b977468f14daddfc5d3a06dd695bbfe",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 11 15:27:09 2016 +0100",
+  "message": "commenting-unused-lines"
+},
+{
+  "commit": "2be8b4815211ec4cbb32bf97fb7dbfadacaed5a8",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 11 15:23:48 2016 +0100",
+  "message": "Inicijalna-verzija-gramatike-sa-test-primerom"
+},
+{
+  "commit": "0eb39a468331e0a5a7b8c13ad92fa989ee1b6a21",
+  "author": "Filip Frank <frank.filip@hotmail.com>",
+  "date": "Thu Feb 11 02:03:51 2016 +0100",
+  "message": "Kostur-projekta"
+},
+{
+  "commit": "7bcb5f94ddea59465ff16ef93462fbba18637a57",
+  "author": "Berko Szabolcs <szberko@gmail.com>",
+  "date": "Sat Jan 2 22:26:45 2016 +0100",
+  "message": "init-commit"
+}]

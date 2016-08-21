@@ -3,7 +3,7 @@ import os
 import re
 
 from generated.base_generator import BaseGenerator
-from root import BASE_PATH, ROOT_DIR
+from root import BASE_PATH, ROOT_DIR, SRC_DIR
 
 
 class DjangoGenerator(BaseGenerator):
@@ -70,10 +70,10 @@ class DjangoGenerator(BaseGenerator):
 
         root_html_path = templates_path
         assets_path = os.path.join(base_path, 'assets')
-        assets_source_path = os.path.join(ROOT_DIR, 'src', 'generated', 'templates', base_source_path, 'assets')
-        necessary_source_path = os.path.join(ROOT_DIR, 'src', 'generated', 'templates', base_source_path,
+        assets_source_path = os.path.join(SRC_DIR, 'generated', 'templates', base_source_path, 'assets')
+        necessary_source_path = os.path.join(SRC_DIR, 'generated', 'templates', base_source_path,
                                              'necessary_files')
-        database_source_path = os.path.join(ROOT_DIR, 'src', 'generated', 'templates', base_source_path,
+        database_source_path = os.path.join(SRC_DIR, 'generated', 'templates', base_source_path,
                                              'database')
         folder_gen_list = [base_path,
                            app_path,
