@@ -1,4 +1,4 @@
-import generate
+from generated import generate
 
 
 def main():

@@ -1,7 +1,7 @@
 import os
 
 from generated.base_generator import BaseGenerator
-from root import BASE_PATH
+from generated.root import BASE_PATH
 
 
 class PlayGenerator(BaseGenerator):
