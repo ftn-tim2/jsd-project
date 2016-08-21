@@ -9,13 +9,13 @@ import os
 import pydot
 from textx.export import metamodel_export, model_export
 from textx.metamodel import metamodel_from_file
-
+from generated.root import SRC_DIR
 
 def execute(path, grammar_file_name, example_file_name, export_dot, export_png):
     """U svrhe brzeg testiranja, metoda koja prima putanju do foldera, naziv fajla gde je gramatika i naziv fajla gde je
         primer programa u nasem jeziku i indikator da li da se eksportuju .dot i .png fajlovi"""
 
-    meta_path = os.path.join(path, grammar_file_name)
+    meta_path = os.path.join(SRC_DIR, 'model', grammar_file_name)
     meta_name = os.path.splitext(meta_path)[0]
     metamodel = metamodel_from_file(meta_path)
 

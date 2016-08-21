@@ -1,5 +1,5 @@
+import sys
 from generated import generate
 
-
-def main():
-    generate.main()
+def main(location="", filename=""):
+    generate.main(location, filename)

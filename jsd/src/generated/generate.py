@@ -12,8 +12,13 @@ from generated.generate_play import PlayGenerator
 from generated.root import SRC_DIR
 
 
-def main(debug=False, project_type='django'):
-    model = execute(os.path.join(SRC_DIR, "model"), 'model.tx', 'test.rbt', debug, debug)
+def main(location="", filename="", debug=False, project_type='django'):
+
+    if not location or not filename:
+        model = execute(os.path.join(SRC_DIR, "model"), 'model.tx', 'test.rbt', debug, debug)
+    else:
+        model = execute(location, 'model.tx', filename, debug, debug)
+
     if project_type == 'play':
         generator = PlayGenerator(model)
         generator.generate_application()
