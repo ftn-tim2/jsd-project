@@ -45,10 +45,6 @@ class DjangoGenerator(BaseGenerator):
         distutils.dir_util.copy_tree(necessary_source_path, base_path)
 
     @staticmethod
-    def copy_database_files(database_source_path, base_path):
-        distutils.dir_util.copy_tree(database_source_path, base_path)
-
-    @staticmethod
     def call_post_gen_script(base_path):
         os.chdir(base_path)
         os.system('python ./manage.py migrate')
@@ -61,7 +57,6 @@ class DjangoGenerator(BaseGenerator):
 
         # path to the target folder
         base_path = os.path.join(BASE_PATH, self.model.name)
-        base_path_db = os.path.join(BASE_PATH, self.model.name + '_db')
 
         app_path = os.path.join(base_path, 'apps')
         program_path = os.path.join(base_path, self.model.name)
@@ -74,8 +69,6 @@ class DjangoGenerator(BaseGenerator):
         assets_source_path = os.path.join(SRC_DIR, 'templates', base_source_path, 'assets')
         necessary_source_path = os.path.join(SRC_DIR, 'templates', base_source_path,
                                              'necessary_files')
-        database_source_path = os.path.join(SRC_DIR, 'templates', base_source_path,
-                                             'database')
         folder_gen_list = [base_path,
                            app_path,
                            program_path,
@@ -87,7 +80,6 @@ class DjangoGenerator(BaseGenerator):
         self.init_folder_structure(folder_gen_list)
         self.copy_assets_folder(assets_source_path, assets_path)
         self.copy_necessary_files(necessary_source_path, base_path)
-        self.copy_database_files(database_source_path, base_path_db)
 
         # generate files
         self.generate_program_files(base_source_path, program_path)

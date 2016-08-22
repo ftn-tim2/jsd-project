@@ -1,60 +1,11 @@
 "uks"
 css="http://bootswatch.com/lumen/bootstrap.min.css"
+username = "admin"
+emailAdress = "admin@admin.com"
+password = "admin"
 "Project" {
 	text "name"
 	char "key" (unique=true,max_length=10)
 }
 
-"IssueType" {
-	text "name"
-	char "key" (unique=true,max_length=10)
-	text "color"
-	manyToMany "project" (to="Project", null=true)
-}
-
-"Priority" {
-	text "name"
-	char "key" (unique=true,max_length=10)
-	manyToMany "project" (to="Project", null=true)
-}
-
-"Status" {
-	text "name"
-	char "key" (unique=true,max_length=10)
-	manyToMany "project" (to="Project", null=true)
-} 
-
-"Milestone" {
-	text "name"
-	char "key" (unique=true,max_length=10)
-	manyToMany "project" (to="Project",null=true)
-} 
-
-"Issue" {
-	text "title"
-	text "description"
-	image "attribute"
-    foreignKey "project" (to="Project",null=false)
-	foreignKey "reporter" (to="User",null=false,related_name="'reporter'")
-	foreignKey "assigned_to" (to="User",null=true)
-	foreignKey "status" (to="Status",null=false)
-	foreignKey "milestone" (to="Milestone",null=true)
-	foreignKey "issueType" (to="IssueType",null=false)
-	foreignKey "priority" (to="Priority",null=true)
-}
-
-"Comment" {
-	text "message"
-	dateTime "dateTime"
-	foreignKey "author" (to="User",null=false)
-	foreignKey "issue" (to="Issue",null=false)
-}
-
-"Commit" {
-	char "hashcode" (unique=true,max_length=64)
-	text "message"
-	text "description"
-	foreignKey "project" (to="Project",null=false)
-	manyToMany "issue" (to="Issue",null=true)
-}
 
