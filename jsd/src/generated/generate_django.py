@@ -55,7 +55,7 @@ class DjangoGenerator(BaseGenerator):
         os.system('python ./manage.py collectstatic --noinput')
         os.system('python ./manage.py runserver')
 
-    def generate_application(self):
+    def generate_application(self, location=""):
         # path to django templates
         base_source_path = os.path.join('django_templates')
 
