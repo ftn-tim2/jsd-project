@@ -3,13 +3,17 @@ Model:
 	("css" "=" css=STRING)?
 	(user = SuperUser) ?
 	classes*= Definition
-	
+	methods*= Method
 ;
 
 Definition:
 	name = STRING "{"
 	attributes*= Attribute
 	"}"
+;
+
+Method:
+	name = STRING "()"
 ;
 
 SuperUser:
