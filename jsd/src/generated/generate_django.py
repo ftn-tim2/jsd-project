@@ -45,18 +45,27 @@ class DjangoGenerator(BaseGenerator):
         distutils.dir_util.copy_tree(necessary_source_path, base_path)
 
     @staticmethod
+    def copy_database_files(database_source_path, base_path):
+        distutils.dir_util.copy_tree(database_source_path, base_path)
+
+    @staticmethod
     def call_post_gen_script(base_path):
         os.chdir(base_path)
         os.system('python ./manage.py migrate')
         os.system('python ./manage.py collectstatic --noinput')
         os.system('python ./manage.py runserver')
 
-    def generate_application(self):
+    def generate_application(self, location=""):
         # path to django templates
         base_source_path = os.path.join('django_templates')
 
+        if not location:
+            outputlocation = BASE_PATH
+        else:
+            outputlocation = location
+
         # path to the target folder
-        base_path = os.path.join(BASE_PATH, self.model.name)
+        base_path = os.path.join(outputlocation, self.model.name)
 
         app_path = os.path.join(base_path, 'apps')
         program_path = os.path.join(base_path, self.model.name)
@@ -69,6 +78,7 @@ class DjangoGenerator(BaseGenerator):
         assets_source_path = os.path.join(SRC_DIR, 'templates', base_source_path, 'assets')
         necessary_source_path = os.path.join(SRC_DIR, 'templates', base_source_path,
                                              'necessary_files')
+        
         folder_gen_list = [base_path,
                            app_path,
                            program_path,

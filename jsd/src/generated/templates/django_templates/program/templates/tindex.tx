@@ -15,9 +15,6 @@
         <a href="/{{model.name}}/{{definition.name.lower()}}_list">{{definition.name}}</a>
     </td>
     {{ '{%' }} endif {{ '%}' }}
-     <td>
-        <a href="/{{model.name}}//report">Generate report</a>
-    </td>
 </tr>
 {% endfor %}
 {% for method in model.methods %}
