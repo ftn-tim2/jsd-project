@@ -20,7 +20,13 @@
     </td>
 </tr>
 {% endfor %}
-
+{% for method in model.methods %}
+	 {{ '{%' }} if user.is_authenticated{{ '%}' }}
+<tr>
+	<td> <a href="/{{model.name}}/{{method.name.lower()}}">{{method.name}}</a> </td>
+	  {{ '{%' }} endif {{ '%}' }}
+</tr>
+{% endfor %}
 {% raw %}
 {% endblock %}
 
