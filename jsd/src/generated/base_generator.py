@@ -47,6 +47,6 @@ class BaseGenerator:
         with codecs.open(file_name, "w+", "utf-8") as f:
             f.write(rendered)
 
-    def generate_application(self):
+    def generate_application(self, location=""):
         # placeholder
         base_source_path = os.path.join('play_templates')
