@@ -3,6 +3,7 @@ Model:
 	("css" "=" css=STRING)?
 	(user = SuperUser) ?
 	classes*= Definition
+	methods*= Method
 ;
 
 Definition:
@@ -11,6 +12,9 @@ Definition:
 	"}"
 ;
 
+Method:
+	name = STRING "()"
+;
 SuperUser:
 	"username" "=" username=STRING
 	"emailAdress" "=" email=STRING

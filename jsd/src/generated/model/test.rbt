@@ -7,5 +7,6 @@ password = "admin"
 	text "name"
 	char "key" (unique=true,max_length=10)
 }
+"do_nothing"()
 
 
