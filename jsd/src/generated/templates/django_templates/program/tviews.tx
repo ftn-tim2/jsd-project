@@ -55,7 +55,3 @@ def {{definition.name.lower()}}_delete(request, pk, template_name='{{model.name}
         return redirect('{{model.name}}:{{definition.name.lower()}}_list')
     return render(request, template_name, {'object': {{definition.name.lower()}}, 'form_type': 'Delete'})
 {% endfor %}
-
-@login_required
-def report(request, template_name='uks/generate_report.html'):
-    return test.b()
