@@ -1,13 +1,9 @@
 "test"
 css="http://bootswatch.com/lumen/bootstrap.min.css"
-<<<<<<< HEAD
 username = "admin"
 emailAdress = "admin@admin.com"
 password = "admin"
 "Project" {
-=======
-"Proj" {
->>>>>>> refs/heads/master
 	text "name"
 	char "key" (unique=true,max_length=10)
 }
