@@ -18,7 +18,7 @@
 </tr>
 {% endfor %}
 {% for method in model.methods %}
-	 {{ '{%' }} if '{{model.name}}.view_{{definition.name.lower()}}' in user.get_all_permissions {{ '%}' }}
+	 {{ '{%' }} if user.is_authenticated{{ '%}' }}
 <tr>
 	<td> <a href="/{{model.name}}/{{method.name.lower()}}">{{method.name}}</a> </td>
 	  {{ '{%' }} endif {{ '%}' }}
