@@ -59,9 +59,14 @@ class DjangoGenerator(BaseGenerator):
         # path to django templates
         base_source_path = os.path.join('django_templates')
 
+        if not location:
+            outputlocation = BASE_PATH
+        else:
+            outputlocation = location
+
         # path to the target folder
-        base_path = os.path.join(BASE_PATH, self.model.name)
-        base_path_db = os.path.join(BASE_PATH, self.model.name + '_db')
+        base_path = os.path.join(outputlocation, self.model.name)
+        base_path_db = os.path.join(outputlocation, self.model.name + '_db')
 
         app_path = os.path.join(base_path, 'apps')
         program_path = os.path.join(base_path, self.model.name)

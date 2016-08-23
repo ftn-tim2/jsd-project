@@ -11,8 +11,7 @@ from generated.generate_django import DjangoGenerator
 from generated.generate_play import PlayGenerator
 from generated.root import SRC_DIR
 
-
-def main(location="", filename="", debug=False, project_type='django'):
+def main(location="", filename="", output="", debug=False, project_type='django'):
 
     if not location or not filename:
         model = execute(os.path.join(SRC_DIR, "model"), 'model.tx', 'test.rbt', debug, debug)
@@ -25,7 +24,7 @@ def main(location="", filename="", debug=False, project_type='django'):
 
     if project_type == 'django':
         generator = DjangoGenerator(model)
-        generator.generate_application()
+        generator.generate_application(output)
 
 
 if __name__ == '__main__':
