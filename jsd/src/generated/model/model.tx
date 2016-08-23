@@ -3,7 +3,11 @@ Model:
 	("css" "=" css=STRING)?
 	(user = SuperUser) ?
 	classes*= Definition
+<<<<<<< HEAD
 	methods*= Method
+=======
+	
+>>>>>>> refs/heads/master
 ;
 
 Definition:
