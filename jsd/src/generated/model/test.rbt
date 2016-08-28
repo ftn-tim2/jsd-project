@@ -3,6 +3,7 @@ css="http://bootswatch.com/lumen/bootstrap.min.css"
 "Proj" {
 	text "name"
 	char "key" (unique=true,max_length=10)
+	char "orderStatus" ( max_length = 30,  null=false, choices = (("ORDERING","ordering"),("FINISHED","finished"),("CANCELED","canceled"),("SHIPPED","shipped")) )
 }
 "do_nothing"()
 
