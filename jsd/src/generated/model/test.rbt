@@ -5,5 +5,8 @@ css="http://bootswatch.com/lumen/bootstrap.min.css"
 	char "key" (unique=true,max_length=10)
 	char "orderStatus" ( max_length = 30,  null=false, choices = (("ORDERING","ordering"),("FINISHED","finished"),("CANCELED","canceled"),("SHIPPED","shipped")) )
 }
+"Author"{
+	foreignKey "project" ( to="Proj" )
+}
 "do_nothing"()
 
