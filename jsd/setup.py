@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='ftn-jsd',
-      version='0.3',
+      version='0.4',
       description='Generate some Django and Play code',
       url='https://github.com/ftn-tim2/jsd-project.git',
       author='FTN',
