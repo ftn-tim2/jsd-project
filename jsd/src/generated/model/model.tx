@@ -13,7 +13,11 @@ Definition:
 ;
 
 Method:
-	name = STRING "()"
+	name = STRING "("parameters*=Parameter[","]")"
+;
+
+Parameter:
+	value = STRING
 ;
 
 SuperUser:

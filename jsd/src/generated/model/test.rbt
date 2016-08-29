@@ -1,12 +1,9 @@
-"test"
+"TODO_name"
 css="http://bootswatch.com/lumen/bootstrap.min.css"
-"Proj" {
-	text "name"
-	char "key" (unique=true,max_length=10)
-	char "orderStatus" ( max_length = 30,  null=false, choices = (("ORDERING","ordering"),("FINISHED","finished"),("CANCELED","canceled"),("SHIPPED","shipped")) )
-}
-"Author"{
-	foreignKey "project" ( to="Proj" )
-}
-"do_nothing"()
 
+"Department" {
+  char "departmentName" ( max_length = 20,  editable = true,  null = false ) 
+  char "address" ( max_length = 155,  null = false ) 
+}
+"reportOrders"("order","da")
+"reportO"()
