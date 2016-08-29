@@ -15,7 +15,7 @@ class {{definition.name}}(models.Model):
         )
 
     def __str__(self):
-        return self.{% for attribute in definition.attributes %}{% if loop.first %}{{attribute.name}}{% endif %}{% endfor %}{% endif %}
+        return str(self.{% for attribute in definition.attributes %}{% if loop.first %}{{attribute.name}}{% endif %}{% endfor %}){% endif %}
     {% endfor %}
 
 
