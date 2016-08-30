@@ -10,6 +10,6 @@ urlpatterns = patterns('',
                        url(r'^{{definition.name.lower()}}_delete/(?P<pk>\d+)$', views.{{definition.name.lower()}}_delete, name='{{definition.name.lower()}}_delete'),
 {% endfor %}
 {% for method in model.methods %}
-					   url(r'^{{method.name}}{% if method.parameters %}{% for p in method.parameters %}/(?P<{{p.value}}>\d+){% endfor %}${% else %}/${% endif %}', '{{model.name}}.customViews.{{method.name.lower()}}', name='{{method.name.lower()}}'),
+					   url(r'^{{method.name}}/$', '{{model.name}}.customViews.{{method.name.lower()}}', name='{{method.name.lower()}}'),
 {% endfor %}
 )
