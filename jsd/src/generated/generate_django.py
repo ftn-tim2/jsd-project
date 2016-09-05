@@ -103,7 +103,11 @@ class DjangoGenerator(BaseGenerator):
 
     def generate_program_files(self, base_source_path, program_path):
         # program files
-        file_gen_list = {'__init__', 'models', 'views', 'urls', 'admin', 'tests'}
+        
+        if not(os.path.isfile(program_path+'/customViews.py')):
+            file_gen_list = {'__init__', 'models', 'views', 'urls', 'admin', 'tests','customViews'}
+        else:
+            file_gen_list = {'__init__', 'models', 'views', 'urls', 'admin', 'tests'}
 
         # generate the basic files
         for e in file_gen_list:
