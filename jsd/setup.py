@@ -31,7 +31,7 @@ setup(name='ftn-jsd',
       },
       install_requires=[
       		'Arpeggio==1.2.1',
-      		'Jinja2==2.8',
+      		'Jinja2==2.11.3',
       		'MarkupSafe==0.23',
       		'Pillow==3.3.1',
       		'pydot',
